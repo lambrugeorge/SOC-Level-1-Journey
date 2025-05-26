@@ -176,7 +176,7 @@ Fast Flux helps attackers:
 - 🧮 Automatically generates new domain names daily/periodically → nearly impossible to block without the algorithm.
 
 ---
-
+![image](raport.png)
 ## 🕵️‍♂️ Real-World Use Cases
 
 1. 🎭 **Scam campaigns** – social engineering pages in various languages  
