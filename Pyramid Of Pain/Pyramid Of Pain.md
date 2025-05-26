@@ -123,3 +123,77 @@ An **IP address** identifies any device on a network (PCs, servers, cameras, etc
 
 > **Ready to level up your threat hunting skills?** 🚀
 
+
+# 🛡️ Fast Flux: Techniques for Cyber Resilience and Evasion
+
+> ⚠️ **NOTE!** Do not interact with the IP addresses shown above.
+
+## 📌 What is Fast Flux?
+
+Fast Flux is a DNS technique used by **botnets** to hide malicious activities such as:
+- 🧪 malware delivery
+- 🕵️ phishing
+- 🌐 malicious web proxies
+- 🧬 communication with command and control (C&C) servers
+
+🎯 **Goal:** To make it harder for security analysts to detect and block malicious infrastructure.
+
+---
+
+## 🔄 How Does Fast Flux Work?
+
+- Associates **multiple IP addresses** with a single domain name that **constantly changes**.
+- The botnet uses **compromised hosts** as proxies to relay traffic to the real servers.
+- IPs are **rapidly rotated** via DNS, making takedowns and denylisting extremely difficult.
+
+📚 Example: Palo Alto Networks explains this well in their fictional scenario:  
+**"Fast Flux 101: How Cybercriminals Improve the Resilience of Their Infrastructure"**
+
+---
+
+## 📊 Executive Summary
+
+Fast Flux helps attackers:
+- 🔐 protect their malicious infrastructure
+- ⏫ maintain uptime of illegal operations
+- 💸 avoid revenue loss from phishing, scams, botnet rentals, and gambling sites
+
+🆚 While similar to legal practices like RRDNS or CDNs, the **purpose is malicious**.
+
+🔁 Rapid IP rotation via DNS → makes takedowns and denylisting harder
+
+---
+
+## 🧠 Advanced Techniques
+
+### 1️⃣ Single Fast Flux  
+- Only the frontend IP addresses change frequently.
+
+### 2️⃣ Double Flux  
+- 🔀 DNS resolution (NS records) is also part of the fast flux network → even harder to eliminate.
+
+### 3️⃣ DGA (Domain Generation Algorithms)  
+- 🧮 Automatically generates new domain names daily/periodically → nearly impossible to block without the algorithm.
+
+---
+
+## 🕵️‍♂️ Real-World Use Cases
+
+1. 🎭 **Scam campaigns** – social engineering pages in various languages  
+2. 🐍 **Smoke Loader malware** – fast flux domains used for C2 infrastructure  
+3. 🎰 **Illegal sites (adult content / gambling)** – hosted on resilient, fast-fluxed infrastructures
+
+---
+
+## 🔒 Protection Measures
+
+🛡️ Palo Alto Networks protects against fast flux and DGA-based threats using:
+- 🔍 Advanced classifiers
+- 📦 Services like URL Filtering and DNS Security
+
+---
+
+> ✍️ Written by:  
+**Janos Szurdi, Rebekah Houser, Daiping Liu**  
+📅 Published: March 2, 2021  
+🏷️ Tags: Botnet, DGA, Double Flux, Phishing, Scam, Malware
