@@ -197,3 +197,117 @@ Fast Flux helps attackers:
 **Janos Szurdi, Rebekah Houser, Daiping Liu**  
 📅 Published: March 2, 2021  
 🏷️ Tags: Botnet, DGA, Double Flux, Phishing, Scam, Malware
+
+
+## 🟦 Domain Names: Next Level in the Pyramid of Pain
+
+Let's climb higher on the Pyramid of Pain and talk about **Domain Names**! Notice how the color shifts from green (IP addresses) to teal, showing increased difficulty for attackers.
+
+---
+
+### 🌐 What is a Domain Name?
+
+A **domain name** maps an IP address to a human-readable string (like `evilcorp.com`).  
+- **Format:**  
+       - Domain + Top-Level Domain: `evilcorp.com`
+       - Subdomain + Domain + TLD: `tryhackme.evilcorp.com`
+
+We won't dive deep into DNS here, but if you're curious, check out the ["DNS in Detail" Room](#).
+
+![image](domain-name.png)
+
+---
+
+### 🛡️ Why Are Domains Harder to Change?
+
+Attackers need to:
+- Purchase/register a domain
+- Set up DNS records
+
+But, many DNS providers have loose standards and APIs, making it easier for attackers to swap domains quickly.
+
+---
+
+### 🚩 Malicious Domains in Action
+
+**Example:** Sodinokibi C2 (Command & Control) domains
+
+![image](domain-name2.png)
+
+Can you spot anything suspicious? Compare it to a legitimate website below.
+
+---
+
+### 🕵️‍♂️ Punycode Attacks
+
+Attackers use **Punycode** to create domains that look legitimate but are malicious.
+
+> **What is Punycode?**  
+> "Punycode is a way of converting words that cannot be written in ASCII, into a Unicode ASCII encoding." — *Jamf*
+
+**Example:**  
+- Looks like: `adıdas.de`  
+- Real Punycode: `http://xn--addas-o4a.de/`
+
+Modern browsers (Chrome, Edge, Safari, etc.) now display the true Punycode to help users spot fakes.
+
+---
+
+### 🔎 Detecting Malicious Domains
+
+- Analyze **proxy logs** or **web server logs** for suspicious domains.
+- Attackers often use **URL shorteners** to hide malicious links.
+
+**Common URL Shorteners:**
+- `bit.ly`
+- `goo.gl`
+- `ow.ly`
+- `s.id`
+- `smarturl.it`
+- `tiny.pl`
+- `tinyurl.com`
+- `x.co`
+
+> **Tip:**  
+> Add a `+` at the end of a shortened URL (e.g., `tinyurl.com/example+`) to preview the destination.
+
+*Note: The examples above are non-existent and safe.*
+
+---
+
+### 🧪 Analyzing Connections in Any.run
+
+**Any.run** is a sandbox that detonates malware samples and shows their network activity.
+
+#### 🕸️ Tabs to Explore:
+- **HTTP Requests:** See what files/resources are fetched (e.g., droppers, callbacks).
+- **Connections:** View all communications (e.g., C2 traffic, FTP uploads).
+- **DNS Requests:** Check which domains the malware tries to resolve.
+
+> ⚠️ **Caution:**  
+> Never visit IPs or URLs from malware reports—they are likely dangerous!
+
+---
+
+### 📝 Quick Quiz
+
+1. **First suspicious domain in the Any.run report:**  
+        `craftingalegacy.com`
+
+2. **What term refers to an address used to access websites?**  
+        🏷️ **Domain Name**
+
+3. **What type of attack uses Unicode characters in the domain name to imitate a known domain?**  
+        🕵️ **Punycode attack**
+
+4. **Preview the redirected website for:**  
+        `https://tinyurl.com/bw7t8p4u+`  
+        ➡️ `https://tryhackme.com/`
+
+---
+
+Ready to keep climbing the Pyramid of Pain? 🚀
+
+
+
+ 
