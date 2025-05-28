@@ -310,4 +310,52 @@ Ready to keep climbing the Pyramid of Pain? 🚀
 
 
 
- 
+
+![image](raport-host.png)
+
+## 🟨 Host Artifacts: Climbing Higher on the Pyramid
+
+Let's take another step up to the **yellow zone** of the Pyramid of Pain.
+
+At this level, defenders focus on **host artifacts**—the traces attackers leave on compromised systems. Detecting these artifacts forces attackers to change their tools and techniques, which is time-consuming and resource-intensive for them.
+
+![image](host-artefacts.png)
+
+### 🖥️ What Are Host Artifacts?
+
+Host artifacts include:
+- Registry changes
+- Suspicious process executions
+- Unique attack patterns or IOCs (Indicators of Compromise)
+- Files dropped or modified by malware
+- Any evidence specific to the current threat
+
+#### Examples:
+
+- **Suspicious process execution from Word:**  
+        Attackers may use Microsoft Word to launch malicious processes.
+
+- **Events after opening a malicious application:**  
+        Unusual system events or new processes may appear.
+
+- **Files dropped by malware:**  
+        Malicious executables or scripts are often left behind.
+
+---
+
+## 📝 Knowledge Check
+
+A security vendor analyzed a malicious sample. Here’s what I learned from reviewing the report:
+
+1. **A process named `regidle.exe` makes a POST request to an IP address in the US on port 8080. What is the IP address?**  
+         **Answer:** `96.126.101.6`
+
+2. **The actor drops a malicious executable (EXE). What is the name of this executable?**  
+         **Answer:** `G_jugk.exe`
+
+3. **According to the VirusTotal report, how many vendors determine this host to be malicious?**  
+         *(Check the report for the exact number.)*
+
+---
+
+By understanding and detecting host artifacts, I can disrupt attacker operations more effectively and force them to invest more effort in evading detection. This is a key skill for any SOC analyst or threat hunter climbing the Pyramid of Pain!
