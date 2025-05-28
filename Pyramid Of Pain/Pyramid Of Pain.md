@@ -358,4 +358,49 @@ A security vendor analyzed a malicious sample. Here’s what I learned from revi
 
 ---
 
-By understanding and detecting host artifacts, I can disrupt attacker operations more effectively and force them to invest more effort in evading detection. This is a key skill for any SOC analyst or threat hunter climbing the Pyramid of Pain!
+## 🟨 Network Artifacts: Deepening Detection in the Yellow Zone
+
+Network artifacts are also part of the **yellow zone** in the Pyramid of Pain. Detecting these artifacts means attackers must invest more effort to change their tactics or tools, giving defenders a valuable time advantage for response and remediation.
+
+![image](network-artifacts.png)
+
+### 🌐 What Are Network Artifacts?
+
+A **network artifact** can include:
+- User-Agent strings
+- Command and Control (C2) information
+- URI patterns in HTTP requests
+
+For example, attackers may use a **User-Agent** string that is unusual or never seen before in your environment. According to [RFC2616](https://datatracker.ietf.org/doc/html/rfc2616), the User-Agent header identifies the client software making the request.
+
+### 🕵️ Detecting Network Artifacts
+
+Network artifacts can be found by:
+- Analyzing **PCAP files** (packet captures) in tools like **Wireshark** or **TShark**
+- Reviewing **IDS logs** from systems like **Snort**
+
+#### Example: Filtering User-Agent Strings with TShark
+
+```sh
+tshark --Y http.request -T fields -e http.host -e http.user_agent -r analysis_file.pcap
+```
+
+This command extracts HTTP host and User-Agent fields from a PCAP file.
+
+### 🦠 Emotet Downloader Trojan: User-Agent Patterns
+
+Certain malware, like the **Emotet Downloader Trojan**, often uses distinctive User-Agent strings. Detecting these custom strings can help you block malicious traffic and disrupt attacker operations.
+
+> **Tip:** Monitoring for rare or suspicious User-Agent strings can reveal attacker activity and provide opportunities for proactive defense.
+
+---
+
+## 📝 Knowledge Check
+
+1. **What browser uses the User-Agent string shown in the screenshot above?**  
+        *(Refer to the screenshot for the answer.)*
+
+---
+
+By understanding and monitoring network artifacts, you strengthen your detection capabilities and force attackers to work harder—moving you further up the Pyramid of Pain!
+
