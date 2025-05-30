@@ -441,3 +441,46 @@ At this level, defenders can use **antivirus signatures**, **detection rules**, 
         **Answer:** Context Triggered Piecewise Hashes
 
 ---
+
+
+
+## 🟥 TTPs: The Tip of the Pyramid of Pain
+
+It's not over yet—good news, we've reached the final stage: the tip of the Pyramid of Pain! Here, we focus on **TTPs**: Tactics, Techniques, and Procedures. These represent the *how* behind an attack—everything adversaries do, from initial access (like phishing) to persistence, lateral movement, and data exfiltration.
+
+Detecting and responding to TTPs is the most effective way to disrupt attackers. If you can spot behaviors such as a **Pass-the-Hash (PtH) attack** using Windows Event Log monitoring and respond quickly, you can identify compromised hosts and stop lateral movement before significant damage occurs. At this stage, attackers are forced to either:
+
+- Go back, retrain, and retool (which is costly and time-consuming)
+- Give up and move on to an easier target
+
+**Option 2 is often the path of least resistance for adversaries.**
+
+---
+
+### 📝 Knowledge Check
+
+1. **Navigate to the ATT&CK Matrix web page. How many techniques fall into the exfiltration category?**  
+        **Answer:** 9
+
+2. **Chimera is a China-based hacking group active since 2018. What remote access tool do they use for C2 beacons and data exfiltration?**  
+        **Answer:** Cobalt Strike
+
+3. **What is a Pass-the-Hash (PtH) Attack?**  
+        A PtH attack is when an attacker captures a password hash (not the actual password) and uses it to authenticate and move laterally within a network. The attacker doesn't need to decrypt the hash—just pass it along. This is most common on Windows systems, exploiting protocols like NTLM and Kerberos. Hashes can be obtained from memory, the SAM database, LSASS process, or Active Directory.
+
+        - **Pass-the-Ticket** is a similar attack, but it uses stolen Kerberos tickets instead of password hashes.
+
+---
+
+### 🛡️ How to Prevent Pass-the-Hash Attacks
+
+- **Least Privilege:** Limit admin rights to reduce the attack surface.
+- **Password Management:** Rotate passwords frequently, especially after compromise. Use one-time passwords (OTPs) where possible.
+- **Separation of Privileges:** Use separate accounts for admin and non-admin tasks to limit lateral movement.
+
+By focusing on detecting and disrupting TTPs, defenders force attackers to invest significant time and resources, making your environment a much harder target.
+
+---
+
+**Congratulations! You've reached the top of the Pyramid of Pain and learned how to defend against even the most advanced adversary behaviors.** 🚀
+
