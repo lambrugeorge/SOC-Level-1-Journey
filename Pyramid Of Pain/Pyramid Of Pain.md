@@ -402,5 +402,42 @@ Certain malware, like the **Emotet Downloader Trojan**, often uses distinctive U
 
 ---
 
-By understanding and monitoring network artifacts, you strengthen your detection capabilities and force attackers to work harder—moving you further up the Pyramid of Pain!
+## 🟧 Tools: The Orange Zone of the Pyramid of Pain
 
+At this stage, we've advanced our detection capabilities to focus on **tools** used by attackers. When defenders can reliably detect and block these tools, adversaries face a much higher barrier—they may abandon their efforts, invest resources to develop or acquire new tools, or adapt their tactics.
+
+Attackers often leverage utilities to create malicious macro documents (maldocs) for spearphishing, deploy backdoors to establish command and control (C2), or use custom `.exe` and `.dll` files, payload droppers, and password crackers.
+
+**Example:**  
+A Trojan drops a suspicious file named `stealer.exe` in the Temp directory:
+
+*Execution of the suspicious binary:*
+
+![image](tools-sdeep.png)
+
+At this level, defenders can use **antivirus signatures**, **detection rules**, and **YARA rules** as powerful weapons against attacker tools.
+
+- **MalwareBazaar** and **Malshare** are valuable resources for accessing malware samples, threat intelligence feeds, and YARA results—useful for threat hunting and incident response.
+- For detection rules, the **SOC Prime Threat Detection Marketplace** is an excellent platform where security professionals share rules for various threats, including those exploiting the latest CVEs.
+
+### 🔎 Fuzzy Hashing: Detecting Similar Tools
+
+**Fuzzy hashing** is a technique that helps analysts identify files with similar content, even if they are not identical. This is especially useful when attackers make small changes to evade traditional hash-based detection.
+
+- **SSDEEP** is a popular fuzzy hashing tool. The [official SSDEEP website](https://ssdeep-project.github.io/ssdeep/) provides a detailed explanation of fuzzy hashing.
+
+**Example of SSDEEP output from VirusTotal:**
+
+*(Insert relevant screenshot or output here)*
+
+---
+
+### 📝 Knowledge Check
+
+1. **What method is used to determine the similarity between files?**  
+        **Answer:** Fuzzy Hashing
+
+2. **What is the alternate name for fuzzy hashes (without abbreviation)?**  
+        **Answer:** Context Triggered Piecewise Hashes
+
+---
