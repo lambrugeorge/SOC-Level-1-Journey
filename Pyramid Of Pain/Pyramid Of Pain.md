@@ -481,6 +481,3 @@ Detecting and responding to TTPs is the most effective way to disrupt attackers.
 By focusing on detecting and disrupting TTPs, defenders force attackers to invest significant time and resources, making your environment a much harder target.
 
 ---
-
-**Congratulations! You've reached the top of the Pyramid of Pain and learned how to defend against even the most advanced adversary behaviors.** 🚀
-
