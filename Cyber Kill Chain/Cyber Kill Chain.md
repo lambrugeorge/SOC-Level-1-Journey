@@ -57,3 +57,44 @@ Attackers also use social media platforms like LinkedIn, Facebook, Twitter, and 
 
 **Learning Outcome:**  
 By the end of this room, you'll be able to recognize each phase of the Cyber Kill Chain and know how to disrupt an attack before it succeeds. Let's continue exploring the next phases! 🚦
+
+
+
+## Phase 1: Weaponization 🔍
+
+## What I Learned Today 💡
+![Weaponization](3.png)
+
+Today I dove into **Task 3: Weaponization** and discovered how attackers craft and deliver their "weapons" after a successful recon phase. Here's a summary of what I learned and reflected on:
+
+### 🔍 Key Concepts
+
+- **Malware** – Malicious software meant to disrupt, damage, or gain unauthorized access.  
+- **Exploit** – Code that takes advantage of a vulnerability.  
+- **Payload** – The part of the attack that actually executes malicious actions.
+
+### 🎯 The Attacker’s Strategy
+
+Our fictional attacker **"Megatron"** prefers not to get his hands dirty and instead:
+
+- Buys a **ready-made payload** from the Dark Web 🕵️‍♂️
+- Uses Microsoft Office files with **malicious macros** to trick users 📄
+- Might also plant USB drives loaded with malware 🖲️
+- Chooses **C2 (Command & Control)** techniques for persistence 🔄
+- Installs **backdoors** to regain access whenever he wants 🔓
+
+### 🧠 Personal Reflection
+
+Understanding this phase helped me see how important **prevention** is — not just detection. It made me appreciate how even simple tools like Office documents 📎 can become dangerous if misused.
+
+Also, it reinforced how **automation (macros/VBA)** can be powerful — both for good and for evil. It's up to us to know the difference and stay one step ahead! 👣
+
+### ❓Knowledge Check
+
+> This term is referred to as a group of commands that perform a specific task. You can think of them as subroutines or functions that contain the code that most users use to automate routine tasks. But malicious actors tend to use them for malicious purposes and include them in Microsoft Office documents.  
+> **Answer:** `Macros` ✅
+
+---
+
+🔐 On to the next phase in the cyber kill chain! Stay curious & stay safe! 🌐
+
