@@ -60,7 +60,7 @@ By the end of this room, you'll be able to recognize each phase of the Cyber Kil
 
 
 
-## Phase 1: Weaponization 🔍
+## Phase 3: Weaponization 🔍
 
 ## What I Learned Today 💡
 ![Weaponization](3.png)
@@ -97,4 +97,21 @@ Also, it reinforced how **automation (macros/VBA)** can be powerful — both for
 ---
 
 🔐 On to the next phase in the cyber kill chain! Stay curious & stay safe! 🌐
+
+## Phase 4: Delivery 🚚
+
+![Delivery](4.png)
+
+The **Delivery** phase is when "Megatron" selects how to transmit the payload or malware to the target. Attackers have several creative options at their disposal:
+
+- **Phishing Email 🎣:** After reconnaissance, the attacker crafts a malicious email targeting either a specific person (**spearphishing**) or multiple people in the company. The email contains the payload or malware. For example, "Megatron" notices that Nancy from Sales at Company A often likes LinkedIn posts from Scott, a Service Delivery Manager at Company B. Guessing they communicate via work email, "Megatron" creates a convincing email using Scott’s name and a lookalike domain, then sends Nancy a fake "Invoice" containing the payload.
+
+- **Infected USB Drives 💾:** Attackers may distribute USB drives in public places like coffee shops, parking lots, or even mail them directly to companies. Sometimes, they print the company’s logo on the drives and pretend to be a customer sending a "gift." If someone plugs in the USB, malware is delivered. [Read about a real attack like this on CSO Online.](https://www.csoonline.com/article/3642217/cybercriminal-group-mails-malicious-usb-dongles-to-targeted-companies.html)
+
+- **Watering Hole Attack 🕳️:** Here, attackers compromise a website frequently visited by the target group. Victims are lured (often via "harmless" emails) to visit the site, which secretly redirects them to a malicious page. Visiting the site can trigger a **drive-by download**—malware is installed without the victim’s knowledge. For example, a fake browser extension pop-up may appear, tricking users into downloading malware.
+
+---
+
+**Key Takeaway:**  
+Attackers use social engineering, technical tricks, and creativity to deliver their payloads. Recognizing these delivery methods is crucial for defending your organization! 🛡️
 
