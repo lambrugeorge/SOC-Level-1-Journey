@@ -58,8 +58,6 @@ Attackers also use social media platforms like LinkedIn, Facebook, Twitter, and 
 **Learning Outcome:**  
 By the end of this room, you'll be able to recognize each phase of the Cyber Kill Chain and know how to disrupt an attack before it succeeds. Let's continue exploring the next phases! 🚦
 
-
-
 ## Phase 3: Weaponization 🔍
 
 ## What I Learned Today 💡
@@ -115,3 +113,31 @@ The **Delivery** phase is when "Megatron" selects how to transmit the payload or
 **Key Takeaway:**  
 Attackers use social engineering, technical tricks, and creativity to deliver their payloads. Recognizing these delivery methods is crucial for defending your organization! 🛡️
 
+## Phase 5: Exploitation 💥
+
+![Exploitation](5.png)
+
+Today I studied **Phase 5: Exploitation** and understood how attackers exploit vulnerabilities to gain access to the victim's systems. This is the stage where the attack becomes active, and the attacker uses exploits to execute malicious code or escalate privileges.
+
+### 🔑 What I Learned
+
+- **Exploitation** involves using a vulnerability (software, hardware, or human) to compromise the system.
+- Attackers may use:
+       - **Phishing links** to fake login pages (e.g., Office 365)
+       - **Attachments with macros** that run ransomware or other types of malware
+       - **Zero-day exploits** – vulnerabilities unknown to vendors or antivirus solutions
+- After exploitation, the attacker can gain initial access, escalate privileges, or move laterally within the network.
+
+### 🧠 Personal Reflection
+
+I realized how important it is to keep systems updated and be cautious of suspicious emails. Even a simple click on a link or opening an attachment can lead to the compromise of the entire organization. The term **zero-day** seemed particularly dangerous because there are no protections yet for such vulnerabilities.
+
+### ❓ Knowledge Check
+
+> What is the name of a cyber attack that targets a software vulnerability unknown to vendors or antivirus solutions?  
+> **Answer:** `Zero-day exploit` ✅
+
+---
+
+**Conclusion:**  
+The exploitation phase is the critical moment when the attacker moves from planning to action. Understanding this stage helps me stay vigilant and apply effective preventive measures.
