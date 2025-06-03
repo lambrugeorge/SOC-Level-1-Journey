@@ -141,3 +141,36 @@ I realized how important it is to keep systems updated and be cautious of suspic
 
 **Conclusion:**  
 The exploitation phase is the critical moment when the attacker moves from planning to action. Understanding this stage helps me stay vigilant and apply effective preventive measures.
+
+
+
+## Phase 6: Installation 🛠️s
+![Installation](6.png)
+Today I learned about the **Installation** phase in the Cyber Kill Chain, which is all about how attackers establish persistence after gaining access to a system. This phase really opened my eyes to how creative and persistent attackers can be! Here’s what stood out to me:
+
+### 🔑 Key Concepts
+
+- **Backdoors** are secret access points that let attackers bypass security and return to a compromised system, even if their initial access is removed.
+- **Persistence** is crucial for attackers—they want to make sure they can get back in, even if the system is patched or rebooted.
+
+### 🕵️‍♂️ Attacker Techniques
+
+- **Web Shells:** Attackers upload malicious scripts (like `.php`, `.asp`, `.jsp`) to web servers. These are hard to detect and can look like normal files.
+- **Backdoor Payloads:** Tools like Meterpreter (from Metasploit) give attackers remote control over a victim’s machine.
+- **Windows Services:** Attackers can create or modify Windows services (MITRE ATT&CK T1543.003) to run their code automatically. They might use tools like `sc.exe` or `reg.exe` and disguise their malicious service with a legit-sounding name.
+- **Registry Run Keys & Startup Folder:** By adding their payload to these locations, attackers ensure their malware runs every time the user logs in—super sneaky!
+- **Timestomping:** This technique lets attackers change file timestamps to make their malware look like it’s part of a legitimate program, helping them avoid detection by forensic investigators.
+
+### 🧠 Personal Reflection
+
+Learning about this phase made me realize how important it is to monitor for unusual changes in services, registry keys, and file timestamps. Attackers are always looking for ways to stay hidden and maintain access, so defenders need to be just as vigilant! 🔍
+
+### 📚 Want to Learn More?
+
+- Check out the [Windows Persistence Room on TryHackMe](https://tryhackme.com/room/windows-persistence) for hands-on labs.
+- Read about [web shell attacks from Microsoft](https://www.microsoft.com/security/blog/2020/02/04/web-shell-attacks-continue-to-rise/) and [MITRE ATT&CK techniques](https://attack.mitre.org/techniques/T1547/001/).
+
+---
+
+**Conclusion:**  
+The Installation phase is all about persistence. Understanding these techniques helps me spot the signs of compromise and respond quickly. Stay alert and keep learning! 🚨
