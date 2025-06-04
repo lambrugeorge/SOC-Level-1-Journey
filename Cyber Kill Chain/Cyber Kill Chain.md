@@ -144,7 +144,7 @@ The exploitation phase is the critical moment when the attacker moves from plann
 
 
 
-## Phase 6: Installation 🛠️s
+## Phase 6: Installation 🛠️
 ![Installation](6.png)
 Today I learned about the **Installation** phase in the Cyber Kill Chain, which is all about how attackers establish persistence after gaining access to a system. This phase really opened my eyes to how creative and persistent attackers can be! Here’s what stood out to me:
 
@@ -174,3 +174,36 @@ Learning about this phase made me realize how important it is to monitor for unu
 
 **Conclusion:**  
 The Installation phase is all about persistence. Understanding these techniques helps me spot the signs of compromise and respond quickly. Stay alert and keep learning! 🚨
+
+
+
+## Phase 7: Command & Control 🛰️
+
+![Command & Control](7.png)
+
+Today I learned about the **Command & Control (C2)** phase in the Cyber Kill Chain, where attackers establish remote communication with compromised systems. This phase really showed me how attackers can maintain control and issue commands to infected machines from anywhere in the world! 🌍
+
+### 🔑 Key Concepts
+
+- **Command & Control (C2):** This is the communication channel that allows attackers to remotely control compromised devices. It’s also called C&C or C2 beaconing.
+- **Persistence:** After gaining access and installing malware, attackers use C2 channels to keep their connection alive and manage their attack.
+
+### 🕵️‍♂️ Attacker Techniques
+
+- **HTTP/HTTPS Beaconing:** Attackers use common web protocols (HTTP on port 80, HTTPS on port 443) to blend malicious traffic with normal web activity, making it harder to detect. 🌐
+- **DNS Tunneling:** The infected machine sends regular DNS requests to an attacker-controlled server, hiding C2 traffic inside what looks like normal DNS activity. 🕳️
+- **Other Protocols:** While IRC (Internet Relay Chat) was once popular for C2, it’s now less common due to improved detection by security tools.
+
+### 🧠 Personal Reflection
+
+Learning about this phase made me realize how important it is to monitor network traffic for unusual patterns, like frequent connections to unknown servers or odd DNS requests. Attackers are always looking for stealthy ways to communicate with their malware, so defenders need to be proactive and vigilant! 👀
+
+### 📚 Want to Learn More?
+
+- Read about [C2 techniques on MITRE ATT&CK](https://attack.mitre.org/tactics/TA0011/).
+- Explore [DNS tunneling explained by Cloudflare](https://www.cloudflare.com/learning/ddos/glossary/dns-tunneling/).
+
+---
+
+**Conclusion:**  
+The Command & Control phase is all about remote management and stealthy communication. Understanding these techniques helps me spot the signs of ongoing attacks and respond quickly. Stay alert and keep learning! 🚨
