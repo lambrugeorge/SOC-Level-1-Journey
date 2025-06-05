@@ -240,7 +240,7 @@ The Actions on Objectives phase is where the attacker’s true intentions are re
 
 
 ## Practice Analysis: Real-World Scenario 📝
-
+![Practice Analysis](9.png)
 I really enjoyed this room and now it’s time to put my knowledge to the test with a real-world scenario! Here’s what I learned from analyzing the infamous Target cyber-attack, one of the largest data breaches in history.
 
 ### 🕵️‍♂️ Scenario Overview
