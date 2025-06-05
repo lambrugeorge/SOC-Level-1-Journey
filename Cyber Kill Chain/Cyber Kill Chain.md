@@ -236,3 +236,53 @@ Learning about this phase made me realize how devastating a successful attack ca
 
 **Conclusion:**  
 The Actions on Objectives phase is where the attacker’s true intentions are revealed. Understanding these activities helps me recognize the signs of a breach and respond quickly to minimize damage. Stay vigilant and keep learning! 🛡️
+
+
+
+## Practice Analysis: Real-World Scenario 📝
+
+I really enjoyed this room and now it’s time to put my knowledge to the test with a real-world scenario! Here’s what I learned from analyzing the infamous Target cyber-attack, one of the largest data breaches in history.
+
+### 🕵️‍♂️ Scenario Overview
+
+- **Incident:** Target data breach (Nov 27 – Dec 15, 2013)
+- **Impact:** 40 million credit and debit card accounts compromised
+- **Consequence:** $18.5 million fine, the largest data-breach settlement in history
+
+### 🛠️ Applying the Cyber Kill Chain
+
+I used the static site lab to map out the attack using the Cyber Kill Chain framework. Here’s how the attack unfolded, based on the provided clues:
+
+1. **Reconnaissance:**  
+   - The attackers likely gathered information about Target’s network and vendors.
+
+2. **Weaponization:**  
+   - **Spearphishing attachment:** Malicious emails were sent to a third-party HVAC vendor.
+
+3. **Delivery:**  
+   - **Exploit public-facing application:** Attackers exploited vulnerabilities to gain access.
+
+4. **Exploitation:**  
+   - **Powershell:** Used to execute malicious code and move laterally.
+
+5. **Installation:**  
+   - **Dynamic linker hijacking:** Attackers installed malware to maintain persistence.
+
+6. **Command & Control:**  
+   - **Fallback channels:** Used to maintain communication with compromised systems.
+
+7. **Actions on Objectives:**  
+   - **Data from local system:** Attackers exfiltrated credit card data from POS systems.
+
+### 🏁 Flag
+
+After completing the static site exercise, I found the flag:
+
+```
+THM{7HR347_1N73L_12_4w35om3}
+```
+
+---
+
+**Conclusion:**  
+This exercise helped me see how the Cyber Kill Chain applies to real-world attacks. By breaking down each phase, I can better understand how attackers operate and how to defend against similar threats in the future! 🚦🛡️
