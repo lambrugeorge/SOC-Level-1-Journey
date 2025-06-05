@@ -207,3 +207,32 @@ Learning about this phase made me realize how important it is to monitor network
 
 **Conclusion:**  
 The Command & Control phase is all about remote management and stealthy communication. Understanding these techniques helps me spot the signs of ongoing attacks and respond quickly. Stay alert and keep learning! 🚨
+
+
+
+## Phase 8: Actions on Objectives (Exfiltration) 🎯
+![Actions on Objectives](8.png)
+After progressing through all the previous phases, "Megatron" finally reaches the **Actions on Objectives** stage. This is where the attacker achieves their ultimate goals—whether it’s stealing data, causing disruption, or gaining further access. This phase really helped me understand the real impact of a cyber attack and why every step in the kill chain matters! 🚨
+
+### 🔑 Key Activities
+
+- **Credential Theft:** Attackers collect usernames and passwords from compromised systems to access more resources. 🗝️
+- **Privilege Escalation:** Gaining higher-level access, like becoming a domain administrator, often by exploiting misconfigurations. 🛡️
+- **Internal Reconnaissance:** Exploring internal systems and software to find more vulnerabilities or valuable data. 🕵️‍♂️
+- **Lateral Movement:** Moving through the network to compromise additional systems and expand their reach. 🔄
+- **Data Exfiltration:** Stealing sensitive data and sending it outside the organization. 📤
+- **Destruction:** Deleting backups and shadow copies (like Microsoft’s Shadow Copy technology), corrupting, or overwriting data to make recovery difficult. 💣
+
+### 🧠 Personal Reflection
+
+Learning about this phase made me realize how devastating a successful attack can be. It’s not just about getting in—the attacker’s real power comes from what they do after gaining access. Monitoring for unusual data transfers, privilege changes, and backup deletions is critical for defense! 👀
+
+### 📚 Want to Learn More?
+
+- Read about [Data Exfiltration techniques on MITRE ATT&CK](https://attack.mitre.org/tactics/TA0010/).
+- Learn more about [Shadow Copy technology from Microsoft](https://learn.microsoft.com/en-us/windows/win32/vss/shadow-copies).
+
+---
+
+**Conclusion:**  
+The Actions on Objectives phase is where the attacker’s true intentions are revealed. Understanding these activities helps me recognize the signs of a breach and respond quickly to minimize damage. Stay vigilant and keep learning! 🛡️
