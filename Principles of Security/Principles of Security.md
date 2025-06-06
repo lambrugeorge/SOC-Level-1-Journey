@@ -152,3 +152,70 @@ Understanding these models made me realize that security isn’t just about tech
 
 **Conclusion:**  
 Security models like Bell-La Padula and Biba provide structured ways to enforce the CIA triad. By applying the right model, organizations can better protect their data and systems. Stay curious and keep learning! 🚀🔐
+
+
+## Threat Modelling & Incident Response 🕵️‍♂️🛡️
+
+Today I learned about **threat modelling**—the process of finding and fixing security risks in an organization's IT systems. It's like a digital risk assessment!
+
+### 🧩 What is Threat Modelling?
+
+Threat modelling means:
+- **Preparation:** Get ready and plan for threats.
+- **Identification:** Find possible threats and weak spots.
+- **Mitigations:** Add protections to reduce risks.
+- **Review:** Check and improve your security regularly.
+
+A good threat model includes:
+- Threat intelligence 📊
+- Knowing what assets you have 🗂️
+- Ways to protect them 🛡️
+- Assessing risks ⚖️
+
+---
+![image](5.png)
+### 🏗️ STRIDE Framework
+
+**STRIDE** is a framework that helps you spot different types of threats:
+
+- **Spoofing:** Pretending to be someone else. (Use authentication! 🔑)
+- **Tampering:** Changing data without permission. (Use integrity checks! 🛡️)
+- **Repudiation:** Denying actions. (Use logging! 📝)
+- **Information Disclosure:** Leaking sensitive info. (Use access controls! 🔒)
+- **Denial of Service:** Making services unavailable. (Use monitoring! 🚦)
+- **Elevation of Privilege:** Gaining higher access than allowed. (Use least privilege! 🚨)
+
+---
+
+### 🚨 Incident Response (IR)
+
+Even with good security, incidents can happen. **Incident Response (IR)** is how you handle and recover from attacks.
+
+**Incident Response Steps:**
+1. **Preparation:** Are we ready? 📝
+2. **Identification:** Did we spot the threat? 🔍
+3. **Containment:** Can we stop it from spreading? 🚧
+4. **Eradication:** Remove the threat. 🧹
+5. **Recovery:** Get back to normal. 🔄
+6. **Lessons Learned:** What can we do better next time? 📚
+
+---
+
+### 🧠 Quick Review
+
+- **What model outlines "Spoofing"?**  
+  **STRIDE**
+
+- **What does "IR" stand for?**  
+  **Incident Response**
+
+- **What STRIDE principle covers improving data integrity?**  
+  **Tampering**
+
+- **What IR stage is about returning to business as usual?**  
+  **Recovery**
+
+---
+
+**Conclusion:**  
+Threat modelling and incident response are key for cybersecurity. STRIDE helps you find risks, and IR helps you recover from incidents. Stay alert and keep learning! 🚀🔐
