@@ -60,3 +60,47 @@ The **CIA Triad** is a foundational model in information security, consisting of
 By understanding and implementing the CIA Triad, organisations can build a strong foundation for their information security policies. 🌟
 
 
+## Privileged Identity and Access Management 🔑
+![image](2.png)
+Managing access to information systems is a critical component of maintaining security. Properly defining and administrating access levels ensures that individuals have the appropriate permissions based on their roles and the sensitivity of the data they interact with.
+
+### Key Factors in Access Management
+Access levels are determined by two primary factors:
+1. **The individual's role/function within the organisation.**
+2. **The sensitivity of the information being stored on the system.**
+
+### Core Concepts: PIM and PAM
+Two essential methodologies are used to assign and manage access rights:
+- **Privileged Identity Management (PIM):** Translates a user's role within an organisation into an access role on a system.
+- **Privileged Access Management (PAM):** Manages the privileges associated with a system's access role and enforces security policies.
+
+While these concepts may seem similar, they serve distinct purposes:
+- **PIM** focuses on aligning access roles with organisational roles.
+- **PAM** ensures that the privileges granted to those roles are managed securely.
+
+### Principle of Least Privilege
+A fundamental principle in access control is the **Principle of Least Privilege (PoLP)**. This principle dictates that users should only be granted the minimum privileges necessary to perform their duties. This reduces the risk of misuse or accidental damage.
+
+### Beyond Access Assignment
+PAM encompasses more than just assigning access. It also includes:
+- Enforcing security policies, such as password management.
+- Auditing access and usage.
+- Reducing the system's attack surface.
+
+By implementing PIM and PAM effectively, organisations can ensure robust access control and maintain trust in their systems.
+
+---
+
+### Quick Review Questions
+1. **What does the acronym "PIM" stand for?**
+       - **Answer:** Privileged Identity Management
+
+2. **What does the acronym "PAM" stand for?**
+       - **Answer:** Privileged Access Management
+
+3. **If you wanted to manage the privileges a system access role had, what methodology would you use?**
+       - **Answer:** PAM
+
+4. **If you wanted to create a system role based on a user's role/responsibilities within an organisation, what methodology would you use?**
+       - **Answer:** PIM
+
