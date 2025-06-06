@@ -104,3 +104,51 @@ By implementing PIM and PAM effectively, organisations can ensure robust access 
 4. **If you wanted to create a system role based on a user's role/responsibilities within an organisation, what methodology would you use?**
        - **Answer:** PIM
 
+
+---
+
+## Security Models in Practice 🏛️
+
+Learning about security models helped me understand how organizations formally enforce the principles of the CIA triad. Here’s what stood out to me:
+
+### 🔒 Bell-La Padula Model (Confidentiality Focused)
+![image](3.png)
+- **Purpose:** Protects confidentiality by ensuring users only access information they need to know.
+- **Rule:** "No write down, no read up" (users can’t write to lower levels or read higher levels).
+- **Where Used:** Common in government and military environments where information classification is critical.
+- **Key Takeaway:** Trust is essential—users are assumed to be vetted and trustworthy.
+
+**Advantages:**
+- Easy to implement and mirrors real-world hierarchies. 🏢
+- Proven to work in environments with strict confidentiality needs.
+
+**Disadvantages:**
+- Users may know about the existence of data they can’t access. 👀
+- Relies heavily on trust within the organization.
+
+---
+
+### 🛡️ Biba Model (Integrity Focused)
+![image](4.png)
+- **Purpose:** Protects integrity by controlling how data can be modified or accessed.
+- **Rule:** "No write up, no read down" (users can’t write to higher levels or read lower levels).
+- **Where Used:** Ideal for environments where data accuracy is more important than secrecy, like software development or healthcare.
+
+**Advantages:**
+- Simple to implement and addresses both confidentiality and integrity. ✔️
+- Solves some limitations of Bell-La Padula by focusing on data accuracy.
+
+**Disadvantages:**
+- Can create many access levels, making management complex. 🗂️
+- May slow down business processes (e.g., a doctor can’t read a nurse’s notes).
+
+---
+
+### 🧠 Personal Reflection
+
+Understanding these models made me realize that security isn’t just about technology—it’s also about policies, trust, and how people interact with information. Choosing the right model depends on what’s most important for the organization: keeping secrets safe or ensuring data is accurate and trustworthy.
+
+---
+
+**Conclusion:**  
+Security models like Bell-La Padula and Biba provide structured ways to enforce the CIA triad. By applying the right model, organizations can better protect their data and systems. Stay curious and keep learning! 🚀🔐
