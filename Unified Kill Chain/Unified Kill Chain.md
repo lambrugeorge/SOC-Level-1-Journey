@@ -63,3 +63,49 @@ If you are interested in learning more, check out the **“Principles of Securit
 ## Next Steps
 
 In the next task, we will dive deeper into the **Unified Kill Chain** framework and its phases.
+
+
+
+
+
+Introducing the Unified Kill Chain
+![image](4.png)
+
+## What I Learned: The Unified Kill Chain (UKC) 🔗🚦
+
+Today I learned about the **Unified Kill Chain (UKC)**, a modern cybersecurity framework created by Paul Pols in 2017. The UKC is designed to work alongside other frameworks like Lockheed Martin’s Kill Chain and MITRE ATT&CK, not to replace them.
+
+### 🆕 Why is the UKC Important?
+
+- **Modern:** Released in 2017 (updated in 2022), so it reflects today’s cyber threats.
+- **Very Detailed:** The UKC has **18 phases**—much more than older frameworks.
+- **Covers Everything:** It looks at the whole attack, from the first scan to the attacker’s final goals and even their motivation.
+- **Realistic:** The UKC shows that attackers often repeat or revisit phases (like doing more reconnaissance after exploiting a system), which is how real attacks happen.
+
+### 📊 UKC vs. Other Frameworks
+
+| UKC Benefit | Other Frameworks |
+|-------------|-----------------|
+| Modern (2017/2022) | Some are older (e.g., MITRE ATT&CK 2013) |
+| 18 detailed phases | Usually fewer phases |
+| Covers the full attack lifecycle | Often only part of the attack |
+| Allows for repeated phases | Usually linear, not cyclical |
+
+### 🧩 Key Phases in the UKC
+
+- **Defense Evasion:** Techniques attackers use to avoid being detected. 🕵️‍♂️
+- **Exfiltration:** How attackers steal data from a network. 📤
+- **Objectives:** The final goals or motives of the attacker. 🎯
+
+### 📝 Quick Review
+
+- **Year UKC was released:** 2017
+- **Number of phases:** 18
+- **Phase for evading detection:** Defense Evasion
+- **Phase for stealing data:** Exfiltration
+- **Phase for achieving attacker’s goals:** Objectives
+
+---
+
+**Conclusion:**  
+Learning about the Unified Kill Chain helped me see how modern cyberattacks are mapped out in detail. The UKC’s 18 phases give a much clearer picture of how attackers operate, making it easier to defend against them. I now understand why it’s important to use up-to-date frameworks that reflect real-world attack patterns! 🚀🛡️
