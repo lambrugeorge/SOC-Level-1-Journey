@@ -148,7 +148,10 @@ Continuing from the "In (Initial Foothold)" phase, today I learned about the **"
 - After getting a foothold, attackers try to expand their access and privileges within the network. 🔓
 - The attacker sets up a **pivot point**—a compromised system that acts as a base for further attacks and exploration. 🖥️➡️🌐
 - From this pivot point, attackers gather more information about the internal network, looking for valuable data and more systems to compromise. 🕵️‍♂️
+
 ![image](6.png)
+
+
 ### Pivoting (MITRE Tactic TA0008) 🔄
 
 - **Pivoting** means using the compromised system as a tunnel or bridge between the attacker and the rest of the victim’s network. 🌉
@@ -156,3 +159,33 @@ Continuing from the "In (Initial Foothold)" phase, today I learned about the **"
 - This technique helps attackers reach sensitive systems and data that are otherwise protected from external threats.
 
 Learning about the "Through (Network Propagation)" phase helped me understand how attackers move deeper into a network after the initial breach, and why it’s important for defenders to monitor for lateral movement and unusual internal activity! 🛡️👀
+
+
+
+
+
+## Discovery (MITRE Tactic TA0007) 🔍
+
+Today I learned about the **Discovery** phase in the Unified Kill Chain (UKC), where attackers gather detailed information about the system and network they have accessed. Here’s a summary of what I discovered:
+
+### What Happens in the Discovery Phase?
+
+- **Building a Knowledge Base**: Attackers collect data about:
+       - Active user accounts and their permissions. 👤🔑
+       - Applications and software installed on the system. 💻📦
+       - Web browser activity, including saved credentials and browsing history. 🌐🔎
+       - Files, directories, and network shares. 📁🔗
+       - System configurations and settings. ⚙️🛠️
+
+### Why Is Discovery Important for Attackers?
+
+- **Preparation for Next Steps**: The information gathered during this phase helps attackers plan their next moves, such as privilege escalation, lateral movement, or data exfiltration.
+- **Identifying Valuable Targets**: Attackers use this phase to pinpoint sensitive systems, data, or accounts that can further their objectives.
+
+### Defensive Measures 🛡️
+
+- **Monitor for Unusual Activity**: Look for signs of unauthorized access to files, directories, or network shares.
+- **Restrict Permissions**: Limit access to sensitive data and systems based on the principle of least privilege.
+- **Audit System Configurations**: Regularly review and secure system settings to prevent exploitation.
+
+Learning about the **Discovery** phase helped me understand how attackers gather critical information to advance their attack and how defenders can spot and mitigate these activities! 🚀👀
