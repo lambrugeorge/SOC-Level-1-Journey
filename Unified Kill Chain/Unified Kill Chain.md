@@ -189,3 +189,32 @@ Today I learned about the **Discovery** phase in the Unified Kill Chain (UKC), w
 - **Audit System Configurations**: Regularly review and secure system settings to prevent exploitation.
 
 Learning about the **Discovery** phase helped me understand how attackers gather critical information to advance their attack and how defenders can spot and mitigate these activities! 🚀👀
+
+
+## Privilege Escalation (MITRE Tactic TA0004) 🔑📈
+![image](7.png)
+Today I learned about **Privilege Escalation**, a critical phase in the Unified Kill Chain (UKC) where attackers attempt to gain higher-level permissions within a compromised system or network. Here’s what I discovered:
+![image](8.png)
+### What Is Privilege Escalation?
+
+Privilege Escalation involves techniques used by attackers to elevate their access from unprivileged accounts to accounts with higher permissions. This step is essential for attackers to achieve their objectives, such as accessing sensitive data or executing advanced operations.
+
+### Common Levels of Elevated Access
+
+Attackers aim to escalate their privileges to one of the following levels:
+- **SYSTEM/Root**: Full control over the system. 🖥️🔧
+- **Local Administrator**: Permissions to manage the local machine. 🛠️
+- **Admin-like User Account**: Accounts with elevated permissions similar to administrators. 👤🔑
+- **Specific Function User Account**: Accounts with access to particular systems or functions. ⚙️🔗
+
+### Techniques Used for Privilege Escalation
+
+Attackers often exploit system weaknesses, misconfigurations, and vulnerabilities to escalate their privileges. These techniques frequently overlap with **Persistence** methods, as many OS features that allow persistence also operate in elevated contexts.
+
+### Defensive Measures 🛡️
+
+- **Regularly Audit Permissions**: Ensure accounts have only the permissions they need based on the principle of least privilege.
+- **Patch Vulnerabilities**: Address known system weaknesses and misconfigurations promptly.
+- **Monitor for Unusual Activity**: Look for signs of privilege escalation attempts, such as changes to account permissions or access to sensitive systems.
+
+Learning about **Privilege Escalation** helped me understand how attackers leverage vulnerabilities to gain elevated access and how defenders can mitigate these risks! 🚀👀
