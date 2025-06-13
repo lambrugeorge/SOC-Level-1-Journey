@@ -218,3 +218,19 @@ Attackers often exploit system weaknesses, misconfigurations, and vulnerabilitie
 - **Monitor for Unusual Activity**: Look for signs of privilege escalation attempts, such as changes to account permissions or access to sensitive systems.
 
 Learning about **Privilege Escalation** helped me understand how attackers leverage vulnerabilities to gain elevated access and how defenders can mitigate these risks! 🚀👀
+
+
+
+
+## Execution (MITRE Tactic TA0002) 💻💥
+![image](9.png)
+Today I learned about the **Execution** phase in the Unified Kill Chain (UKC). This is the stage where attackers actually run their malicious code on a compromised system, often using the pivot point they established earlier. Here’s what I discovered:
+
+- Attackers use the compromised system to deploy remote trojans, C2 (Command & Control) scripts, malicious links, or scheduled tasks. 🦠🖥️
+- The goal is to maintain a recurring presence and ensure persistence on the victim’s network. 🔗
+- Execution techniques are often combined with other tactics, like persistence or lateral movement, to help attackers explore the network or steal data. 🔍📤
+
+**Example:**  
+An attacker might use a remote access tool to run a PowerShell script that discovers other systems on the network. 🖱️💻
+
+Learning about the **Execution** phase helped me understand how attackers actually run their code and why defenders need to monitor for suspicious processes
