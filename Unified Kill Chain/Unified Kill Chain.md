@@ -233,4 +233,29 @@ Today I learned about the **Execution** phase in the Unified Kill Chain (UKC). T
 **Example:**  
 An attacker might use a remote access tool to run a PowerShell script that discovers other systems on the network. 🖱️💻
 
-Learning about the **Execution** phase helped me understand how attackers actually run their code and why defenders need to monitor for suspicious processes
+Learning about the **Execution** phase helped me understand how attackers actually run their code and why defenders need to monitor for suspicious 
+
+
+
+## Credential Access (MITRE Tactic TA0006) 🗝️🔓
+
+Today I learned about the **Credential Access** phase in the Unified Kill Chain (UKC). This phase is closely linked with Privilege Escalation, as attackers often need to steal usernames and passwords to gain higher-level access and move around undetected. Here’s what I discovered:
+
+- Attackers use various techniques to steal credentials, such as keylogging (recording keystrokes) and credential dumping (extracting passwords from memory or files). ⌨️🕵️‍♂️
+- By obtaining real usernames and passwords, attackers can log in as legitimate users, making their actions much harder to spot. This allows them to blend in with normal network activity and avoid detection by security tools. 🕶️
+- Stolen credentials can be used to access more systems, escalate privileges, create new accounts, or even exfiltrate sensitive data. This makes credential access a critical step for attackers to achieve their goals. 🚪➡️💻
+
+### Why Is Credential Access Important for Attackers?
+
+- **Stealth:** Using valid credentials helps attackers avoid triggering security alerts, since their actions look like normal user behavior.
+- **Flexibility:** With stolen credentials, attackers can move laterally across the network, access sensitive resources, and maintain persistence.
+- **Opportunity:** Attackers can create new accounts or change passwords to lock out defenders and keep control of compromised systems.
+
+### Defensive Measures 🛡️
+
+- **Monitor for Unusual Login Activity:** Watch for logins from unexpected locations or at odd times.
+- **Use Multi-Factor Authentication (MFA):** Adding extra verification steps makes it harder for attackers to use stolen credentials.
+- **Regularly Audit Accounts:** Check for unauthorized account creation or privilege changes.
+- **Educate Users:** Teach employees to recognize phishing and avoid entering credentials on suspicious sites.
+
+Learning about the **Credential Access** phase helped me understand how attackers steal and abuse credentials, and why it’s so important to protect account information and monitor for suspicious access! 🚀👀
