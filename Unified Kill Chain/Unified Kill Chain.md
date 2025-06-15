@@ -238,7 +238,7 @@ Learning about the **Execution** phase helped me understand how attackers actual
 
 
 ## Credential Access (MITRE Tactic TA0006) 🗝️🔓
-
+![image](10.png)
 Today I learned about the **Credential Access** phase in the Unified Kill Chain (UKC). This phase is closely linked with Privilege Escalation, as attackers often need to steal usernames and passwords to gain higher-level access and move around undetected. Here’s what I discovered:
 
 - Attackers use various techniques to steal credentials, such as keylogging (recording keystrokes) and credential dumping (extracting passwords from memory or files). ⌨️🕵️‍♂️
@@ -259,3 +259,24 @@ Today I learned about the **Credential Access** phase in the Unified Kill Chain 
 - **Educate Users:** Teach employees to recognize phishing and avoid entering credentials on suspicious sites.
 
 Learning about the **Credential Access** phase helped me understand how attackers steal and abuse credentials, and why it’s so important to protect account information and monitor for suspicious access! 🚀👀
+
+
+
+
+## Lateral Movement (MITRE Tactic TA0008) 🔄🌐
+![image](11.png)
+Today I learned about the **Lateral Movement** phase in the Unified Kill Chain (UKC). This is the stage where attackers, after gaining credentials and elevated privileges, try to move through the network to reach their main targets. Here’s what I discovered:
+
+- Attackers use their access to jump from one system to another within the network, looking for valuable data or systems. 🖥️➡️🖥️
+- They often use stealthy techniques, like legitimate credentials or built-in tools, to avoid detection and blend in with normal activity. 🕶️
+- Lateral Movement can involve installing remote access tools, using remote desktop, or exploiting trust relationships between systems. 🔗
+
+**Example:**  
+An attacker might use stolen admin credentials to connect to another server via RDP or use PowerShell to execute commands on multiple machines.
+
+### Why Is Lateral Movement Important?
+
+- It allows attackers to explore the network, find sensitive data, and get closer to their final objective.
+- The more quietly they move, the harder it is for defenders to spot them.
+
+Learning about the **Lateral Movement** phase helped me understand how attackers spread through a network and why it’s crucial to monitor for unusual internal activity and privilege use!
