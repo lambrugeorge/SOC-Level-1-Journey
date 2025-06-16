@@ -280,3 +280,54 @@ An attacker might use stolen admin credentials to connect to another server via 
 - The more quietly they move, the harder it is for defenders to spot them.
 
 Learning about the **Lateral Movement** phase helped me understand how attackers spread through a network and why it’s crucial to monitor for unusual internal activity and privilege use!
+
+
+## Collection (MITRE Tactic TA0009) 📥🗂️
+![image](12.png)
+Today I learned about the **Collection** phase in the Unified Kill Chain (UKC). At this stage, attackers have already gained access to critical assets and now focus on gathering valuable data from the environment. Here’s what I discovered:
+
+- Attackers search for and collect sensitive information from various sources, such as hard drives, shared folders, browser data (like saved passwords and cookies), emails, chat logs, screenshots, audio, and video files. 💾📧🎥
+- They may use automated scripts or malware to scan for files with specific keywords, file types, or locations that are likely to contain valuable data.
+- The **confidentiality** of the organization is at risk, as attackers can now access and prepare to steal private or proprietary information.
+- Sometimes, attackers also collect credentials, encryption keys, or configuration files to help with further exploitation or persistence.
+
+Learning about the **Collection** phase helped me understand how attackers systematically gather all the information they need before trying to remove it from the network. It’s important for defenders to monitor for unusual file access or large data aggregations! 🕵️‍♂️
+
+---
+
+## Exfiltration (MITRE Tactic TA0010) 📤🔒
+![image](13.png)
+The next step I learned about is **Exfiltration**. This is where attackers try to steal the data they have collected, often using stealthy methods to avoid detection. Here’s what I discovered:
+
+- Attackers package the stolen data, often encrypting or compressing it to hide their actions and avoid triggering security alerts. 📦🔐
+- They use previously established C2 (Command & Control) channels, covert tunnels, or even legitimate services (like cloud storage or email) to send the data out of the network. 🌐🛣️
+- Exfiltration can happen in small chunks over time (to avoid detection) or in one big transfer if the attacker is in a hurry.
+- Attackers may use techniques like steganography (hiding data in images or files) or split the data into multiple parts to make detection even harder.
+
+Learning about the **Exfiltration** phase showed me how attackers actually remove sensitive data from a network and why it’s important to monitor for unusual data transfers, unexpected uploads, or encrypted outbound traffic! 🚨👀
+
+---
+
+## Impact (MITRE Tactic TA0040) 💣⚠️
+![image](14.png)
+Finally, I learned about the **Impact** phase. This is where attackers try to compromise the **integrity** and **availability** of data and systems, often causing serious damage. Here’s what I discovered:
+
+- Attackers may manipulate, destroy, or disrupt data and systems, using techniques like ransomware (encrypting files and demanding payment), disk wipes (deleting all data), website defacement (changing website content), or denial of service (DoS) attacks to make services unavailable. 🛑🗑️🔒
+- They might also remove or lock out user accounts, corrupt backups, or sabotage business operations to maximize the damage.
+- The goal is often to disrupt business, cause financial loss, damage reputation, or force victims to pay ransoms.
+- Impact can be immediate (like a ransomware attack) or delayed (such as leaking sensitive data to the public after exfiltration).
+
+Learning about the **Impact** phase helped me understand the final goals of an attack and why protecting the integrity and availability of data is just as important as confidentiality. Defenders should have incident response plans and backups ready to recover from these types of attacks! 🛡️🔐
+
+---
+
+### Objectives 🎯
+
+With full access to systems and networks, attackers aim to achieve their main strategic goals. This could mean:
+
+- Making money through ransomware or selling stolen data on the dark web.
+- Stealing trade secrets, intellectual property, or confidential business information.
+- Damaging a company’s reputation by leaking private data or defacing public websites.
+- Disrupting business operations to harm competitors or for political reasons.
+
+Understanding these final phases of the Unified Kill Chain helped me see the complete journey of an attack, from initial access to achieving the attacker’s ultimate objectives. It also showed me why it’s crucial to defend every step along the way and to have strong detection and response strategies in place! 🚀👀
