@@ -322,7 +322,7 @@ Learning about the **Impact** phase helped me understand the final goals of an a
 ---
 
 ### Objectives 🎯
-
+![image](flag.png)
 With full access to systems and networks, attackers aim to achieve their main strategic goals. This could mean:
 
 - Making money through ransomware or selling stolen data on the dark web.
