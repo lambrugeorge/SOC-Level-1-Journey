@@ -15,3 +15,22 @@ The model is flexible and can be expanded with new ideas. It helps integrate int
 - By the end of this lesson, I’ll be able to create a Diamond Model for different security events and analyze threats like Advanced Persistent Threats (APTs).
 
 Overall, the Diamond Model is a powerful tool for understanding and communicating about cybersecurity incidents! 🚀
+
+
+---
+
+### Who is an Adversary? 👤
+
+![image](2.png)
+
+An **adversary** is the person or group behind a cyberattack—sometimes called a hacker, threat actor, or enemy. According to the Diamond Model, the adversary is the one using their capabilities against a victim to achieve their goals.
+
+I learned that there are two important roles:
+- **Adversary Operator**: The person or team actually carrying out the attack.
+- **Adversary Customer**: The one who benefits from the attack, which could be the same as the operator or a separate entity.
+
+It’s often hard to identify the adversary right away, but by analyzing evidence and patterns, we can get closer to understanding who is behind an attack and what their intentions are.
+
+**Key terms:**
+- The person/group intending to perform malicious actions: **Adversary Operator** ✅
+- The person/group who benefits from the attack: **Adversary Customer** ✅
