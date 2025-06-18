@@ -87,3 +87,44 @@ There are two main types of infrastructure in the Diamond Model:
 **Key terms:**  
 - Malicious domains and compromised email accounts belong to: **Type 2 Infrastructure** 🕵️‍♂️  
 - Infrastructure most likely owned by an adversary: **Type 1 Infrastructure** 🏠
+
+
+
+---
+### What I Learned About the Phase Meta-Feature 🔄
+![image](4.png)
+The **Phase** meta-feature in the Diamond Model shows that every cyberattack is a process made up of several steps, not just a single action. I learned that attackers must complete multiple phases in sequence to reach their goal. This helps analysts break down complex attacks and understand how each stage connects to the next.
+
+The typical phases are:
+1. **Reconnaissance** – The attacker gathers information about the target.
+2. **Weaponization** – They create or select a tool or exploit.
+3. **Delivery** – The tool or exploit is delivered to the victim (like via email or a malicious website).
+4. **Exploitation** – The attacker uses the tool to exploit a vulnerability.
+5. **Installation** – Malware or backdoors are installed on the victim’s system.
+6. **Command & Control** – The attacker establishes communication to control the compromised system.
+7. **Actions on Objective** – The attacker achieves their goal, such as stealing data or disrupting operations.
+
+Understanding these phases helps me recognize where an attack is in its lifecycle and how defenders can intervene at different points. It also shows that attacks are rarely random—they are planned and executed step by step. 🔄
+
+---
+
+### What I Learned About the Result Meta-Feature 🏁
+
+The **Result** meta-feature is about capturing the outcome of an adversary’s actions. I learned that it’s important to record whether an attack was a **success**, **failure**, or if the result is **unknown**. This helps measure the effectiveness of both attacks and defenses.
+
+Results can also be linked to the **CIA triad**:
+- **Confidentiality Compromised** – Sensitive data was accessed or stolen.
+- **Integrity Compromised** – Data was altered or tampered with.
+- **Availability Compromised** – Systems or services were disrupted or taken offline.
+
+Documenting results and post-conditions (like what data was exfiltrated or what systems were affected) gives a clearer picture of the impact of an incident. Even if the result is unknown, tracking it helps with future investigations and threat intelligence. I learned that this meta-feature is crucial for understanding not just what happened, but how serious the consequences are. 🏁
+
+---
+
+### What I Learned About the Technology Meta-Feature 💻
+
+The **Technology** meta-feature highlights how the adversary’s **capability** (their tools, malware, exploits) connects with their **infrastructure** (servers, domains, email accounts, etc.). I learned that this relationship is key to understanding how attackers operate and communicate.
+
+For example, in a **watering-hole attack**, the adversary compromises a legitimate website that their target is likely to visit. The technology component here includes both the exploit (capability) and the compromised website (infrastructure). By analyzing the technology used, defenders can spot patterns, predict future attacks, and improve detection.
+
+This meta-feature also helps analysts understand the technical sophistication of the adversary and the methods they use to stay hidden or bypass defenses. It’s not just about the tools themselves, but how they are deployed and connected to the attacker’s broader strategy. 💻
