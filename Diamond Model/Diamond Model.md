@@ -128,3 +128,27 @@ The **Technology** meta-feature highlights how the adversary’s **capability** 
 For example, in a **watering-hole attack**, the adversary compromises a legitimate website that their target is likely to visit. The technology component here includes both the exploit (capability) and the compromised website (infrastructure). By analyzing the technology used, defenders can spot patterns, predict future attacks, and improve detection.
 
 This meta-feature also helps analysts understand the technical sophistication of the adversary and the methods they use to stay hidden or bypass defenses. It’s not just about the tools themselves, but how they are deployed and connected to the attacker’s broader strategy. 💻
+
+
+
+---
+### Diamond Model Case Study Exercise 💎
+![image](5.png)
+For this exercise, I was asked to deploy a static site and interact with a Diamond Model diagram by clicking on each triangular section. The goal was to explore all eight areas of the diamond, each representing a different aspect of a real-world cyber incident from 2015.
+
+By carefully examining each section, I learned how to extract and organize information about the adversary, victim, capability, infrastructure, and the related meta-features. This hands-on activity helped reinforce my understanding of how the Diamond Model is used in real investigations to break down and analyze cyberattacks.
+![image](6.png)
+After completing all eight areas, I was presented with the flag:
+
+**THM{DIAMOND_MODEL_ATTACK_CHAIN}** 🏁
+
+This exercise showed me how practical and interactive the Diamond Model can be for analyzing incidents and building a complete picture of an attack chain.
+
+---
+
+### Conclusion 📝
+
+This was the final test room and exercise for the Diamond Model. By working through the tasks and the interactive case study, I learned how to apply the Diamond Model to real-world scenarios, identify key features and meta-features, and understand the relationships between adversaries, victims, capabilities, and infrastructure.
+
+I now feel more confident in using the Diamond Model to analyze and communicate about cybersecurity incidents! 🚀
+---
