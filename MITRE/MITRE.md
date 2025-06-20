@@ -59,8 +59,68 @@ At first, these terms seemed confusing, but as I worked through examples, I saw 
 - I learned that you can search for techniques, sub-techniques, or groups directly, making it easy to find detailed information. The Navigator also lets you view and manage different layers, which is helpful for tracking multiple threats or defensive strategies.
 
 ---
+---
+### MITRE ATT&CK® Matrix Questions & Answers 📝
+![image](5.png)
+**Q: Besides Blue teamers, who else will use the ATT&CK Matrix?**  
+A: **Red Teamers** 🕵️‍♂️  
+The ATT&CK Matrix is not just for defenders (Blue Teamers), but also for Red Teamers who use it to plan and simulate real-world attacks.
 
-### Summary 📝
+---
 
-The MITRE ATT&CK® framework is a powerful resource for understanding how attackers operate. By learning the basic terminology (APT, TTP) and exploring the matrix and navigator, I can map out how threat groups work, see which techniques they use, and find ways to defend against them. This framework is useful for both defenders and attackers, and it’s a key tool for anyone working in cybersecurity! 🚀
+**Q: What is the ID for this technique?**  
+A: **T1566**  
+This is the technique ID for Phishing in the ATT&CK Matrix.
+
+---
+
+**Q: Based on this technique, what mitigation covers identifying social engineering techniques?**  
+A: **User Training** 🎓  
+User training is a key mitigation to help users recognize and avoid social engineering attacks like phishing.
+
+---
+
+**Q: What are the data sources for Detection?**  
+A: **Application Log,File,Network Traffic**  
+These are the main data sources used to detect phishing and related activities.
+
+---
+
+**Q: Which are the first two groups to have used spear-phishing in their campaigns?**  
+A: **Axiom,Gold SOUTHFIELD**  
+These groups were among the first to use spear-phishing as part of their attack campaigns.
+
+---
+
+**Q: Based on the information for the first group, what are their associated groups?**  
+A: **Group 72**  
+Axiom is associated with Group 72.
+
+---
+
+**Q: What software is associated with this group that lists phishing as a technique?**  
+A: **Hikit**  
+Hikit is malware used by Axiom.
+
+---
+
+**Q: What is the description for this software?**  
+A: **Hikit is malware that has been used by Axiom for late-stage persistence and exfiltration after the initial compromise.**
+
+---
+
+**Q: This group overlaps (slightly) with which other group?**  
+A: **Winnti Group**  
+Axiom has some overlap with the Winnti Group.
+
+---
+
+**Q: How many techniques are attributed to this group?**  
+A: **15**  
+There are 15 techniques attributed to Axiom.
+
+---
+
+### Next Task: CAR Knowledge Base 📚
+(Continue answering the next set of questions here as you progress through the CAR Knowledge Base section.)
 ---
