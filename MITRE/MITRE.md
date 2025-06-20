@@ -123,4 +123,20 @@ There are 15 techniques attributed to Axiom.
 
 ### Next Task: CAR Knowledge Base 📚
 (Continue answering the next set of questions here as you progress through the CAR Knowledge Base section.)
+
+
+### What I Learned About the Cyber Analytics Repository (CAR) 📊
+
+Cyber Analytics Repository
+![image](6.png)
 ---
+The **MITRE Cyber Analytics Repository (CAR)** is a knowledge base of analytics created by MITRE, built on top of the MITRE ATT&CK® adversary model. CAR provides a collection of validated and well-explained analytics that help detect adversary behaviors in real environments.
+
+- **CAR Analytics** are mapped to ATT&CK techniques, sub-techniques, and tactics, making it easier to connect detection logic with real-world adversary actions.
+- Each analytic includes a description, references to ATT&CK, and practical examples like pseudocode and queries for tools such as Splunk or EQL.
+- **Pseudocode** in CAR is a human-readable way to describe how to detect a specific behavior, making it accessible even if you’re not an expert in a particular tool.
+- Some analytics reference **Sysmon**, a Windows system monitoring tool that provides detailed event logs useful for detection.
+
+I learned that CAR is focused on providing high-quality, validated analytics with clear explanations of how and why they work. This helps defenders understand the theory behind each analytic and how to implement it in their own environments.
+
+You can explore the **Full Analytic List** or use the **CAR ATT&CK® Navigator layer** to see how analytics map to different ATT&CK techniques and tactics. This makes it easier to identify detection gaps and improve your security coverage! 🚀
