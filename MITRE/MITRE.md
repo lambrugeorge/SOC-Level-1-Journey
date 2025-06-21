@@ -140,3 +140,47 @@ The **MITRE Cyber Analytics Repository (CAR)** is a knowledge base of analytics 
 I learned that CAR is focused on providing high-quality, validated analytics with clear explanations of how and why they work. This helps defenders understand the theory behind each analytic and how to implement it in their own environments.
 
 You can explore the **Full Analytic List** or use the **CAR ATT&CK® Navigator layer** to see how analytics map to different ATT&CK techniques and tactics. This makes it easier to identify detection gaps and improve your security coverage! 🚀
+
+
+
+---
+
+### What I Learned About the CAR Data Model 🧩
+
+![image](7.png)
+Today I took a deep dive into the **MITRE CAR Data Model**, which is a structured way to organize and understand the types of data that can be collected and analyzed for cyber defense. The data model is inspired by CybOX and is designed to help security teams describe, collect, and analyze security-relevant events from both host-based and network-based perspectives.
+
+- **Objects 🗂️**: These are the main entities or "nouns" in the data model, such as files, processes, users, network flows, emails, registry keys, and more. Each object represents something that can be monitored or acted upon in a system. For example, a "process" object could represent any running application, while a "file" object could be any file on disk.
+- **Actions 🔄**: These are the "verbs"—the events or state changes that happen to objects. Examples include creating, deleting, modifying, reading, or accessing an object. Actions help describe what is happening in the environment and are crucial for detecting suspicious behavior. For instance, a "create" action on a "file" object could indicate a new file being dropped by malware.
+- **Fields 🏷️**: These are the "adjectives"—the properties or attributes of objects, such as file names, hashes, user IDs, IP addresses, timestamps, and more. Fields provide the details that make analytics precise and actionable. For example, the "file_path" field tells us where a file is located, and the "md5_hash" field helps verify its integrity.
+
+By combining objects, actions, and fields, we can create powerful queries and analytics to detect suspicious or malicious activity. For example, we can monitor when a process (object) is created (action) with a suspicious command line (field), or when a file is modified in a sensitive directory.
+
+The data model also helps map what sensors (like Sysmon, EDRs, or network taps) can collect, and shows where there might be gaps in visibility or detection coverage. This is important for understanding the strengths and weaknesses of your security monitoring. If a sensor can't collect certain fields for an object, you might miss important events.
+
+I also learned that the data model is used to organize analytics in a way that makes them reusable and adaptable across different environments and tools. This standardization is key for scaling detection and response capabilities in large organizations.
+
+---
+
+### What I Learned About CAR Analytics 📊
+
+
+![image](8.png)
+I also reviewed the **CAR Analytics** section, which is a curated collection of detection analytics mapped to MITRE ATT&CK® techniques and tactics. These analytics are designed to help defenders detect real-world adversary behaviors in their environments.
+
+- Each analytic includes a clear description, references to relevant ATT&CK techniques, and practical examples like pseudocode or queries for tools such as Splunk, Logpoint, or EQL. This makes it easy to understand not just what the analytic does, but also how to implement it in your own SIEM or detection platform.
+- **Pseudocode** is especially helpful because it provides a human-readable explanation of the detection logic, making it easier to understand and adapt to different tools or environments. Even if you don't use Splunk or Logpoint, you can still follow the logic and translate it to your own tools.
+- Many analytics reference **Sysmon** logs, which are very useful for endpoint detection and provide detailed event data for things like process creation, file changes, and network connections. This shows how important it is to have the right logging and monitoring in place.
+- The analytics cover a wide range of behaviors, from process creation and registry changes to network connections, user logins, and suspicious command executions. This variety helps ensure that defenders can detect many different types of attacks, from initial access to lateral movement and exfiltration.
+
+I learned that CAR analytics are designed to be well-explained, validated, and actionable. They help defenders understand not just what to look for, but why it matters and how to implement it. The **Full Analytic List** and the **CAR ATT&CK® Navigator layer** make it easy to explore and identify detection opportunities or gaps in your security coverage.
+
+Another important takeaway is that CAR analytics are mapped to ATT&CK, so you can see which adversary techniques you are able to detect and where you might need to improve. This mapping is very useful for building a detection strategy and for reporting to management or auditors.
+
+---
+
+### Summary of Today’s Learning 📝
+
+- The **CAR Data Model** helps structure and organize security data for effective monitoring and detection, making it easier to describe and analyze security events. By understanding objects, actions, and fields, I can create more precise and effective analytics.
+- **CAR Analytics** provide real-world, validated detection logic mapped to ATT&CK, with clear explanations and practical examples for implementation. This helps me understand how to detect a wide range of adversary behaviors.
+- Using these resources, I can better understand how to build and implement analytics that detect adversary behaviors, identify gaps in my monitoring, and improve my organization’s security posture. The combination of a strong data model and actionable analytics is key to effective
