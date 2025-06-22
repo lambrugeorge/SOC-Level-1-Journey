@@ -184,3 +184,38 @@ Another important takeaway is that CAR analytics are mapped to ATT&CK, so you ca
 - The **CAR Data Model** helps structure and organize security data for effective monitoring and detection, making it easier to describe and analyze security events. By understanding objects, actions, and fields, I can create more precise and effective analytics.
 - **CAR Analytics** provide real-world, validated detection logic mapped to ATT&CK, with clear explanations and practical examples for implementation. This helps me understand how to detect a wide range of adversary behaviors.
 - Using these resources, I can better understand how to build and implement analytics that detect adversary behaviors, identify gaps in my monitoring, and improve my organization’s security posture. The combination of a strong data model and actionable analytics is key to effective
+
+---
+
+### More About CAR Analytics and Practical Use 🟣
+
+While exploring the CAR Knowledge Base, I noticed that the techniques highlighted in purple in the ATT&CK Navigator represent analytics that are currently available in CAR. This visual mapping makes it easy to see which adversary behaviors have validated analytics and where there might still be detection gaps.
+![image](9.png)
+I also looked at **CAR-2014-11-004: Remote PowerShell Sessions**. This analytic provides both pseudocode and an EQL (Event Query Language) implementation. EQL is a powerful language for querying and organizing Sysmon event data, making it easier to detect suspicious PowerShell activity across endpoints.
+
+CAR stands out because it goes beyond the Mitigation and Detection summaries found in ATT&CK®. It offers practical, ready-to-use analytics, including code samples and even **unit tests** for some analytics (like CAR-2013-05-004), which help analysts validate their detection logic.
+
+I also learned about other resources:
+- **BZAR**: A library of Zeek (BRO) scripts for network detection.
+- **Masquerading**: The technique of running executables with the same hash but different names, which is a common evasion tactic.
+- **TA0003**: The ATT&CK tactic ID for **Persistence**, which covers techniques adversaries use to maintain access to systems.
+
+### CAR Knowledge Check ✅
+
+- **What tactic has an ID of TA0003?**  
+  **Persistence** 🔄
+
+- **What is the name of the library that is a collection of Zeek (BRO) scripts?**  
+  **BZAR** 📚
+
+- **What is the name of the technique for running executables with the same hash and different names?**  
+  **Masquerading** 🎭
+
+- **Examine CAR-2013-05-004, besides Implementations, what additional information is provided to analysts to ensure coverage for this technique?**  
+  **Unit Tests** 🧪
+
+---
+
+**Summary:**  
+CAR is a valuable resource
+
