@@ -219,3 +219,43 @@ I also learned about other resources:
 **Summary:**  
 CAR is a valuable resource
 
+
+
+
+---
+
+### MITRE ENGAGE 🤝
+
+Today I explored **MITRE ENGAGE**, a framework designed to help organizations plan and execute adversary engagement operations. Unlike traditional defensive strategies, ENGAGE encourages defenders to interact with adversaries, gather intelligence, and shape attacker behavior.
+![image](10.png)
+#### Key Concepts
+
+- **Adversary Engagement Approach**: ENGAGE is all about actively engaging with adversaries using two main strategies:
+  - **Cyber Denial 🚫**: Preventing adversaries from achieving their objectives by blocking or disrupting their operations.
+  - **Cyber Deception 🎭**: Planting fake artifacts or information to mislead, confuse, or study adversaries.
+
+- **Starter Kit 📦**: The ENGAGE website offers a starter kit with whitepapers, checklists, and methodologies to help organizations begin implementing adversary engagement strategies.
+
+#### The ENGAGE Matrix
+
+Just like ATT&CK, ENGAGE has its own matrix that organizes engagement activities into categories:
+
+- **Prepare 🛠️**: Planning and setting up operational actions to achieve your desired outcome (input).  
+  - Example: **Persona Creation** (ID SAC0002), with the **Persona Profile Worksheet** as a resource.
+- **Expose 🔍**: Revealing adversaries when they interact with your deception activities.
+- **Affect ⚡**: Taking actions that negatively impact adversary operations.
+- **Elicit 🧠**: Gathering information by observing adversary behavior and learning about their TTPs.
+- **Understand 📊**: Analyzing and understanding the outcomes of your engagement activities (output).
+![image](11.gif)
+You can interact with the **Engage Matrix Explorer** online, filtering by MITRE ATT&CK information and focusing on different parts of the engagement lifecycle. By default, the matrix focuses on **Operate** (Expose, Affect, Elicit), but you can also explore **Prepare** and **Understand**.
+
+#### Practical Examples
+
+- **Lures 🎣**: Engagement activities designed to bait a specific response from the adversary.
+- **Threat Model 🛡️**: Defined as a risk assessment that models organizational strengths and weaknesses.
+
+---
+
+**Summary:**  
+MITRE ENGAGE adds a proactive and interactive layer to cybersecurity by encouraging defenders to engage with and learn from adversaries, not just block them. By combining denial and deception, organizations can gather intelligence, disrupt attacks, and better understand their threats. The framework is supported by practical resources and a structured matrix, making it easier to plan and execute effective engagement operations!
+
