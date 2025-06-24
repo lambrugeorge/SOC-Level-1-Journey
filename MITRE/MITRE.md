@@ -290,3 +290,52 @@ Today I explored **MITRE D3FEND**, a resource described as "a knowledge graph of
 #### Summary
 
 D3FEND is a promising and evolving resource that helps defenders understand, select, and implement cybersecurity countermeasures. It complements ATT&CK by focusing on the "blue team" side—how to defend against the techniques adversaries use. Even though it's still in beta, D3FEND is already a valuable tool for planning and improving network defense strategies. I’ll definitely keep an eye on it as it matures!
+
+
+If these tools provided to us by MITRE are not enough, under  MITRE ENGENUITY , we have  Adversary Emulation Library , and ATT&CK ®  Emulation Plans .
+
+---
+
+### What I Learned About MITRE ENGENUITY, CTID, and ATT&CK® Emulation Plans 📝
+
+MITRE has gone even further by creating **MITRE Engenuity** and the **Center for Threat-Informed Defense (CTID)**. CTID is a collaborative organization made up of companies and vendors from around the world, including AttackIQ, Verizon, Microsoft, Red Canary, and Splunk. Their mission is to research cyber threats and TTPs, and to share this research to improve cyber defense for everyone.
+
+> Per the website:  
+> "Together with Participant organizations, we cultivate solutions for a safer world and advance threat-informed defense with open-source software, methodologies, and frameworks. By expanding upon the MITRE ATT&CK knowledge base, our work expands the global understanding of cyber adversaries and their tradecraft with the public release of data sets critical to better understanding adversarial behavior and their movements."
+
+---
+
+#### ATT&CK® Emulation Plans
+
+The **Adversary Emulation Library** is a public resource that provides free adversary emulation plans for blue and red teamers. These emulation plans are contributed by CTID and are designed to help organizations test their defenses against real-world threat groups.
+
+There are several ATT&CK® Emulation Plans available, such as **APT3**, **APT29**, and **FIN6**. Each plan is a step-by-step guide on how to mimic the specific threat group’s behaviors. This is especially useful for answering questions like, "How would we fare if APT29 attacked us?"—you can refer to the results of running the emulation plan.
+
+---
+
+#### Practical Examples and Knowledge Check
+
+Reviewing the emulation plans, I learned how detailed and actionable these resources are:
+
+- **In Phase 1 for the APT3 Emulation Plan, what is listed first?**  
+  **C2 Setup**  
+  ![image](14.png)
+
+- **Under Persistence, what binary was replaced with cmd.exe?**  
+  **sethc.exe**  
+  ![image](15.png)
+
+- **Examining APT29, what C2 frameworks are listed in Scenario 1 Infrastructure?**  
+  **Pupy,Metasploit Framework**  
+  ![image](16.png)
+
+- **What C2 framework is listed in Scenario 2 Infrastructure?**  
+  **PoshC2**  
+  ![image](17.png)
+
+- **Examine the emulation plan for Sandworm. What webshell is used for Scenario 1? What is the id?**  
+  **P.A.S.,S0598**
+
+---
+
+These emulation plans are a fantastic way to test and improve your organization’s detection and response capabilities using real adversary behaviors. They are open-source, detailed, and mapped directly to MITRE ATT&CK®, making them a valuable resource for both blue and red
