@@ -339,3 +339,50 @@ Reviewing the emulation plans, I learned how detailed and actionable these resou
 ---
 
 These emulation plans are a fantastic way to test and improve your organization’s detection and response capabilities using real adversary behaviors. They are open-source, detailed, and mapped directly to MITRE ATT&CK®, making them a valuable resource for both blue and red
+
+
+
+---
+
+### What I Learned About Threat Intelligence (TI/CTI) 🕵️‍♂️
+
+Today I explored the concept of **Threat Intelligence (TI)** or **Cyber Threat Intelligence (CTI)**. TI/CTI is all about collecting and analyzing information (including TTPs) attributed to adversaries. This intelligence helps defenders make better decisions about their security strategy and respond more effectively to threats.
+
+- Large organizations may have dedicated teams focused on gathering and analyzing threat intelligence, using both open-source and commercial sources (like CrowdStrike).
+- In smaller organizations, defenders often juggle multiple roles and must fit threat intelligence work into their busy schedules.
+- The main goal of threat intelligence is to make information **actionable**—helping organizations proactively defend against real threats.
+
+---
+
+#### Scenario: Using ATT&CK® for Threat Intelligence in the Aviation Sector ✈️☁️
+
+**Scenario:**  
+As a security analyst in the aviation sector, your organization is migrating infrastructure to the cloud. You use the ATT&CK® Matrix to gather threat intelligence on APT groups that target your sector and identify techniques relevant to your environment. The goal is to spot any gaps in your defensive coverage.
+
+---
+
+#### g
+
+- **What is a group that targets your sector who has been in operation since at least 2013?**  
+  **APT33**  
+  ![image](18.png)
+
+- **As your organization is migrating to the cloud, is there anything attributed to this APT group that you should focus on? If so, what is it?**  
+  **Cloud Accounts**  
+  ![image](19.png)
+
+- **What tool is associated with the technique from the previous question?**  
+  **Ruler**  
+  ![image](20.png)
+
+- **Referring to the technique from question 2, what mitigation method suggests using SMS messages as an alternative for its implementation?**  
+  **Multi-factor Authentication**  
+  ![image](21.png)
+
+- **What platforms does the technique from question #2 affect?**  
+  **IaaS, Identity Provider, Office Suite, SaaS**
+
+---
+
+**Summary:**  
+Threat Intelligence is a critical part of modern cybersecurity. By leveraging frameworks like ATT&CK®, analysts can map out which adversaries and techniques are most relevant to their sector, identify gaps, and implement effective mitigations. This makes defenses more proactive and tailored to
