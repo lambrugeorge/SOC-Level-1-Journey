@@ -226,7 +226,7 @@ This regular, low-size beaconing is a classic sign of Command & Control (C2) act
 - Connections to `bababa10la.cn` (`51.102.10.19`) on multiple ports
 - Repeated POST requests from `beacon.bat` to `/keep-alive?hostname=WK102`
 
-```
+
 ![image](flag5(1).png)
 
 ---
@@ -234,3 +234,102 @@ This regular, low-size beaconing is a classic sign of Command & Control (C2) act
 ### Sigma Rule for Detection
 
 To catch this behavior, I created a Sigma rule to alert on
+
+
+
+
+---
+
+## Task 6: Detecting sample6.exe
+
+For the final test, the adversary tried one last trick—moving beyond artifacts or tool detection. This time, I had to focus on something extremely hard for the attacker to change: their techniques and procedures.
+
+### Adversary Communication
+
+Hello again,  
+![image](flag6.png)
+
+You managed to detect sample5.exe! I'm very impressed. But also very annoyed! Because now, I need to go back to the drawing board and create a brand new tool to do what I need to do. If I can't find another one quickly, this will be another significant investment. Also, I will need to train myself all over again on how to use it!
+
+I can keep this up one or two times, but there's no way I can continue after this. The reward no longer outweighs the cost, and I would instead find an easier target with detection capabilities much lower on the pyramid.
+
+For my last trick, I have sample6.exe. This time, you will need more than artifacts or tool detection to help you. You'll need to focus on something extremely hard for me to change subconsciously—my techniques and procedures.
+
+I've attached the recorded command logs from all my previous samples to help you understand what actions I tend to perform on my victims to extract info once I have remote access. Good luck!
+
+---
+
+### Command Log Analysis
+
+The attacker’s command log included:
+- `dir c:\ >> %temp%\exfiltr8.log`
+- `dir "c:\Documents and Settings" >> %temp%\exfiltr8.log`
+- `dir "c:\Program Files\" >> %temp%\exfiltr8.log`
+- `dir d:\ >> %temp%\exfiltr8.log`
+- `net localgroup administrator >> %temp%\exfiltr8.log`
+- `ver >> %temp%\exfiltr8.log`
+- `systeminfo >> %temp%\exfiltr8.log`
+- `ipconfig /all >> %temp%\exfiltr8.log`
+- `netstat -ano >> %temp%\exfiltr8.log`
+- `net start >> %temp%\exfiltr8.log`
+
+---
+
+### Sandbox Analysis
+
+- **File:** sample6.exe  
+- **File Size:** 341.02 KB  
+- **MD5:** fc20dd3e92d637cac866c00f26eeb28b  
+- **SHA256:** 853a41260626117512efaae7553514b5f96c43ca17440e3f9f2e83ab92463d1a  
+- **Behavior:**  
+  - Malicious: Downloads executable files from the Internet
+  - Suspicious: Connects to unusual IP address and port
+  - Reads machine GUID, checks LSA protection, reads computer name, checks supported languages
+
+**Network Activity:**
+- HTTP(S) requests:  
+  - `GET http://contr0l2hax.info:1499/kwsx92la`
+  - `GET https://contr0l2hax.info/sample6.exe`
+- Connections to:  
+  - `182.44.41.12:1499` (contr0l2hax.info)
+  - `182.44.41.12:80` (contr0l2hax.info)
+  - `182.44.41.12:443` (contr0l2hax.info)
+
+**Processes:**
+- Multiple `cmd.exe` processes spawned by `sample6.exe`
+- Creation of `%temp%\exfiltr8.log` containing output from various system commands
+
+![image](flag6(1).png)
+
+---
+
+### Detection Approach
+
+To detect this attack, I focused on identifying the **sequence of commands** and the creation of the exfiltration log file (`%temp%\exfiltr8.log`). This is a strong indicator of attacker behavior and is much harder for them to change compared to simple artifacts.
+
+---
+
+### Final Flag
+
+flag 6
+
+Well, that's it. I have officially given up.
+
+Throughout the engagement, you managed to chase me to the very top of the Pyramid of Pain, and I have to say, it's not fun up here!
+
+You detected my samples file hashes, IPs, domains, host artifacts, tools, and now my own behavioural techniques! To continue, I have no choice but to completely retrain myself and conduct extensive research to figure out how you're catching me. And with that, I don't think you'll ever see me again. Enjoy the final flag; you've earned it!
+
+![image](flag6(2).png)
+
+**Flag 6:**  
+`THM{c8951b2ad24bbcbac60c16cf2c83d92c}`
+
+![image](flag6(3).png)
+
+---
+
+### Key Takeaway 📝
+
+By detecting the attacker's techniques and procedures, I reached the very top of the Pyramid of Pain. This level of detection is the most difficult for adversaries to evade and often forces them to give up and move on to easier targets.
+
+---
