@@ -56,6 +56,65 @@ The adversary simply recompiled the malware to bypass hash-based detection, demo
 - **Adversaries adapt quickly**—detection strategies must evolve beyond simple indicators like hashes.
 - The Pyramid of Pain framework helps structure detection efforts, pushing defenders to use more resilient and costly-to-evade indicators.
 
+
+
+
+
 ---
 
-*This room was a great hands-on exercise in purple teaming and understanding the strengths and weaknesses of different
+## Task 3: Detecting sample3.exe
+
+For the third test, I analyzed **sample3.exe**:
+
+- **File:** sample3.exe  
+- **Tags:** Trojan.Metasploit.A  
+- **MD5:** e31f0c62927d9d5a897b4c45e3c64dbc  
+- **SHA256:** acb9b1260bcd08a465f9f300ac463b9b1215c097ebe44610359bb80881fe6a05  
+- **Behavior:**  
+  - Detected as malicious (Metasploit)
+  - Downloads executable files from the Internet (e.g., backdoor.exe)
+  - Connects to unusual IP addresses and ports
+  - Reads machine GUID, checks LSA protection, reads computer name, checks supported languages
+  - Multiple HTTP(S) requests, TCP/UDP connections, and DNS requests
+
+
+After blocking the domain used by the malware, I received the third flag:
+
+**Flag 3:**  
+`THM{4eca9e2f61a19ecd5df34c788e7dce16}`
+
+---
+
+### Key Takeaway 📝
+
+Blocking domains and IPs increased the attacker's cost, forcing them to register new domains and update DNS records. However, the adversary warned that for the next sample, blocking hashes, IPs, or domains won't be enough. I will need to focus on detecting artifacts or changes left by the malware on the host system—moving further up the Pyramid of Pain!
+
+------
+
+## Task 3: Detecting sample3.exe
+
+For the third test, I analyzed **sample3.exe**:
+
+- **File:** sample3.exe  
+- **Tags:** Trojan.Metasploit.A  
+- **MD5:** e31f0c62927d9d5a897b4c45e3c64dbc  
+- **SHA256:** acb9b1260bcd08a465f9f300ac463b9b1215c097ebe44610359bb80881fe6a05  
+- **Behavior:**  
+  - Detected as malicious (Metasploit)
+  - Downloads executable files from the Internet (e.g., backdoor.exe)
+  - Connects to unusual IP addresses and ports
+  - Reads machine GUID, checks LSA protection, reads computer name, checks supported languages
+  - Multiple HTTP(S) requests, TCP/UDP connections, and DNS requests
+
+![image](flag3.png)
+
+After blocking the domain used by the malware, I received the third flag:
+
+**Flag 3:**  
+`THM{4eca9e2f61a19ecd5df34c788e7dce16}`
+
+---
+
+### Key Takeaway 📝
+
+Blocking domains and IPs increased the attacker's cost, forcing them to register new domains and update DNS records. However, the adversary warned that for the next sample, blocking hashes, IPs, or domains won't be enough. I will need to focus on detecting artifacts or changes left by the malware on the host system—moving further up the
