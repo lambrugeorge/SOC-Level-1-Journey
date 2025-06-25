@@ -191,3 +191,46 @@ detection:
 falsepositives:
   - Legitimate changes to Windows Defender settings.
 level: high
+
+```
+
+## Task 5: Detecting sample5.exe
+![image](flag5.png)
+
+For the fifth test, the adversary changed tactics: all the "heavy lifting" and instructions occurred on their backend server, making it much harder to detect using traditional indicators like hashes, domains, or registry changes. Instead, I had to analyze the outgoing network connections for suspicious patterns.
+
+### Outgoing Connections Analysis
+
+The provided log revealed a very regular pattern:
+- Every 30 minutes, the victim machine (`10.10.15.12`) connected to the same remote IP (`51.102.10.19`) on port 443, always sending a small packet (97 bytes).
+- There were also some larger, less frequent connections to other IPs and ports.
+
+This regular, low-size beaconing is a classic sign of Command & Control (C2) activity.
+
+---
+
+### Sandbox Analysis
+
+- **File:** sample5.exe  
+- **File Size:** 252.46 KB  
+- **MD5:** bece9deefe32e2179744d54e36277955  
+- **SHA256:** 1fad9b93652f6498f7a4b91159a8c800e2639d035d8b3ddbbde72b762a443558  
+- **Behavior:**  
+  - Malicious: Downloads executable files from the Internet (beacon.bat)
+  - Suspicious: Connects to unusual IP address and port
+  - High number of consecutive connections
+  - Reads machine GUID, checks LSA protection, reads computer name, checks supported languages
+
+**Network Activity:**
+- 402 HTTP(S) requests
+- Connections to `bababa10la.cn` (`51.102.10.19`) on multiple ports
+- Repeated POST requests from `beacon.bat` to `/keep-alive?hostname=WK102`
+
+```
+![image](flag5(1).png)
+
+---
+
+### Sigma Rule for Detection
+
+To catch this behavior, I created a Sigma rule to alert on
