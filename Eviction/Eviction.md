@@ -18,3 +18,23 @@ Sunny is a SOC analyst at E-corp, a company that manufactures rare earth metals 
 
 **3. What two techniques of user execution should Sunny look out for?**  
 *Answer:* Malicious file
+
+
+**4. If the above technique was successful, which scripting interpreters should Sunny search for to identify successful execution?**  
+*Answer:* Powershell and Windows Command shell
+
+**5. While looking at the scripting interpreters identified in Q4, Sunny found some obfuscated scripts that changed the registry. Assuming these changes are for maintaining persistence, which registry keys should Sunny observe to track these changes?**  
+*Answer:* Registry run keys
+
+**6. Sunny identified that the APT executes system binaries to evade defenses. Which system binary's execution should Sunny scrutinize for proxy execution?**  
+*Answer:* Rundll32
+
+**7. Sunny identified tcpdump on one of the compromised hosts. Assuming this was placed there by the threat actor, which technique might the APT be using here for discovery?**  
+*Answer:* Network sniffing
+
+**8. It looks like the APT achieved lateral movement by exploiting remote services. Which remote services should Sunny observe to identify APT activity traces?**  
+*Answer:* SMB/Windows Admin shares
+
+**9. It looked like the primary goal of the APT was to steal intellectual property from E-corp's information repositories. Which information repository can be the likely target of the APT?**  
+*Answer:* Sharepoint
+
