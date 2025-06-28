@@ -9,7 +9,7 @@ Sunny is a SOC analyst at E-corp, a company that manufactures rare earth metals 
 > Please visit the MITRE ATT&CK Navigator layer for the APT group and answer the questions below.
 
 ### Questions and Answers
-
+![image](2.png)
 **1. What is a technique used by the APT to both perform recon and gain initial access?**  
 *Answer:* Spearphishing link
 
@@ -38,3 +38,5 @@ Sunny is a SOC analyst at E-corp, a company that manufactures rare earth metals 
 **9. It looked like the primary goal of the APT was to steal intellectual property from E-corp's information repositories. Which information repository can be the likely target of the APT?**  
 *Answer:* Sharepoint
 
+**10. Although the APT had collected the data, it could not connect to the C2 for data exfiltration. To thwart any attempts to do that, what types of proxy might the APT use? (Answer format: <technique 1> and <technique 2>)**  
+*Answer:* external proxy and multi-hop proxy
