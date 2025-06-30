@@ -73,4 +73,112 @@ Abuse.ch is a project from the Institute for Cybersecurity and Engineering at Be
 
 ---
 
-> ✅ I've learned how to use these tools and understand the different types of threat intelligence. This knowledge helps me better identify, analyze, and respond to cyber threats! 🚀
+## 🛡️ PhishTool & Email Analysis: What I've Learned
+
+Before starting the analysis, I launched the VM and opened it in Split View as instructed. This allowed me to use the same environment for Tasks 7 and 8.
+
+### ✉️ Email Phishing Overview
+
+Phishing remains a primary vector for cyber attacks. Attackers often disguise emails to appear legitimate, tricking users into clicking malicious links or downloading harmful attachments. This can lead to malware infections, credential theft, financial fraud, or ransomware attacks.
+
+![image](6.gif)
+
+#### 🔗 Further Learning
+- Phishing Emails 1-5 (see referenced rooms for more details)
+
+### 🧰 PhishTool Features
+
+PhishTool is a valuable addition to my email analysis toolkit. It offers:
+- **Email analysis:** Extracts metadata, attachments, and URLs for triage.
+- **Heuristic intelligence:** Integrates OSINT to identify TTPs and adversary methods.
+- **Classification & reporting:** Enables quick classification and generates forensic reports.
+
+The Community version covers core features, while the Enterprise version adds user management, reporting, and integration with Microsoft 365/Google Workspace.
+
+#### 🖥️ Using PhishTool
+
+Upon logging in, I accessed the **Analysis** tab to upload emails for inspection. Other tabs include **History** (submission records) and **In-tray** (Enterprise feature).
+
+During analysis, I reviewed:
+- **Headers:** Source/destination addresses, originating IP, timestamps.
+- **Received Lines:** SMTP traversal details.
+- **X-headers:** Additional mailbox info.
+- **Security:** SPF, DKIM, DMARC status.
+- **Attachments & URLs:** All files and links in the email.
+
+I could flag indicators as malicious and classify the email, with results shown in the **Resolution** tab.
+
+---
+
+### 🕵️ Task 5: Email1.eml Analysis
+
+As a SOC Analyst, I analyzed a suspicious email using Thunderbird on the VM.
+
+#### Key Findings:
+1. **Impersonated Platform:**  
+       ![image](7.png)  
+       **Answer:** LinkedIn
+
+2. **Sender's Email Address:**  
+       `darkabutla@sc500.whpservers.com`
+
+3. **Recipient's Email Address:**  
+       `cabbagecare@hotsmail.com`
+
+4. **Originating IP (defanged):**  
+       `204[.]93[.]183[.]11`
+
+5. **SMTP Hops:**  
+       `4`
+
+---
+
+## 🌍 Cisco Talos Intelligence: What I've Learned
+
+Cisco Talos provides actionable threat intelligence, including IP/domain reputation, vulnerability data, and more. The dashboard offers a global view of email traffic and threat indicators.
+
+### 🛠️ Task 6: Talos Analysis
+
+Using details from Email1.eml, I queried Cisco Talos Intelligence for more context.
+
+#### Key Findings:
+1. **Domain of IP:**  
+       `scnet.net`
+
+2. **Customer Name:**  
+       `Complete Web Reviews`
+
+---
+
+## 📧 Task 7: Email2.eml Analysis
+
+As a SOC Analyst, I analyzed another suspicious email (Email2.eml) using the same tools and methods.
+
+#### Key Findings:
+1. **Recipient's Email Address:**  
+       `chris.lyons@supercarcenterdetroit.com`
+
+2. **VirusTotal Detection Alias (starts with H):**  
+       ![image](11.png)  
+       ![image](12.png)  
+       `HIDDENEXT/Worm.Gen`
+
+---
+
+## 📑 Task 8: Email3.eml Analysis
+
+Continuing as a SOC Analyst, I examined Email3.eml for further threat indicators.
+
+#### Key Findings:
+1. **Attachment Name:**  
+       ![image](13.png)  
+       `Sales_Receipt 5606.xls`
+
+2. **Associated Malware Family:**  
+       ![image](14.png)  
+       `Dridex`
+
+---
+
+Through these tasks, I learned how to leverage open-source tools like PhishTool and Cisco Talos to analyze suspicious emails, extract IOCs, and identify threats such as phishing attempts and malware. The hands-on experience reinforced my understanding of email analysis workflows and the importance of threat intelligence in SOC operations.
+
