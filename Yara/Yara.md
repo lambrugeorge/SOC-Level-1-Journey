@@ -29,10 +29,10 @@ Just like in programming, malware uses strings to store data. Here are some exam
 ## ❓ Quick Questions
 
 - **What is the name of the base-16 numbering system that Yara can detect?**  
-       `hexadecimal` ✅
+        `hexadecimal` ✅
 
 - **Would the text "Enter your Name" be a string in an application?**  
-       `Yay` ✅
+        `Yay` ✅
 
 ---
 
@@ -55,19 +55,19 @@ yara myrule.yar somedirectory
 ### ✍️ Let's Create a Basic Rule
 
 1. Create a file:
-        ```bash
-        touch somefile
-        ```
+    ```bash
+    touch somefile
+    ```
 2. Create your first rule file:
-        ```bash
-        touch myfirstrule.yar
-        ```
+    ```bash
+    touch myfirstrule.yar
+    ```
 3. Edit `myfirstrule.yar` and add:
-        ```yara
-        rule examplerule {
-                      condition: true
-        }
-        ```
+    ```yara
+    rule examplerule {
+         condition: true
+    }
+    ```
 
 This rule checks if the file exists. If it does, Yara outputs the rule name.
 
@@ -97,10 +97,10 @@ Yara rules have several sections:
 
 ```yara
 rule helloworld_checker {
-              strings:
-                            $hello_world = "Hello World!"
-              condition:
-                            $hello_world
+    strings:
+         $hello_world = "Hello World!"
+    condition:
+         $hello_world
 }
 ```
 This matches any file containing "Hello World!".
@@ -110,12 +110,12 @@ This matches any file containing "Hello World!".
 To match different cases:
 ```yara
 rule helloworld_checker {
-              strings:
-                            $hello_world = "Hello World!"
-                            $hello_world_lowercase = "hello world"
-                            $hello_world_uppercase = "HELLO WORLD"
-              condition:
-                            any of them
+    strings:
+         $hello_world = "Hello World!"
+         $hello_world_lowercase = "hello world"
+         $hello_world_uppercase = "HELLO WORLD"
+    condition:
+         any of them
 }
 ```
 Now, any of those strings will trigger the rule.
@@ -129,10 +129,10 @@ You can use operators like `<=`, `>=`, `!=` and combine conditions with `and`, `
 **Example:**
 ```yara
 rule helloworld_checker {
-              strings:
-                            $hello_world = "Hello World!"
-              condition:
-                            #hello_world <= 10
+    strings:
+         $hello_world = "Hello World!"
+    condition:
+         #hello_world <= 10
 }
 ```
 This matches if "Hello World!" appears 10 times or less.
@@ -140,12 +140,145 @@ This matches if "Hello World!" appears 10 times or less.
 **Combining Conditions:**
 ```yara
 rule helloworld_checker {
-              strings:
-                            $hello_world = "Hello World!"
-              condition:
-                            $hello_world and filesize < 10KB
+    strings:
+         $hello_world = "Hello World!"
+    condition:
+         $hello_world and filesize < 10KB
 }
 ```
 This matches only if the file contains "Hello World!" **and** is smaller than 10KB.
 
 ---
+
+## 🧑‍💻 Real-World Yara Usage
+
+Let's see how Yara rules work in practice!  
+When you run a rule like the one above, Yara will output the rule name and the file name if there's a match.
+
+```
+cmnatic@thm:~$ yara myfirstrule.yar mytextfile.txt
+helloworld_textfile_checker mytextfile.txt
+```
+
+- The text in the red box is the rule name.
+- The text in the green box is the matched file.
+
+---
+
+# 📝 Yara Rule Cheatsheet
+
+![image](1.png)
+
+Information security researcher **fr0gger_** has created a handy cheatsheet that breaks down and visualizes the elements of a YARA rule (image above, credits to fr0gger_). It's a great reference for getting started!
+
+---
+
+## 🔗 Integrating With Other Libraries
+
+Frameworks like **Cuckoo Sandbox** or Python's **PE Module** can make your Yara rules even more powerful.
+
+### 🐣 Cuckoo Sandbox
+
+Cuckoo is an automated malware analysis environment. It can generate Yara rules based on behaviors it observes, such as runtime strings.
+
+### 🐍 Python PE Module
+
+Python's PE module lets you create Yara rules from the Windows Portable Executable (PE) structure.  
+Examining PE files is essential in malware analysis, as you can identify behaviors like cryptography or worming without reverse engineering.
+
+---
+
+## 🛠️ Yara Tools
+
+You don't have to write every rule from scratch! There are many open-source and commercial tools to help you use Yara in threat hunting and incident response.
+
+### 🦸‍♂️ LOKI
+
+LOKI is a free open-source IOC scanner by Florian Roth.  
+Detection is based on:
+
+- File Name IOC Check
+- Yara Rule Check
+- Hash Check
+- C2 Back Connect Check
+
+LOKI works on Windows and Linux.  
+You can download it [here](https://github.com/Neo23x0/Loki).
+
+![image](2.png)
+![image](3.png)
+
+### ⚡ THOR Lite
+
+THOR Lite is a multi-platform IOC and YARA scanner, also by Florian Roth.  
+It features scan throttling to save CPU resources.  
+[Learn more and download here.](https://www.nextron-systems.com/thor-lite/)
+
+### 🐺 FENRIR
+
+FENRIR is a bash script IOC checker by Florian Roth.  
+It runs on any system with bash.
+
+### 🤖 YAYA
+
+YAYA (Yet Another Yara Automaton) is an open-source tool by the EFF for managing multiple YARA rule repositories.  
+Currently, it runs only on Linux.
+
+---
+
+## 🕵️‍♂️ Using LOKI in Practice
+
+As a security analyst, you may need to gather IOCs from threat intelligence reports and create Yara rules to detect threats.  
+LOKI comes with a set of Yara rules to help you scan for threats right away.
+
+Navigate to the Loki directory and run:
+```bash
+python loki.py -h
+```
+To update signatures:
+```bash
+python loki.py --update
+```
+LOKI's rules are in the `signature-base/yara` directory.
+
+To scan a suspicious file:
+```bash
+python ../../tools/Loki/loki.py -p .
+```
+
+---
+
+## 📝 Scenario: Investigating Suspicious Files
+
+You are a security analyst for a law firm. Suspicious files were found on a web server and copied to your machine for analysis.  
+Use LOKI to scan these files and answer the following:
+
+- **Scan file 1. Does LOKI detect it as suspicious/malicious or benign?**  
+  🟡 *Suspicious*
+
+- **What Yara rule did it match on?**  
+  `webshell_metaslsoft`
+
+- **What does LOKI classify this file as?**  
+  🕸️ *Web Shell*
+
+- **What string within the Yara rule did it match on?**  
+  `Str1`
+
+- **What is the name and version of this hack tool?**  
+  `b374k 2.2`
+
+- **How many strings are in the Yara rule that flagged file 1?**  
+  `1`
+
+- **Scan file 2. Does LOKI detect it as suspicious/malicious or benign?**  
+  🟢 *Benign*
+
+- **What is the name and version of this web shell?**  
+  `b374k 3.2.3`
+
+![image](4.png)
+
+---
+
+Ready to create your own Yara rules? Let's continue! 🚀
