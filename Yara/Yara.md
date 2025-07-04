@@ -306,7 +306,22 @@ Use LOKI to scan these files and answer the following:
 - Explore more advanced Yara features, such as modules for PE file analysis or regular expressions.
 - Stay updated with the latest threat intelligence and community rule sets to enhance your detection capabilities.
 
+-What is the name of the variable for the string that it matched on?
+
+Zepto ✅
+
 ---
 
-Keep experimenting and happy hunting! 🕵️‍♀️🚀
+## 🔎 What did I find?
 
+- The matched string variable was **Zepto** (`$x1` in the Yara rule).
+- This shows how Yara rules can pinpoint specific suspicious code or libraries in a file.
+- Using LOKI and yarGen, I quickly identified unique patterns that help detect threats.
+
+---
+
+## 🧠 Key lesson
+![image](6.png)
+- **Yara rules help you find exactly what makes a file suspicious.**  
+- The string variable that triggers a match is crucial for understanding why a file was flagged.  
+- Automation tools like yarGen make this process faster and
