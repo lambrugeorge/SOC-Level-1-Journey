@@ -325,3 +325,12 @@ Zepto ✅
 - **Yara rules help you find exactly what makes a file suspicious.**  
 - The string variable that triggers a match is crucial for understanding why a file was flagged.  
 - Automation tools like yarGen make this process faster and
+
+## 🔎 What did I find?
+
+- I used Valhalla to check the SHA256 hash of file 1.  
+- Valhalla showed that this file is already known in the threat intelligence community. 📊  
+- This means my detection was correct and the file is not just suspicious, but actually linked to real-world threats. ✅  
+- Using platforms like Valhalla helps confirm if a file is part of a known malware campaign or APT activity. 🕵️‍♂️🔗
+
+---
