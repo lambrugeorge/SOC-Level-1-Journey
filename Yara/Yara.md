@@ -333,4 +333,29 @@ Zepto ✅
 - This means my detection was correct and the file is not just suspicious, but actually linked to real-world threats. ✅  
 - Using platforms like Valhalla helps confirm if a file is part of a known malware campaign or APT activity. 🕵️‍♂️🔗
 
+Valhalla
+
+Valhalla is an online Yara feed created and hosted by Nextron-Systems (Florian Roth). It provides thousands of high-quality Yara rules to boost your detection capabilities. 🚀
+
+You can search Valhalla using keywords, tags, ATT&CK techniques, SHA256 hashes, or rule names. This makes it a valuable resource for threat intelligence and malware research. 🕵️‍♂️
+
 ---
+
+### 📝 What did I do and learn?
+
+- I checked the SHA256 hash of file 1 in Valhalla and confirmed it is attributed to an APT group. 🎯
+- For file 2, the first Yara rule to detect it is `Webshell_b374k_rule1`.
+- On VirusTotal, the Yara signature match for file 2 comes from the **THOR APT Scanner**. ![image](7.png)
+- Not every antivirus detected file 2 as malicious on VirusTotal, showing the importance of using multiple tools. ❗
+- File 2 was also found with the `.EXE` extension, not just `.PHP`.
+- The JavaScript library used by file 2 is **Zepto**. ![image](8.png)
+- The Yara rule for this hack tool is not in the default Loki ruleset, but it is present in the commercial THOR scanner.
+
+---
+
+### 🧠 Final Lesson
+
+- Using Valhalla and VirusTotal together helps validate your findings and provides more context about suspicious files.
+- Open-source tools are powerful, but commercial products may have more extensive rule sets.
+- As a blue teamer, knowing how to create, test, and research Yara rules is essential for effective threat detection and response.
+- Always combine multiple sources of intelligence and tools for the best results. 🌐
