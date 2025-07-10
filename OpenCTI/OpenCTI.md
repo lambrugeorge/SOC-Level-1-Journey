@@ -159,3 +159,31 @@ Tracks changes made to the element, attributes, and relations. The platform work
 - **Who is the author of the entity?**  
   ![image](6.png)  
   The MITRE Corporation
+
+
+
+## 🕵️‍♂️ SOC Analyst Investigation: CaddyWiper Malware & APT37 Group
+
+As a SOC analyst, you have been tasked with investigations on malware and APT groups rampaging through the world. Your assignment is to look into the **CaddyWiper** malware and **APT37** group using OpenCTI.
+
+---
+
+### 📝 Questions & Answers
+
+- **What is the earliest date recorded related to CaddyWiper?**  
+  2022/03/15
+
+- **Which Attack technique is used by the malware for execution?**  
+  Native API
+  ![image](7.png)
+- **How many malware relations are linked to this Attack technique?**  
+  113
+
+- **Which 3 tools were used by the Attack Technique in 2016?**  
+  BloodHound, Empire, ShimRatReporter
+
+- **What country is APT37 associated with?**  
+  North Korea
+  ![image](8.png)
+- **Which Attack techniques are used by the group for initial access?**  
+  T1189, T1566
