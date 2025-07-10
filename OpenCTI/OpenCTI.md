@@ -103,3 +103,59 @@ Entities are categorized by sectors, countries, organizations, and individuals, 
 ---
 
 Overall, this lesson helped me understand how OpenCTI structures, analyzes, and visualizes threat intelligence, making it easier for security teams to respond to cyber threats! 🌐🔒
+
+
+
+## 🧭 General Tabs Navigation
+
+The day-to-day usage of OpenCTI involves navigating through different entities within the platform to understand and utilize the information for any threat analysis. For this walkthrough, we will focus on the **Cobalt Strike** malware entity, mainly found under the **Arsenal** tab we've covered previously.
+
+When you select an intelligence entity, the details are presented to the user through:
+
+![image](4.png)
+
+### Overview Tab
+Provides the general information about an entity being analysed and investigated. In our case, the dashboard will present you with:
+- Entity ID
+- Confidence level
+- Description
+- Relations created based on threats, intrusion sets, and attack patterns
+- Reports mentioning the entity
+- Any external references
+
+### Knowledge Tab
+Presents linked information associated with the selected entity. This tab includes:
+- Associated reports
+- Indicators
+- Relations
+- Attack pattern timeline of the entity
+
+Additionally, analysts can view fine-tuned details from the tabs on the right-hand pane, where information about threats, attack vectors, events, and observables used within the entity are presented.
+
+See Image:  
+![image](5.png)
+
+### Analysis Tab
+Provides the reports where the identified entry has been seen. The analysis offers usable information about a threat and guides investigation tasks.
+
+See Image.
+
+### Indicators Tab
+Provides information on Indicators of Compromise (IOC) identified for all threats and entities.
+
+### Data Tab
+Contains the files uploaded or generated for export related to the entity. These assist in communicating information about threats being investigated in either technical or non-technical formats.
+
+### History Tab
+Tracks changes made to the element, attributes, and relations. The platform worker monitors these changes, and this tab outlines them.
+
+---
+
+### 📝 Answers to Key Questions
+
+- **What Intrusion sets are associated with the Cobalt Strike malware with a Good confidence level?**  
+  CopyKittens, FIN7
+
+- **Who is the author of the entity?**  
+  ![image](6.png)  
+  The MITRE Corporation
