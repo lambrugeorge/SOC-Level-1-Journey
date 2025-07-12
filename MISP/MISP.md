@@ -56,8 +56,8 @@ MISP is effectively useful for the following use cases:
 
 ## What does MISP support? ⚙️
 
-![image](2.png)  
-_Image showing the MISP flow of functionalities._
+
+
 
 MISP provides the following core functionalities:
 
@@ -98,7 +98,7 @@ The analyst's view of MISP provides functionalities to track, share and correlat
 - **Name:** Logged in user's auto-generated name.  
 - **Envelope:** User Dashboard for notifications and proposals.  
 - **Log out:** End your session immediately.
+![image](2.png)
 
-![image](3.png)
 
 
