@@ -88,3 +88,66 @@ I practiced verifying the installed Snort version using `snort -V`, which displa
 - I can confidently run Snort in different modes, interpret its output, and analyze network traffic.
 - I know how to handle log files, manage permissions, and use additional tools for deeper analysis.
 - This lesson gave me practical, hands-on experience that is directly applicable to real-world network security monitoring and incident response.
+
+## 🧪 Practical Snort Traffic Analysis (ASCII Mode)
+
+Let's investigate network traffic using Snort's default configuration in ASCII mode! This hands-on exercise will help you understand how Snort logs and analyzes packets step by step.
+
+1. **Start Snort in ASCII Logging Mode:**
+   ```bash
+   sudo snort -dev -K ASCII -l .
+   ```
+   - `-d` : Show packet data (payload)
+   - `-e` : Show link-layer headers
+   - `-v` : Verbose output
+   - `-K ASCII` : Log in human-readable format
+   - `-l .` : Log to the current directory
+
+2. **Generate Traffic:**
+   Run the traffic generator script and select the "TASK-6 Exercise":
+   ```bash
+   sudo ./traffic-generator.sh
+   ```
+   Wait for the traffic to finish, then stop Snort (Ctrl+C).
+
+3. **Analyze the Output:**
+   After running the exercise, you will see new log folders in your current directory. For example, navigate to the folder named after the IP address (e.g., `145.254.160.237`).
+
+   - Here, you can inspect the log files to find details such as the source port used to connect to port 53 (DNS), the IP ID of specific packets, HTTP referers, ACK numbers, and more.
+
+4. **Read the Log File with Snort:**
+   You can use Snort to read and analyze the generated log file. For example, to view the first 10 packets:
+   ```bash
+   snort -r snort.log.1640048004 -n 10
+   ```
+   ![image](5.png)
+   - This command helps you inspect packet details, such as IP IDs, HTTP referers, and ACK numbers.
+
+5. **Count TCP Port 80 Packets:**
+   By analyzing the log, you can determine how many packets were sent to TCP port 80 (HTTP). This is a great way to practice filtering and counting specific types of traffic.
+
+---
+
+## 🛡️ Snort in IDS/IPS Mode
+
+Snort's capabilities go beyond just sniffing and logging traffic. In IDS/IPS mode, Snort helps you manage and control network traffic based on user-defined rules, making it a powerful tool for intrusion detection and prevention!
+
+> ![image](6.png)
+
+### Key NIDS Mode Parameters
+
+| Parameter | Description |
+|-----------|-------------|
+| `-c`      | Specify the configuration file. |
+| `-T`      | Test the configuration file. |
+| `-N`      | Disable logging. |
+| `-D`      | Run Snort in the background (daemon mode). |
+| `-A`      | Alert modes (see below). |
+
+#### 🚨 Alert Modes (`-A`)
+
+- **full**: Full alert mode, providing all possible information about the alert. This is the default mode if you use `-A` without specifying a mode.
+- **fast**: Fast mode shows the alert message, timestamp, source and destination IP, and port numbers.
+- **console**: Provides fast-style alerts directly on the console screen.
+- **cmg**: CMG style, basic header details with payload in hex and text format.
+- **none**: Disables alerting.
