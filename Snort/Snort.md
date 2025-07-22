@@ -128,26 +128,120 @@ Let's investigate network traffic using Snort's default configuration in ASCII m
 
 ---
 
-## 🛡️ Snort in IDS/IPS Mode
+# 🚦 IDS/IPS Mode: Exploring Alert Parameters
 
-Snort's capabilities go beyond just sniffing and logging traffic. In IDS/IPS mode, Snort helps you manage and control network traffic based on user-defined rules, making it a powerful tool for intrusion detection and prevention!
+## 🔍 Testing Configuration with -c and -T
+I learned how to start Snort in IDS/IPS mode and test the configuration file using:
+```bash
+sudo snort -c /etc/snort/snort.conf -T
+```
+- `-c` : Specifies the configuration file
+- `-T` : Tests the configuration for errors
 
-> ![image](6.png)
+This step is crucial to ensure that Snort is set up correctly before monitoring real traffic. If there are any issues in the configuration, Snort will notify you, helping you avoid problems during live analysis.
 
-### Key NIDS Mode Parameters
+---
 
-| Parameter | Description |
-|-----------|-------------|
-| `-c`      | Specify the configuration file. |
-| `-T`      | Test the configuration file. |
-| `-N`      | Disable logging. |
-| `-D`      | Run Snort in the background (daemon mode). |
-| `-A`      | Alert modes (see below). |
+## 🛑 Disabling Logging with -N
+I discovered that you can run Snort without logging by using the `-N` parameter:
+```bash
+sudo snort -c /etc/snort/snort.conf -N
+```
+- `-N` : Disables logging
 
-#### 🚨 Alert Modes (`-A`)
+Even with logging disabled, you can still see output in the console if you use verbose or packet dump options (like `-v` or `-X`). This is useful for quick tests or when you don't want to fill up your disk with logs.
 
-- **full**: Full alert mode, providing all possible information about the alert. This is the default mode if you use `-A` without specifying a mode.
-- **fast**: Fast mode shows the alert message, timestamp, source and destination IP, and port numbers.
-- **console**: Provides fast-style alerts directly on the console screen.
-- **cmg**: CMG style, basic header details with payload in hex and text format.
-- **none**: Disables alerting.
+---
+
+## 🧑‍💻 Running in Background with -D
+I practiced running Snort as a background process (daemon mode) using:
+```bash
+sudo snort -c /etc/snort/snort.conf -D
+```
+- `-D` : Runs Snort in the background
+
+This is helpful for continuous monitoring. I also learned how to check if Snort is running:
+```bash
+ps -ef | grep snort
+```
+And how to stop it:
+```bash
+sudo kill -9 <PID>
+```
+> ⚠️ Daemon mode is powerful but should be used with caution and a stable configuration!
+
+---
+
+## 🚨 Exploring Alert Modes with -A
+Snort offers several alert modes, each with different output styles:
+- **console**: Fast-style alerts in the console
+- **cmg**: Detailed header and payload in hex/text
+- **full**: All possible alert info (in logs)
+- **fast**: Summary alerts (in logs)
+- **none**: Disables alerting
+
+### 🖥️ Console Mode
+```bash
+sudo snort -c /etc/snort/snort.conf -A console
+```
+- Shows alerts directly in the terminal, great for real-time monitoring.
+
+### 🧾 CMG Mode
+```bash
+sudo snort -c /etc/snort/snort.conf -A cmg
+```
+- Displays detailed packet info, including payload in hex and ASCII.
+
+### ⚡ Fast & Full Modes
+```bash
+sudo snort -c /etc/snort/snort.conf -A fast
+sudo snort -c /etc/snort/snort.conf -A full
+```
+- Both write alerts to log files, but `full` includes more details.
+
+### 🚫 None Mode
+```bash
+sudo snort -c /etc/snort/snort.conf -A none
+```
+- No alerts are generated, but traffic is still logged in binary format.
+
+---
+
+## 📝 What I Observed
+- Console and cmg modes are best for immediate feedback in the terminal.
+- Fast and full modes are useful for later analysis, as they store alerts in files.
+- None mode is good for silent logging without alerts.
+
+---
+
+## 🛠️ Using Rule Files Directly
+I learned that you can run Snort with just a rule file (without a full config):
+```bash
+sudo snort -c /etc/snort/rules/local.rules -A console
+```
+- This is handy for testing custom rules quickly, but not recommended for production due to limited performance and features.
+
+---
+
+## 🛡️ IPS Mode and Packet Dropping
+I explored Snort's IPS (Intrusion Prevention System) mode, which can actively block malicious traffic. To enable IPS mode, I used:
+```bash
+sudo snort -c /etc/snort/snort.conf -q -Q --daq afpacket -i eth0:eth1 -A console
+```
+- `-Q` and `--daq afpacket` : Enable IPS mode
+- `-i eth0:eth1` : Specify two interfaces for inline inspection
+- `-q` : Quiet mode (less console output)
+
+In this mode, Snort can drop or reject packets based on rules, providing active network defense!
+
+---
+
+## 🎓 Key Takeaways
+- I can confidently use Snort in various IDS/IPS modes and understand the impact of each parameter.
+- I know how to test configurations, run in the background, and choose the right alert mode for my needs.
+- I understand the difference between detection (IDS) and prevention (IPS) and how Snort can be used for both.
+- Hands-on practice with real traffic and rules helped me see how alerts are generated and how traffic can be blocked in IPS mode.
+![image](7.png)
+> **Snort is not just a tool—it's a learning platform for mastering network security!** 🚀
+
+
