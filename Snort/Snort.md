@@ -245,3 +245,55 @@ In this mode, Snort can drop or reject packets based on rules, providing active 
 > **Snort is not just a tool—it's a learning platform for mastering network security!** 🚀
 
 
+
+
+# 🧩 Task 9: Snort Rule Structure
+![image](8.png)
+Snort rules are the heart of detection! I learned that each rule has two main parts: the header and the options. The header defines what to look for (protocol, IPs, ports, direction), and the options specify how to match and what to do.
+
+**General structure:**
+```
+action protocol src_ip src_port -> dest_ip dest_port (options)
+```
+
+**Example:**
+```
+alert tcp any any -> 192.168.1.0/24 80 (msg:"HTTP traffic detected"; sid:1000001; rev:1;)
+```
+- `alert` – action (can also be log, pass, drop, etc.)
+- `tcp` – protocol
+- `any any` – any source IP and port
+- `->` – direction
+- `192.168.1.0/24 80` – destination network and port
+- `msg`, `sid`, `rev` – options for alert message, rule ID, and revision
+
+✨ **Options make rules powerful!** For example, `content:"USER";` matches packets containing "USER" (useful for FTP detection). You can use `nocase` for case-insensitive, `offset` and `depth` for precise matching, and many more.
+
+---
+
+# ⚙️ Task 10: Snort2 Operation Logic – Key Points
+![image](9.png)
+- Snort processes packets in order and checks them against all loaded rules.
+- **Rule order matters!** More specific rules should come before general ones to avoid missing important alerts.
+- Every rule needs a unique `sid` (Snort ID) and a `rev` (revision) for versioning.
+- Always test new rules with PCAP files before deploying them in production.
+- Use `-T` to test your configuration and rule syntax:
+  ```bash
+  sudo snort -c /etc/snort/snort.conf -T
+  ```
+- Place your custom rules in `local.rules` and make sure it's included in your main config.
+
+> 📝 **Tip:** Use clear messages and keep your rules organized for easier troubleshooting!
+
+---
+
+# 🏁 Task 11: Conclusion
+
+Snort is more than just a tool—it's a learning platform for network defenders! 🚀
+![image](10.png)
+- I now understand how to write and test custom rules to detect specific threats.
+- I can confidently run Snort in different modes and analyze alerts.
+- I know how to combine parameters and rules for flexible, powerful detection.
+- Hands-on practice with real traffic and PCAPs helped me see how theory meets reality.
+
+> **Snort empowers you to see, understand, and defend your network. Keep experimenting, keep learning!** 🛡️✨
