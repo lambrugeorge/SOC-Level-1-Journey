@@ -247,7 +247,7 @@ In this mode, Snort can drop or reject packets based on rules, providing active 
 
 
 
-# 🧩 Task 9: Snort Rule Structure
+# 🧩 Snort Rule Structure
 ![image](8.png)
 Snort rules are the heart of detection! I learned that each rule has two main parts: the header and the options. The header defines what to look for (protocol, IPs, ports, direction), and the options specify how to match and what to do.
 
@@ -271,7 +271,7 @@ alert tcp any any -> 192.168.1.0/24 80 (msg:"HTTP traffic detected"; sid:1000001
 
 ---
 
-# ⚙️ Task 10: Snort2 Operation Logic – Key Points
+# ⚙️ Snort2 Operation Logic – Key Points
 ![image](9.png)
 - Snort processes packets in order and checks them against all loaded rules.
 - **Rule order matters!** More specific rules should come before general ones to avoid missing important alerts.
@@ -287,7 +287,7 @@ alert tcp any any -> 192.168.1.0/24 80 (msg:"HTTP traffic detected"; sid:1000001
 
 ---
 
-# 🏁 Task 11: Conclusion
+# 🏁 Conclusion
 
 Snort is more than just a tool—it's a learning platform for network defenders! 🚀
 ![image](10.png)
@@ -342,3 +342,88 @@ Correct Answer
 1
 
 Correct Answer
+
+
+
+
+- **Clear the previous alert file and comment out old rules. Write a rule to filter packets with Push-Ack flags and run it against the given pcap file. How many packets are detected?**
+  - **Answer:** 216 🚩
+
+- **Clear the previous alert file and comment out old rules. Create a rule to filter UDP packets with the same source and destination IP and run it against the given pcap file. How many packets have the same source and destination address?**
+  - **Answer:** 7 🔄
+
+- **Case Example:** An analyst successfully modified an existing rule. Which rule option must be changed after implementation?
+  - **Answer:** `rev` (revision) 🔄
+
+---
+
+### Snort2 Operation Logic – Key Points 🛡️
+
+#### Main Components of Snort 🧩
+
+- **Packet Decoder** – Collects and prepares packets for pre-processing. 📦
+- **Pre-processors** – Arranges and modifies packets for the detection engine. 🛠️
+- **Detection Engine** – Analyzes packets by applying rules. 🔍
+- **Logging and Alerting** – Generates logs and alerts. 🚨
+- **Outputs and Plugins** – Integrates outputs (e.g., syslog/mysql) and adds extra features. 🔌
+
+#### Types of Snort Rules 📜
+
+- **Community Rules** – Free, public ruleset (GPLv2). 🌍
+- **Registered Rules** – Free (registration required), 30-day delay. 🕒
+- **Subscriber Rules** – Paid, updated twice a week. 💸
+
+> To use rules, you must specify them in the `snort.conf` file.
+
+#### Important Files 📁
+
+- `snort.conf` – Main configuration file.
+- `local.rules` – User-created rules.
+
+---
+
+#### Configuring the snort.conf File ⚙️
+
+##### Step 1: Set Network Variables 🌐
+
+| TAG NAME         | INFO                        | EXAMPLE                    |
+|------------------|----------------------------|----------------------------|
+| HOME_NET         | Network to protect          | 'any' or '192.168.1.1/24'  |
+| EXTERNAL_NET     | External network            | 'any' or '!$HOME_NET'      |
+| RULE_PATH        | Rule path                   | /etc/snort/rules           |
+| SO_RULE_PATH     | Registered/subscriber rules | $RULE_PATH/so_rules        |
+| PREPROC_RULE_PATH| Registered/subscriber rules | $RULE_PATH/plugin_rules    |
+
+##### Step 2: Configure the Decoder 🧬
+
+- **DAQ Module:** Selects operation mode (e.g., pcap – sniffer, afpacket – IPS inline, etc.)
+- **Example:**
+  - `#config daq: afpacket`
+  - `#config daq_mode: inline`
+  - `#config logdir: /var/logs/snort`
+
+> There are 6 DAQ modules: pcap, afpacket, ipq, nfq, ipfw, dump. Most popular: pcap (default) and afpacket (IPS).
+
+##### Step 6: Configure Output Plugins 🖨️
+
+- Manages logging and alerting format.
+- By default, everything is shown in the console, but you can configure for more efficient logging.
+
+![Snort Output Configuration](13.png)
+
+##### Step 7: Customize Your Ruleset 🛠️
+
+| TAG NAME                | INFO                        | EXAMPLE                        |
+|-------------------------|-----------------------------|--------------------------------|
+| # site specific rules   | Local/user rules path       | include $RULE_PATH/local.rules |
+| #include $RULE_PATH/    | Downloaded rules path       | include $RULE_PATH/rulename    |
+
+> `#` is the comment operator. Remove `#` to activate a rule.
+
+---
+
+> Read the above task. No answer needed.
+
+---
+
+**How likely are you to recommend this room to others?** ⭐
