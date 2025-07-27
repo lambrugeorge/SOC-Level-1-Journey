@@ -119,4 +119,141 @@ alert tcp any 80 <> any any (msg:"TCP port 80 found"; sid:100001; rev:1;)
 
 ## 🎉 Exercise Complete!
 
-You have successfully analyzed network traffic using Snort IDS rules and extracted key packet information including IP addresses, port numbers, sequence numbers, and TTL values.
+
+---
+
+## 🛡️ Exercise 2: Writing IDS Rules (FTP)
+
+Let's create IDS Rules for FTP traffic! 🚦
+
+**Instructions:**
+- Navigate to the task folder.
+- Use the given pcap file for analysis.
+
+---
+
+### 1️⃣ Write a rule to detect all TCP port 21 traffic in the given pcap
+
+**What is the number of detected packets?**
+
+![Detected Packets](6.png)
+![Snort Output](7.png)
+
+**Answer:** `307`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log file.
+
+---
+
+### 2️⃣ What is the FTP service name?
+
+**Answer:** `Microsoft FTP Service`
+
+![FTP Service Name](8.png)
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rules before proceeding!*
+
+---
+
+### 3️⃣ Write a rule to detect failed FTP login attempts in the given pcap
+
+**What is the number of detected packets?**
+
+![Failed FTP Logins](9.png)
+
+**Answer:** `41`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rule before proceeding!*
+
+---
+
+### 4️⃣ Write a rule to detect successful FTP logins in the given pcap
+
+**What is the number of detected packets?**
+
+![Successful FTP Logins](10.png)
+
+**Answer:** `1`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rule before proceeding!*
+
+---
+
+### 5️⃣ Write a rule to detect FTP login attempts with a valid username but no password entered yet
+
+**What is the number of detected packets?**
+
+![Valid User, No Password](11.png)
+
+**Answer:** `42`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rule before proceeding!*
+
+---
+
+### 6️⃣ Write a rule to detect FTP login attempts with the "Administrator" username but no password entered yet
+
+**What is the number of detected packets?**
+
+![Administrator, No Password](12.png)
+
+**Answer:** `7`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rule before proceeding!*
+
+---
+
+## 📝 Useful Commands & Rule Examples
+
+```bash
+# Navigate to the exercise folder
+cd /home/ubuntu/Desktop/Exercise-Files/TASK-3\ (FTP)/
+ls -l
+
+# Run Snort with your rules
+sudo snort -c local.rules -r ftp-png-gif.pcap -A console
+
+# Example rule to detect all TCP port 21 traffic
+alert tcp any any <> any 21 (msg: "TCP port 21 Found"; sid: 1000001; rev:1;)
+
+grep "TCP port 21 Found" alert
+grep -c "TCP port 21 Found" alert
+
+# Find Administrator logins
+strings ftp-png-gif.pcap | grep -i "Administrator" | wc -l
+
+# Rule for valid user, waiting for password
+alert tcp any any -> any 21 (msg:"FTP valid user - waiting password"; content:"331 Password"; sid:1000004; rev:1;)
+
+# Rule for Administrator login, waiting for password
+alert tcp any any -> any 21 (msg:"FTP login Administrator waiting password"; content:"Administrator"; content:"331 Password"; sid:1000006; rev:1;)
+
+grep "FTP login Administrator waiting password" alert | wc -l
+tcpdump -nn -r ftp-png-gif.pcap | grep Administrator
+
+# Output files
+> alert
+> snort.log.*
+```
