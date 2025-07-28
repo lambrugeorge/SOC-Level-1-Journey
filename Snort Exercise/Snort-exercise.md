@@ -257,3 +257,107 @@ tcpdump -nn -r ftp-png-gif.pcap | grep Administrator
 > alert
 > snort.log.*
 ```
+## 🎉 Exercise Complete!
+
+---
+
+## 🖼️ Exercise 3: Writing IDS Rules (PNG)
+
+Let's create IDS Rules for PNG files in the traffic! 📸
+
+**Instructions:**
+- Navigate to the task folder.
+- Use the given pcap file for analysis.
+
+---
+
+### 1️⃣ Write a rule to detect the PNG file in the given pcap
+
+**Investigate the logs and identify the software name embedded in the packet.**
+
+![PNG Analysis](13.png)
+
+**Answer:** `Adobe ImageReady`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+📝 *Tip: Deactivate or comment out the old rule before proceeding!*
+
+---
+
+### 2️⃣ Write a rule to detect the GIF file in the given pcap
+
+**Investigate the logs and identify the image format embedded in the packet.**
+
+![GIF Analysis](14.png)
+
+**Answer:** `GIF89a`
+
+✅ **Correct Answer**
+
+---
+
+## 🎉 Exercise Complete!
+
+
+## 🌊 Exercise 4: Writing IDS Rules (Torrent Metafile)
+
+Let's create IDS Rules for torrent metafiles in the traffic! ⚡
+
+**Instructions:**
+- Navigate to the task folder.
+- Use the given pcap file for analysis.
+
+---
+
+### 1️⃣ Write a rule to detect the torrent metafile in the given pcap
+
+**What is the number of detected packets?**
+
+![Torrent Detection](15.png)
+
+**Answer:** `2`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 2️⃣ What is the name of the torrent application?
+
+![Torrent Application](16.png)
+
+**Answer:** `bittorrent`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 3️⃣ What is the MIME (Multipurpose Internet Mail Extensions) type of the torrent metafile?
+
+![MIME Type](17.png)
+
+**Answer:** `application/x-bittorrent`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 4️⃣ What is the hostname of the torrent metafile?
+
+**Answer:** `tracker2.torrentbox.com`
+
+✅ **Correct Answer**
+
+---
+
+## 🔧 Exercise 5: Troubleshooting Rule Syntax
+
+## 🎉 Exercise Complete!
