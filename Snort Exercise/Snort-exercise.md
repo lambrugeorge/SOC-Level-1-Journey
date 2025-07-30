@@ -474,3 +474,71 @@ sudo snort -c local-X.rules -r mx-1.pcap -A console
 ---
 
 ## 🎉 Exercise Complete!
+
+
+---
+
+## 🚨 Exercise 7: Using External Rules (MS17-010)
+
+Let's use external rules to fight against the latest threats! ⚔️
+
+**Instructions:**
+- Navigate to the task folder.
+- Use the given pcap file for analysis.
+
+---
+
+### 1️⃣ Use the given rule file (local.rules) to investigate the ms1710 exploitation
+
+**What is the number of detected packets?**
+
+![MS17-010 Detection](26.png)
+
+**Answer:** `25154`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+---
+
+### 2️⃣ Use local-1.rules empty file to write a new rule to detect payloads containing the "\IPC$" keyword
+
+**What is the number of detected packets?**
+
+![IPC$ Detection](26.png)
+
+**Answer:** `12`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 3️⃣ What is the requested path?
+
+**Answer:** `\\192.168.116.138\IPC$`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Look for network path information in the logs.
+
+---
+
+### 4️⃣ What is the CVSS v2 score of the MS17-010 vulnerability?
+
+![CVSS Score](27.png)
+
+**Answer:** `9.3`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Check vulnerability databases for MS17-010 details.
+
+---
+
+## 🎉 Exercise Complete!
+
+
+
