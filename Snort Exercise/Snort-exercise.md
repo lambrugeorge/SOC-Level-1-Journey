@@ -356,8 +356,121 @@ Let's create IDS Rules for torrent metafiles in the traffic! ⚡
 
 ✅ **Correct Answer**
 
+## 🎉 Exercise Complete!
+
+
+## 🔧 Exercise 6: Troubleshooting Rule Syntax Errors
+
+Let's troubleshoot rule syntax errors! 🛠️
+
+**Instructions:**
+- In this section, you need to fix the syntax errors in the given rule files.
+- You can test each ruleset with the following command structure:
+
+```bash
+sudo snort -c local-X.rules -r mx-1.pcap -A console
+```
+
+![Troubleshooting Overview](20.png)
+
 ---
 
-## 🔧 Exercise 5: Troubleshooting Rule Syntax
+### 1️⃣ Fix the syntax error in local-1.rules file and make it work smoothly
+
+**What is the number of the detected packets?**
+
+![Local-1 Rules Fix](18.png)
+
+**Answer:** `16`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Check for missing semicolons and proper syntax.
+
+---
+
+### 2️⃣ Fix the syntax error in local-2.rules file and make it work smoothly
+
+**What is the number of the detected packets?**
+
+![Local-2 Rules Fix](19.png)
+
+**Answer:** `68`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Verify rule structure and content matching.
+
+---
+
+### 3️⃣ Fix the syntax error in local-3.rules file and make it work smoothly
+
+**What is the number of the detected packets?**
+
+![Local-3 Rules Fix](21.png)
+
+**Answer:** `87`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Check for proper rule formatting and options.
+
+---
+
+### 4️⃣ Fix the syntax error in local-4.rules file and make it work smoothly
+
+**What is the number of the detected packets?**
+
+![Local-4 Rules Fix](22.png)
+
+**Answer:** `90`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Ensure all rule components are properly defined.
+
+---
+
+### 5️⃣ Fix the syntax error in local-5.rules file and make it work smoothly
+
+**What is the number of the detected packets?**
+
+![Local-5 Rules Fix](23.png)
+
+**Answer:** `155`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Review rule logic and content patterns.
+
+---
+
+### 6️⃣ Fix the logical error in local-6.rules file and make it work smoothly to create alerts
+
+**What is the number of the detected packets?**
+
+![Local-6 Rules Fix](24.png)
+
+**Answer:** `2`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Focus on logical operators and rule conditions.
+
+---
+
+### 7️⃣ Fix the logical error in local-7.rules file and make it work smoothly to create alerts
+
+**What is the name of the required option:**
+
+![Local-7 Rules Fix](25.png)
+
+**Answer:** `msg`
+
+✅ **Correct Answer**
+
+💡 **Hint:** Check for missing required rule options.
+
+---
 
 ## 🎉 Exercise Complete!
