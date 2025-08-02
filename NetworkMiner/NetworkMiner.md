@@ -201,25 +201,25 @@ The right-click menu is helpful in this part as well. You can easily copy the us
 
 460
 ![image](3.png)
-Correct Answer
+
 
 **How many IP addresses use the same MAC address with host 145.253.2.203?**
 
 2
 ![image](4.png)
-Correct Answer
+
 
 **How many packets were sent from host 65.208.228.223?**
 
 72
 ![image](5.png)
-Correct Answer
+
 
 **What is the name of the webserver banner under host 65.208.228.223?**
 
 Apache
 ![image](6.png)
-Correct Answer
+
 
 ### Use mx-4.pcap
 
@@ -227,10 +227,131 @@ Correct Answer
 
 #B\Administrator
 ![image](7.png)
-Correct Answer
+
 
 **What is the extracted password?**
 
 $NETNTLMv2$#B$136B077D942D9A63$FBFF3C253926907AAAAD670A9037F2A5$01010000000000000094D71AE38CD60170A8D571127AE49E00000000020004003300420001001E003000310035003600360053002D00570049004E00310036002D004900520004001E0074006800720065006500620065006500730063006F002E0063006F006D0003003E003000310035003600360073002D00770069006E00310036002D00690072002E0074006800720065006500620065006500730063006F002E0063006F006D0005001E0074006800720065006500620065006500730063006F002E0063006F006D00070008000094D71AE38CD601060004000200000008003000300000000000000000000000003000009050B30CECBEBD73F501D6A2B88286851A6E84DDFAE1211D512A6A5A72594D340A001000000000000000000000000000000000000900220063006900660073002F003100370032002E00310036002E00360036002E0033003600000000000000000000000000
 ![image](8.png)
-Correct Answer
+
+
+
+
+
+
+## 🛠️ Tool Overview 2 - What We Learned Today
+
+### 📁 Files
+
+The file menu shows extracted files from investigated pcaps. This section provides information on:
+
+- Frame number
+- Filename
+- Extension
+- Size
+- Source and destination address
+- Source and destination port
+- Protocol
+- Timestamp
+- Reconstructed path
+- Details
+
+Some features (OSINT hash lookup and sample submission) are available only in premium mode. The search bar is available here as well. The right-click menu is helpful in this part as well. You can easily open files and folders and view the file details in-depth.
+
+### 🖼️ Images
+
+The file menu shows extracted images from investigated pcaps. The right-click menu is helpful in this part as well. You can open files and zoom in & out easily.
+
+Once you hover over the image, it shows the file's detailed information (source & destination address and file path).
+
+### ⚙️ Parameters
+
+The file menu shows extracted parameters from investigated pcaps. This section provides information on:
+
+- Parameter name
+- Parameter value
+- Frame number
+- Source and destination host
+- Source and destination port
+- Timestamp
+- Details
+
+The right-click menu is helpful in this part as well. You can copy the parameters and values easily.
+
+### 🔍 Keywords
+
+The file menu shows extracted keywords from investigated pcaps. This section provides information on:
+
+- Frame number
+- Timestamp
+- Keyword
+- Context
+- Source and destination host
+- Source and destination port
+
+**How to filter keywords:**
+
+- Add keywords
+- Reload case files!
+
+**Note:** You can filter multiple keywords in this section; however, you must reload the case files after updating the search keywords. Keyword search investigates all possible data in the processed pcaps.
+
+### 💬 Messages
+
+The messages menu shows extracted emails, chats and messages from investigated pcaps. This section provides information on:
+
+- Frame number
+- Source and destination host 
+- Protocol
+- Sender (From)
+- Receiver (To)
+- Timestamp
+- Size
+
+Once you filter the traffic and get a hit, you will discover additional details like attachments and attributes on the selected message. Note that the search bar is available here as well. The right-click menu is available here. You can use the built-in viewer to investigate overall information and the "open file" option to explore attachments.
+
+### ⚠️ Anomalies
+
+The anomalies menu shows detected anomalies in the processed pcap. Note that NetworkMiner isn't designated as an IDS. However, developers added some detections for EternalBlue exploit and spoofing attempts.
+
+## 🎯 Answer the questions below
+
+### Use mx-7 pcap
+
+**What is the name of the Linux distro mentioned in the file associated with frame 63075?**
+
+CentOS
+![image](9.png)
+
+
+**What is the header of the page associated with frame 75942?**
+
+Password-Ned AB
+![image](10.png)
+
+
+**What is the source address of the image "ads.bmp.2E5F0FD9.bmp"?**
+
+80.239.178.187
+![image](11.png)
+
+
+**What is the frame number of the possible TLS anomaly?**
+
+36255
+![image](12.png)
+
+
+### Use mx-9 file
+
+**Look at the messages. Which platform sent a password reset email?**
+
+Facebook
+![image](13.png)
+
+
+**What is the email address of Branson Matheson?**
+
+branson@sandsite.org
+![image](14.png)
+
