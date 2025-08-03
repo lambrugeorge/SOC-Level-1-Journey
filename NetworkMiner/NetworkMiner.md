@@ -355,3 +355,95 @@ Facebook
 branson@sandsite.org
 ![image](14.png)
 
+
+
+Exercises
+
+You've learned what NetworkMiner is and how to use it. Let's put this into practice!
+
+### 📋 Answer the questions below
+
+#### 🔍 Use case1.pcap
+
+**What is the OS name of the host 131.151.37.122?**
+
+Windows - Windows NT 4 
+![image](15.png)
+
+
+**Investigate the hosts 131.151.37.122 and 131.151.32.91.**
+**How many data bytes were received from host 131.151.32.91 to host 131.151.37.122 through port 1065?**
+
+192
+![image](16.png)
+
+
+**Investigate the hosts 131.151.37.122 and 131.151.32.21.**
+**How many data bytes were received from host 131.151.37.122 to host 131.151.32.21 through port 143?**
+
+20769
+![image](18.png)
+
+**What is the sequence number of frame 9?**
+
+2AD77400
+
+**What is the number of the detected "content types"?**
+![image](18.png)
+2
+
+#### 🔍 Use case2.pcap and investigate the files
+
+**What is the USB product's brand name?**
+
+ASIX
+![image](19.png)
+
+**What is the name of the phone model?**
+
+Lumia 535
+![image](20.png)
+
+**What is the source IP of the fish image?**
+
+50.22.95.9
+![image](21.png)
+
+**What is the password of the "homer.pwned.se@gmx.com"?**
+
+spring2015
+![image](22.png)
+
+
+**What is the DNS Query of frame 62001?**
+
+pop.gmx.com
+
+
+## 🎉 Conclusion
+### 🎯 Key Takeaways
+
+- **Network Forensics Fundamentals**: Learned how NetworkMiner serves as a powerful Network Forensic Analysis Tool (NFAT)
+- **Traffic Analysis**: Mastered the art of analyzing PCAP files for quick overview and data extraction
+- **OS Fingerprinting**: Discovered how to identify operating systems from network traffic
+- **File Extraction**: Learned to extract and reconstruct files from captured traffic
+- **Credential Discovery**: Explored techniques for extracting credentials and authentication data
+- **Practical Application**: Applied your knowledge through hands-on exercises with real PCAP files
+
+### 🛠️ Skills Acquired
+
+✅ **PCAP Analysis**: Parse and analyze packet capture files  
+✅ **Host Discovery**: Identify hosts, OS types, and network topology  
+✅ **Session Analysis**: Examine network sessions and communication patterns  
+✅ **File Reconstruction**: Extract and reconstruct files from network traffic  
+✅ **Credential Extraction**: Identify and extract authentication data  
+✅ **DNS Analysis**: Analyze DNS queries and responses  
+✅ **Traffic Filtering**: Use advanced filtering techniques for investigation  
+
+### 🔄 Best Practices
+
+- **Quick Overview First**: Use NetworkMiner for initial traffic assessment
+- **Deep Analysis Later**: Follow up with Wireshark for detailed packet analysis
+- **File Extraction**: Always check for extracted files and credentials
+- **OS Fingerprinting**: Leverage built-in OS detection capabilities
+- **Keyword Filtering**: Use keyword search for targeted investigations
