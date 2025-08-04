@@ -263,3 +263,162 @@ Microknoppix
 332.319364
 
 ![image](9.png)
+
+
+## CLI Kung-Fu: What I Practiced Today 💻
+
+Today I discovered why **CLI skills are crucial** for network security analysis. While GUIs are helpful for quick tasks, when dealing with massive amounts of network data, command-line tools are much more powerful and stable.
+
+The key insight: **What if there's no GUI button for what you need to find?**
+
+I practiced manipulating data at the command line - an essential skill for any security analyst. When working with packets and logs, you need CLI tools, Berkeley Packet Filters (BPF), and regular expressions to extract the information you're looking for.
+
+### CLI Commands I Mastered Today 📚
+
+**Basic Commands I Used:**
+- `history` - View command history
+- `!10` - Execute the 10th command in history  
+- `!!` - Execute the previous command
+
+**File Reading Skills:**
+- `cat sample.txt` - Read entire files
+- `head sample.txt` - Read first 10 lines
+- `tail sample.txt` - Read last 10 lines
+
+**Data Filtering & Processing:**
+- `cat test.txt | cut -f 1` - Extract specific fields
+- `cat test.txt | grep 'keywords'` - Filter by keywords
+- `cat test.txt | sort` - Sort alphabetically
+- `cat test.txt | sort -n` - Sort numerically
+- `cat test.txt | uniq` - Remove duplicates
+- `cat test.txt | wc -l` - Count lines
+- `cat test.txt | nl` - Show line numbers
+
+**Advanced Text Processing:**
+- `cat test.txt | sed -n '11p'` - Print specific lines
+- `cat test.txt | awk 'NR == 11 {print $0}'` - Advanced line selection
+- `cat signatures.log | zeek-cut uid src_addr dst_addr` - Extract Zeek log fields
+
+**Useful Combinations I Learned:**
+- `sort | uniq` - Remove duplicate values
+- `sort | uniq -c` - Count occurrences
+- `sort -nr` - Sort numerically in reverse
+- `grep -v 'test'` - Exclude matching lines
+- `grep -rin Testvalue1 * | column -t | less -S` - Search and format output
+
+## Zeek Signatures: My Hands-On Experience 🛡️
+
+I learned that **Zeek signatures** are powerful rules for detecting network anomalies. Unlike Snort rules, Zeek signatures aren't the primary detection method - they work alongside Zeek's scripting language to chain multiple events and find interesting activities.
+
+### Signature Structure I Understood 📋
+
+Every Zeek signature has three parts:
+- **Signature ID**: Unique name for the rule
+- **Conditions**: 
+  - **Header**: Filter by IP addresses, ports, protocols
+  - **Content**: Filter by packet payload patterns
+- **Action**: Create logs and trigger scripts when matches occur
+
+### Signature Components I Worked With 🔍
+
+**Header Filters:**
+- `src-ip` and `dst-ip` - Source and destination IPs
+- `src-port` and `dst-port` - Port numbers
+- `ip-proto` - Protocol (TCP, UDP, ICMP, etc.)
+
+**Content Filters:**
+- `payload` - Raw packet data
+- `http-request` - HTTP requests
+- `http-request-header` - HTTP headers
+- `ftp` - FTP command inputs
+
+**Comparison Operators:** `==`, `!=`, `<`, `<=`, `>`, `>=`
+
+### Running Zeek with Signatures ⚙️
+
+I practiced the command:
+```bash
+ubuntu@ubuntu$ zeek -C -r sample.pcap -s sample.sig
+```
+
+Where:
+- `-C` ignores checksum errors
+- `-r` reads the PCAP file
+- `-s` uses the signature file
+
+## Practical Exercises I Completed ✅
+
+### Exercise 1: HTTP Password Detection 🔐
+
+I created a signature to detect **cleartext passwords** in HTTP traffic using regex patterns. The rule matched when "password" was found in packet payloads.
+
+**What I did:**
+```bash
+ubuntu@ubuntu$ zeek -C -r http.pcap -s http-password.sig 
+ubuntu@ubuntu$ ls
+clear-logs.sh  conn.log  files.log  http-password.sig  http.log  http.pcap  notice.log  packet_filter.log  signatures.log
+
+ubuntu@ubuntu$ cat notice.log  | zeek-cut id.orig_h id.resp_h msg 
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+10.10.57.178	44.228.249.3	10.10.57.178: Cleartext Password Found!
+
+ubuntu@ubuntu$ cat signatures.log | zeek-cut src_addr dest_addr sig_id event_msg 
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+10.10.57.178		http-password	10.10.57.178: Cleartext Password Found!
+```
+
+**What I discovered:** Both `signatures.log` and `notice.log` provided details about the password detection, including application banners showing where the match occurred.
+
+### Exercise 2: FTP Brute-Force Detection 🚪
+
+I created signatures to detect **FTP brute-force attempts** by monitoring login failures and admin account usage.
+
+**What I found:**
+```bash
+ubuntu@ubuntu$ zeek -C -r ftp.pcap -s ftp-admin.sig
+ubuntu@ubuntu$ cat signatures.log | zeek-cut src_addr dst_addr event_msg sub_msg | sort -r| uniq
+10.234.125.254	10.121.70.151	10.234.125.254: FTP Admin Login Attempt!	USER administrator
+10.234.125.254	10.121.70.151	10.234.125.254: FTP Admin Login Attempt!	USER admin 
+```
+
+**Key insight:** I learned that case-specific signatures (like detecting "admin" accounts) are useful but global signatures (detecting all FTP 530 login failures) are more practical for real-world threat detection.
+
+### Exercise 3: Advanced Signature Analysis 📊
+
+I practiced creating multiple signatures in one file and correlating events:
+
+```bash
+ubuntu@ubuntu$ zeek -C -r ftp.pcap -s ftp-admin.sig
+ubuntu@ubuntu$ cat notice.log | zeek-cut uid id.orig_h id.resp_h msg sub | sort -r| nl | uniq | sed -n '1001,1004p'
+  1001	CeMYiaHA6AkfhSnd	10.234.125.254	10.121.70.151	10.234.125.254: FTP Username Input Found!	USER admin
+  1002	CeMYiaHA6AkfhSnd	10.234.125.254	10.121.70.151	10.121.70.151: FTP Brute-force Attempt!	530 Login incorrect.
+  1003	CeDTDZ2erDNF5w7dyf	10.234.125.254	10.121.70.151	10.234.125.254: FTP Username Input Found!	USER administrator
+  1004	CeDTDZ2erDNF5w7dyf	10.234.125.254	10.121.70.151	10.121.70.151: FTP Brute-force Attempt!	530 Login incorrect.
+```
+
+This showed me how to correlate different types of alerts and understand attack patterns.
+
+## Snort vs Zeek: What I Learned 🤔
+
+I discovered that while Zeek was originally called "Bro" and supported Snort rules through a `snort2bro` script, this compatibility is no longer supported after the rebranding to Zeek. The workflows between the two platforms have evolved separately.
+
+## My Practical Assessment Results 📝
+
+**Exercise Location:** Desktop/Exercise-Files/TASK-5
+
+**Question 1:** What is the source IP of the first event?
+**My Answer:** 10.10.57.178
+
+![image](10.png)
+
+**Question 2:** What is the source port of the second event?
+**My Answer:** 38712
+
+![image](11.png)
+
+**Question 3:** What is the total number of sent and received packets from source port 38706?
+**My Answer:** 20
+
+![image](12.png)
+
+
