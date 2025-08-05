@@ -1,7 +1,5 @@
 # Zeek 🔍
 
-![Zeek logo](1.png)
-
 Zeek (formerly Bro) is an open-source and commercial network monitoring tool (traffic analyser).
 
 ## Overview 📋
@@ -44,8 +42,6 @@ While both are called IDS/NIDS, it is good to know the cons and pros of each too
 ## Zeek Architecture 🏗️
 
 Zeek has two primary layers; "Event Engine" and "Policy Script Interpreter". The Event Engine layer is where the packets are processed; it is called the event core and is responsible for describing the event without focusing on event details. It is where the packages are divided into parts such as source and destination addresses, protocol identification, session analysis and file extraction. The Policy Script Interpreter layer is where the semantic analysis is conducted. It is responsible for describing the event correlations by using Zeek scripts.
-
-![Zeek Architecture](2.png)
 
 ## Zeek Frameworks 🔧
 
@@ -139,19 +135,19 @@ Each exercise has a folder. Ensure you are in the right directory to find the pc
 
 4.2.1
 
-![image](3.png)
+![image](1.png)
 
 **What is the version of the ZeekControl module?**
 
 2.4.0
 
-![image](4.png)
+![image](2.png)
 
 **Hint: Investigate the "sample.pcap" file. What is the number of generated alert files?**
 
 8
 
-![image](5.png)
+![image](3.png)
 
 ## Zeek Logs 📋
 
@@ -250,19 +246,19 @@ Each exercise has a folder. Ensure you are in the right directory to find the pc
 
 Microknoppix
 
-![image](7.png)
+![image](4.png)
 
 **Investigate the dns.log file. What is the number of unique DNS queries?**
 
 2
 
-![image](8.png)
+![image](5.png)
 
 **Investigate the conn.log file. What is the longest connection duration?**
 
 332.319364
 
-![image](9.png)
+![image](6.png)
 
 
 ## CLI Kung-Fu: What I Practiced Today 💻
@@ -409,20 +405,23 @@ I discovered that while Zeek was originally called "Bro" and supported Snort rul
 **Question 1:** What is the source IP of the first event?
 **My Answer:** 10.10.57.178
 
-![image](9.png)
+![image](7.png)
 
 **Question 2:** What is the source port of the second event?
 **My Answer:** 38712
 
-![image](9.png)
+![image](8.png)
 
 **Question 3:** What is the total number of sent and received packets from source port 38706?
 **My Answer:** 20
 
+![image](8.png)
+
+**Question 4:** Create the global rule shown in the task and investigate the ftp.pcap file.
+Investigate the notice.log. What is the number of unique events?
+**My Answer:** 1413
+
 ![image](9.png)
-
-
-
 --------------------------------------------------
 
 📄 Zeek Scripting Fundamentals
