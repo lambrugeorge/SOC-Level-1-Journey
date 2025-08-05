@@ -409,16 +409,65 @@ I discovered that while Zeek was originally called "Bro" and supported Snort rul
 **Question 1:** What is the source IP of the first event?
 **My Answer:** 10.10.57.178
 
-![image](10.png)
+![image](9.png)
 
 **Question 2:** What is the source port of the second event?
 **My Answer:** 38712
 
-![image](11.png)
+![image](9.png)
 
 **Question 3:** What is the total number of sent and received packets from source port 38706?
 **My Answer:** 20
 
+![image](9.png)
+
+
+
+--------------------------------------------------
+
+📄 Zeek Scripting Fundamentals
+Zeek uses a powerful event-driven scripting language that helps with automation and correlation of network events.
+
+Zeek script file extension:
+.zeek
+
+Default script directories:
+  /opt/zeek/share/zeek/base        -> DO NOT MODIFY
+  /opt/zeek/share/zeek/site        -> USER SCRIPTS
+  /opt/zeek/share/zeek/policy      -> POLICY SCRIPTS
+
+Zeek configuration file path:
+  /opt/zeek/share/zeek/site/local.zeek
+
+Example of loading a script in local.zeek:
+@load @/script/path
+
+Example of running a Zeek script with a signature:
+zeek -C -r sample.pcap -s sample.sig
+
+--------------------------------------------------
+
+📡 TASK-6: DHCP - Hostnames & Domains
+Extracting hostname and domain data from DHCP traffic using a Zeek script.
+
+zeek -C -r smallFlows.pcap dhcp-hostname.zeek
+cat dhcp.log | grep vinlap01
+cat dhcp.log | zeek-cut domain
+cat dhcp.log | zeek-cut domain | sort | uniq
+cat dhcp.log | zeek-cut domain | sort | uniq | wc -l
+cat dhcp.log | zeek-cut host_name | sort | uniq | wc -l
+
+✅ Answers from Investigation:
+
+Domain value for vinlap01: astaro_vineyard
+![image](10.png)
+
+Unique hostnames in bigFlows.pcap: 17
+![image](11.png)
+
+Identified domain: jaalam.net
 ![image](12.png)
+
+--------------------------------------------------
 
 
