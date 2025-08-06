@@ -468,5 +468,104 @@ Identified domain: jaalam.net
 ![image](12.png)
 
 --------------------------------------------------
+# Zeek Scripts & Signatures - Quick Summary 🚀
 
+# Scripts 101 | Basic events
 
+cat << 'EOF' > 101.zeek
+event zeek_init() { print("Started Zeek!"); }
+event zeek_done() { print("Stopped Zeek!"); }
+EOF
+
+zeek -C -r sample.pcap 101.zeek
+
+# Print all new connections (raw data)
+
+cat << 'EOF' > 102.zeek
+event new_connection(c: connection) { print c; }
+EOF
+
+zeek -C -r sample.pcap 102.zeek
+
+# Filter new connection info
+
+cat << 'EOF' > 103.zeek
+event new_connection(c: connection) {
+  print ("###########################################################");
+  print ("New Connection Found!");
+  print fmt ("Source Host: %s # %s --->", c$id$orig_h, c$id$orig_p);
+  print fmt ("Destination Host: resp: %s # %s <---", c$id$resp_h, c$id$resp_p);
+}
+EOF
+
+zeek -C -r sample.pcap 103.zeek
+
+# Scripts 201 | Detect signature hits
+
+cat << 'EOF' > 201.zeek
+event signature_match(state: signature_state, msg: string, data: string) {
+  if (state$sig_id == "ftp-admin") {
+    print("Signature hit! --> #FTP-Admin ");
+  }
+}
+EOF
+
+cat << 'EOF' > ftp-admin.sig
+signature ftp-admin {
+  ip-proto == tcp
+  ftp /.*USER.*admin.*/
+  event "FTP Username Input Found!"
+}
+EOF
+
+zeek -C -r ftp.pcap -s ftp-admin.sig 201.zeek
+
+# Scripts 202 | Load local scripts
+
+zeek -C -r ftp.pcap local
+
+# Load specific script for FTP brute force detection
+
+zeek -C -r ftp.pcap /opt/zeek/share/zeek/policy/protocols/ftp/detect-bruteforcing.zeek
+
+cat notice.log | zeek-cut ts note msg
+
+# Exercises ✅
+
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-7
+
+No answer needed
+
+Correct Answer  
+Go to folder TASK-7/101.  
+Investigate the sample.pcap file with 103.zeek script. Investigate the terminal output. What is the number of the detected new connections?  
+
+87  
+![image](13.png)  
+
+Correct Answer  
+Go to folder TASK-7/201.  
+Investigate the ftp file with ftp-admin.sig signature and 201.zeek script. Investigate the signatures.log file. What is the number of signature hits?  
+
+1401  
+![image](14.png)  
+
+Correct Answer  
+Investigate the signatures.log file. What is the total number of "administrator" username detections?  
+
+731  
+![image](15.png)  
+
+Correct Answer  
+Investigate the ftp.pcap file with all local scripts, and investigate the loaded_scripts.log file. What is the total number of loaded scripts?  
+
+498  
+![image](16.png)  
+
+Correct Answer  
+Hint  
+Go to folder TASK-7/202.  
+Investigate the ftp-brute.pcap file with "/opt/zeek/share/zeek/policy/protocols/ftp/detect-bruteforcing.zeek" script. Investigate the notice.log file. What is the total number of brute-force detections?  
+
+2  
+![image](17.png)
