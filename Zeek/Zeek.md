@@ -569,3 +569,165 @@ Investigate the ftp-brute.pcap file with "/opt/zeek/share/zeek/policy/protocols/
 
 2  
 ![image](17.png)
+
+
+
+
+
+Scripts 203 | Load Frameworks 🚀
+
+Zeek has 15+ frameworks that help analysts discover events of interest. Let's explore the most common ones! 🔍
+
+File Framework | Hashes 🔐
+
+Use the File Analysis framework to generate MD5, SHA1 and SHA256 hashes of detected files:
+
+```bash
+# Method 1: Using custom script
+cat hash-demo.zeek 
+@load /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek
+
+# Method 2: Direct framework call
+zeek -C -r case1.pcap /opt/zeek/share/zeek/policy/frameworks/files/hash-all-files.zeek
+
+# View results
+cat files.log | zeek-cut md5 sha1 sha256
+```
+
+File Framework | Extract Files 📁
+
+Extract files from PCAP traffic automatically:
+
+```bash
+zeek -C -r case1.pcap /opt/zeek/share/zeek/policy/frameworks/files/extract-all-files.zeek
+
+# Files are saved in extract_files/ folder
+ls extract_files/
+file *  # Identify file types
+```
+
+Correlate findings across logs using connection IDs and grep:
+
+```bash
+cat files.log | zeek-cut fuid conn_uids tx_hosts rx_hosts mime_type extracted
+grep -rin CZruIO2cqspVhLuAO9 *  # Search across all logs
+```
+
+Intelligence Framework | Threat Detection 🛡️
+
+Use custom threat intel feeds to detect suspicious domains/IPs:
+
+```bash
+# Intel file format (tab-delimited)
+cat /opt/zeek/intel/zeek_intel.txt 
+#fields	indicator	indicator_type	meta.source	meta.desc
+smart-fax.com	Intel::DOMAIN	zeek-intel-test	Zeek-Intelligence-Framework-Test
+
+# Load intelligence framework
+cat intelligence-demo.zeek 
+@load policy/frameworks/intel/seen
+@load policy/frameworks/intel/do_notice
+redef Intel::read_files += { "/opt/zeek/intel/zeek_intel.txt" };
+
+# Run analysis
+zeek -C -r case1.pcap intelligence-demo.zeek
+cat intel.log | zeek-cut uid id.orig_h id.resp_h seen.indicator matched
+```
+
+Answer the questions below
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-8
+
+No answer needed
+
+Correct Answer
+Investigate the case1.pcap file with intelligence-demo.zeek script. Investigate the intel.log file. Look at the second finding, where was the intel info found? 
+
+IN_HOST_HEADER
+![image](18.png)
+Correct Answer
+Hint
+Investigate the http.log file. What is the name of the downloaded .exe file?
+
+knr.exe
+![image](19.png)
+Correct Answer
+Investigate the case1.pcap file with hash-demo.zeek script. Investigate the files.log file. What is the MD5 hash of the downloaded .exe file?
+
+cc28e40b46237ab6d5282199ef78c464
+![image](20.png)
+Correct Answer
+Investigate the case1.pcap file with file-extract-demo.zeek script. Investigate the "extract_files" folder. Review the contents of the text file. What is written in the file?
+
+Microsoft NCSI
+![image](20.png)
+![image](21.png)
+Correct Answer
+
+Scripts 204 | Package Manager 📦
+
+Zeek Package Manager (zkg) helps install third-party scripts and plugins to extend Zeek functionalities! 🚀
+
+Basic zkg commands:
+- `zkg install package_path` - Install a package
+- `zkg list` - List installed packages  
+- `zkg remove` - Remove installed package
+- `zkg refresh` - Check version updates
+- `zkg upgrade` - Update installed packages
+
+Packages | Cleartext Password Detection 🔓
+
+Install and use zeek-sniffpass to detect cleartext passwords in HTTP traffic:
+
+```bash
+# Install package
+zkg install zeek/cybera/zeek-sniffpass
+
+# Use in 3 different ways:
+# 1. With script
+zeek -Cr http.pcap sniff-demo.zeek 
+cat sniff-demo.zeek 
+@load /opt/zeek/share/zeek/site/zeek-sniffpass
+
+# 2. From path
+zeek -Cr http.pcap /opt/zeek/share/zeek/site/zeek-sniffpass
+
+# 3. With package name
+zeek -Cr http.pcap zeek-sniffpass
+
+# Check results
+cat notice.log | zeek-cut id.orig_h id.resp_h proto note msg
+```
+
+Packages | Geolocation Data 🌍
+
+Use geoip-conn package to get location info for IP addresses:
+
+```bash
+zeek -Cr case1.pcap geoip-conn
+cat conn.log | zeek-cut uid id.orig_h id.resp_h geo.orig.country_code geo.orig.region geo.orig.city
+```
+
+Answer the questions below
+Each exercise has a folder. Ensure you are in the right directory to find the pcap file and accompanying files. Desktop/Exercise-Files/TASK-9
+
+No answer needed
+
+Correct Answer
+Investigate the http.pcap file with the zeek-sniffpass module. Investigate the notice.log file. Which username has more module hits?
+BroZeek
+![image](23.png)
+Correct Answer
+Investigate the case2.pcap file with geoip-conn module. Investigate the conn.log file. What is the name of the identified City?
+Chicago
+![image](24.png)
+Correct Answer
+Which IP address is associated with the identified City?
+![image](25.png)
+23.77.86.54
+
+Correct Answer
+Investigate the case2.pcap file with sumstats-counttable.zeek script. How many types of status codes are there in the given traffic capture?
+![image](26.png)
+4
+
+Correct Answer
