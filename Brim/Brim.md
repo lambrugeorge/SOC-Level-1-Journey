@@ -288,3 +288,278 @@ Through today's exploration of Brim, I learned:
 4. **Combine with Other Tools** 🛠️: Use Wireshark for packet-level analysis
 
 Brim has become an essential tool in my security analysis toolkit! 🚀
+
+
+Today I discovered that there are a variety of use case examples in traffic analysis. For a security analyst like me, it's vital to know the common patterns and indicators of anomaly or malicious traffic. I learned how to review the basics of Brim queries before focusing on custom and advanced ones.
+
+### Brim Query Reference - My Learning Guide 📚
+
+I created this reference table to understand the fundamental query syntax:
+
+| Purpose | Syntax | Example Query |
+|---------|--------|---------------|
+| **Basic search** 🔍 | You can search any string and numeric value | Find logs containing an IP address: `10.0.0.1` |
+| **Logical operators** ⚡ | Or, And, Not | Find logs with IP AND NTP: `192 and NTP` |
+| **Filter values** 🎯 | "field name" == "value" | Filter source IP: `id.orig_h==192.168.121.40` |
+| **List specific log file contents** 📁 | _path=="log name" | List conn log file: `_path=="conn"` |
+| **Count field values** 🔢 | count () by "field" | Count available log files: `count () by _path` |
+| **Sort findings** 📊 | sort | Sort recursively: `count () by _path \| sort -r` |
+| **Cut specific field** ✂️ | _path=="conn" \| cut "field name" | Cut IP addresses: `_path=="conn" \| cut id.orig_h, id.resp_p, id.resp_h` |
+| **List unique values** 🎲 | uniq | Show unique connections: `_path=="conn" \| cut id.orig_h, id.resp_p, id.resp_h \| sort \| uniq` |
+
+**⚠️ Important Learning:** I discovered that it's highly suggested to use field names and filtering options and not rely on the blind/irregular search function. Brim provides great indexing of log sources, but it doesn't perform well in irregular search queries. The best practice is always to use the field filters to search for the event of interest.
+
+### Essential Use Cases I Mastered 🔍
+
+#### 1. Communicated Hosts 🌐
+I learned that identifying the list of communicated hosts is the first step of investigation. Security analysts need to know which hosts are actively communicating on the network to detect any suspicious and abnormal activity. This approach helps detect possible access violations, exploitation attempts and malware infections.
+
+**Query I Use:**
+```
+_path=="conn" | cut id.orig_h, id.resp_h | sort | uniq
+```
+
+#### 2. Frequently Communicated Hosts 📊
+After having the list of communicated hosts, I learned it's important to identify which hosts communicate with each other most frequently. This helps detect possible data exfiltration, exploitation and backdooring activities.
+
+**Query I Use:**
+```
+_path=="conn" | cut id.orig_h, id.resp_h | sort | uniq -c | sort -r
+```
+
+#### 3. Most Active Ports 🔌
+I discovered that suspicious activities aren't always detectable at first. Attackers use multiple ways of hiding and bypassing methods to avoid detection. However, since the data is evidence, it's impossible to hide the packet traces. Investigating the most active ports helps detect silent and well-hidden anomalies by focusing on the data bus and used services.
+
+**Query 1 I Use:**
+```
+_path=="conn" | cut id.resp_p, service | sort | uniq -c | sort -r count
+```
+
+**Query 2 I Use:**
+```
+_path=="conn" | cut id.orig_h, id.resp_h, id.resp_p, service | sort id.resp_p | uniq -c | sort -r
+```
+
+#### 4. Long Connections ⏱️
+I learned that for security analysts, long connections could be the first anomaly indicator. If the client isn't designed to serve a continuous service, investigating the connection duration between two IP addresses can reveal possible anomalies like backdoors.
+
+**Query I Use:**
+```
+_path=="conn" | cut id.orig_h, id.resp_p, id.resp_h, duration | sort -r duration
+```
+
+#### 5. Transferred Data 📡
+Another essential point I learned is calculating the transferred data size. If the client isn't designed to serve and receive files and act as a file server, it's important to investigate the total bytes for each connection. This helps distinguish possible data exfiltration or suspicious file actions like malware downloading and spreading.
+
+**Query I Use:**
+```
+_path=="conn" | put total_bytes := orig_bytes + resp_bytes | sort -r total_bytes | cut uid, id, orig_bytes, resp_bytes, total_bytes
+```
+
+#### 6. DNS and HTTP Queries 🌍
+I discovered that identifying suspicious and out of ordinary domain connections and requests is another significant point for security analysis. Abnormal connections can help detect C2 communications and possible compromised/infected hosts. Identifying suspicious DNS queries and HTTP requests helps detect malware C2 channels and support investigation hypothesis.
+
+**DNS Query I Use:**
+```
+_path=="dns" | count () by query | sort -r
+```
+
+**HTTP Query I Use:**
+```
+_path=="http" | count () by uri | sort -r
+```
+
+#### 7. Suspicious Hostnames 🏷️
+I learned that identifying suspicious and out of ordinary hostnames helps analysts detect rogue hosts. Investigating the DHCP logs provides the hostname and domain information.
+
+**Query I Use:**
+```
+_path=="dhcp" | cut host_name, domain
+```
+
+#### 8. Suspicious IP Addresses 🚨
+For security analysts, I discovered that identifying suspicious and out of ordinary IP addresses is essential. Since the connection logs are stored in one single log file (conn), filtering IP addresses is more manageable and provides more reliable results.
+
+**Query I Use:**
+```
+_path=="conn" | put classnet := network_of(id.resp_h) | cut classnet | count() by classnet | sort -r
+```
+
+#### 9. Detect Files 📁
+I learned that investigating transferred files is another important point of traffic investigation. This helps detect the transfer of malware or infected files by correlating the hash values. This is also valuable for detecting transferring of sensitive files.
+
+**Query I Use:**
+```
+filename!=null
+```
+
+#### 10. SMB Activity 🔐
+Another significant point I learned is investigating SMB activity. This helps analysts detect possible malicious activities like exploitation, lateral movement and malicious file sharing. When running an investigation, it's suggested to ask, "What is going on in SMB?".
+
+**Query I Use:**
+```
+_path=="dce_rpc" OR _path=="smb_mapping" OR _path=="smb_files"
+```
+
+#### 11. Known Patterns ⚠️
+I discovered that known patterns represent alerts generated by security solutions. These alerts are generated against common attack/threat/malware patterns and known by endpoint security products, firewalls and IDS/IPS solutions. This data source highly relies on available signatures, attacks and anomaly patterns. Investigating available log sources containing alerts is vital for security analysts.
+
+Brim supports the Zeek and Suricata logs, so any anomaly detected by these products will create a log file. Investigating these log files can provide a clue where the analyst should focus.
+
+**Query I Use:**
+```
+event_type=="alert" or _path=="notice" or _path=="signatures"
+```
+
+### Key Skills I Developed 🎓
+
+**Technical Skills:**
+- **Query Syntax Mastery** 💻: Understanding Brim's query language structure
+- **Field Filtering** 🔍: Using specific field names for precise searches
+- **Data Correlation** 🔗: Combining multiple data sources for comprehensive analysis
+- **Pattern Recognition** 📊: Identifying common attack patterns and indicators
+
+**Analytical Skills:**
+- **Anomaly Detection** 🚨: Recognizing suspicious network behaviors
+- **Threat Hunting** 🎯: Proactive searching for security indicators
+- **Incident Investigation** 🔬: Systematic approach to security analysis
+- **Data Interpretation** 📈: Understanding what the data reveals about network activity
+
+**Best Practices I Learned:**
+- Always use field names and filtering options instead of blind searches
+- Start with overview queries to understand the scope
+- Focus on the most active and unusual connections first
+- Correlate findings across multiple log sources
+- Document interesting patterns for future reference
+
+### How I Apply These Skills 🛠️
+
+These custom queries are particularly useful for my work as:
+- **SOC Analyst** 🛡️: Daily monitoring and incident investigation
+- **Threat Hunter** 🔍: Proactive searching for malicious activity
+- **Incident Responder** 🚨: Rapid analysis during security incidents
+- **Security Researcher** 🔬: Analyzing captured traffic for patterns
+- **Forensic Analyst** 📋: Detailed investigation of network events
+
+### My Conclusion 🏁
+
+Mastering custom queries in Brim is essential for effective security analysis. These use cases provide me with a comprehensive toolkit for:
+- Detecting network anomalies and suspicious activities
+- Investigating security incidents with precision
+- Correlating data from multiple sources
+- Identifying patterns that indicate potential threats
+
+The ability to create and execute custom queries transforms Brim from a simple log viewer into a powerful security analysis platform! 🚀
+
+## Task 7: Threat Hunting with Brim | Malware C2 Detection 🎯
+
+### My Threat Hunting Experience 🔍
+
+Today I completed an exciting threat hunting exercise! It was another malware campaign spread with CobaltStrike. I learned that an employee clicked on a link, downloaded a file, and then network speed issues and anomalous traffic activity arose. I opened Brim, imported the sample pcap and went through the walkthrough.
+
+Let me share what I discovered while investigating the traffic sample to detect malicious C2 activities!
+
+### Step 1: Analyzing Available Logs 📊
+
+First, I looked at the available log files to see what kind of data artifacts I could work with. The image shows that I had many alternative log files I could rely on. I decided to review the frequently communicated hosts before starting to investigate individual logs.
+
+**Query I Used:**
+```
+cut id.orig_h, id.resp_p, id.resp_h | sort | uniq -c | sort -r count
+```
+
+![image](8.png)
+
+This query provided sufficient data that helped me decide where to focus. The IP addresses "10.22.xx" and "104.168.xx" drew my attention in the first place. I decided to look at the port numbers and available services before focusing on the suspicious IP address and narrowing my search.
+
+**Query I Used:**
+```
+_path=="conn" | cut id.resp_p, service | sort | uniq -c | sort -r count
+```
+
+![image](9.png)
+
+Nothing extremely odd in port numbers, but there was a massive DNS record available. I decided to have a closer look.
+
+**Query I Used:**
+```
+_path=="dns" | count() by query | sort -r
+```
+
+![image](10.png)
+
+I discovered there were out of ordinary DNS queries. I decided to enrich my findings by using VirusTotal to identify possible malicious domains.
+
+![image](11.png)
+
+I detected two additional malicious IP addresses (I had the IP 45.147.xx from the log files and gathered the 68.138.xx and 185.70.xx from VirusTotal) linked with suspicious DNS queries with the help of external research. I decided to look at the HTTP requests before narrowing down my investigation with the found malicious IP addresses.
+
+**Query I Used:**
+```
+_path=="http" | cut id.orig_h, id.resp_h, id.resp_p, method, host, uri | uniq -c | sort value.uri
+```
+
+![image](12.png)
+
+I detected a file download request from the IP address I assumed as malicious. I decided to validate this idea with VirusTotal and validate my hypothesis.
+
+![image](13.png)
+
+VirusTotal results showed that the IP address "104.xx" was linked with a file. Once I investigated that file, I discovered that these two findings were associated with CobaltStrike. Up to here, I had followed the abnormal activity and found the malicious IP addresses. My findings represented the C2 communication. Now I decided to conclude my hunt by gathering the low hanging fruits with Suricata logs.
+
+**Query I Used:**
+```
+event_type=="alert" | count() by alert.severity,alert.category | sort count
+```
+
+Now I could see the overall malicious activities detected by Suricata. I learned that I could investigate the rest of the IP addresses to identify the secondary C2 traffic anomaly without using the Suricata logs. This task demonstrated two different approaches to detecting anomalies.
+
+### Key Learnings from My Investigation 🎓
+
+**What I Discovered:**
+- Investigating each alarm category and signature enhances threat hunting activities and post-hunting system hardening operations
+- Adversaries using CobaltStrike are usually skilled threats and don't rely on a single C2 channel
+- Common experience and use cases recommend digging and keeping the investigation by looking at additional C2 channels
+
+**Skills I Developed:**
+- **Multi-source Analysis** 🔗: Correlating data from multiple log sources
+- **External Intelligence Integration** 🌐: Using VirusTotal for threat validation
+- **Query Optimization** 💻: Developing effective Brim queries for specific investigations
+- **Timeline Analysis** ⏰: Understanding the sequence of malicious activities
+- **Pattern Recognition** 🔍: Identifying anomalies in network traffic
+- **Threat Attribution** 🎯: Connecting indicators to specific malware families
+- **C2 Detection** 📡: Recognizing Command and Control communication patterns
+
+### My Exercise Results ✅
+
+**Question 1:** What is the name of the file downloaded from the CobaltStrike C2 connection?
+- **My Answer:** `4564.exe` ✅
+
+**Question 2:** What is the number of CobaltStrike connections using port 443?
+- **My Answer:** `328` ✅
+
+**Question 3:** There is an additional C2 channel used in the given case. What is the name of the secondary C2 channel?
+- **My Answer:** `IcedID` ✅
+
+### Advanced Investigation Techniques I Learned 🔬
+
+This exercise demonstrated two different approaches to detecting anomalies:
+1. **Manual Investigation** 🔍: Following abnormal activity through log analysis
+2. **Signature-based Detection** ⚠️: Using Suricata alerts for validation
+
+**Important Notes I Discovered:**
+- Adversaries using CobaltStrike are usually skilled threats
+- They don't rely on a single C2 channel
+- Common experience recommends investigating additional C2 channels
+- Each alarm category and signature should be investigated to enhance threat hunting activities
+
+### My Conclusion 🏁
+
+This threat hunting exercise successfully taught me how to:
+- Process and analyze network traffic using Brim
+- Correlate multiple data sources for comprehensive analysis
+- Use external threat intelligence for validation
+- Identify and track C2 communications
+- Apply both manual and automated detection methods
+
+The exercise reinforced the importance of systematic investigation and the value of combining multiple analysis techniques for effective threat hunting! 🚀
