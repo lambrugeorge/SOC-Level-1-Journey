@@ -451,7 +451,6 @@ Mastering custom queries in Brim is essential for effective security analysis. T
 
 The ability to create and execute custom queries transforms Brim from a simple log viewer into a powerful security analysis platform! 🚀
 
-## Task 7: Threat Hunting with Brim | Malware C2 Detection 🎯
 
 ### My Threat Hunting Experience 🔍
 
@@ -553,13 +552,23 @@ This exercise demonstrated two different approaches to detecting anomalies:
 - Common experience recommends investigating additional C2 channels
 - Each alarm category and signature should be investigated to enhance threat hunting activities
 
-### My Conclusion 🏁
 
-This threat hunting exercise successfully taught me how to:
-- Process and analyze network traffic using Brim
-- Correlate multiple data sources for comprehensive analysis
-- Use external threat intelligence for validation
-- Identify and track C2 communications
-- Apply both manual and automated detection methods
 
-The exercise reinforced the importance of systematic investigation and the value of combining multiple analysis techniques for effective threat hunting! 🚀
+
+
+Task 7
+Exercise: Threat Hunting with Brim | Crypto Mining
+﻿Threat Hunting with Brim | Crypto Mining
+
+Today I learned about threat hunting for cryptocurrency mining activities using Brim! 🕵️‍♂️💎 This exercise taught me how to identify cryptojacking attacks where malicious actors exploit corporate resources for mining cryptocurrencies. 
+
+I discovered that crypto mining threats are different from traditional malware - they don't always contain obvious malicious samples but still cause significant damage by consuming computing power, bandwidth, and electricity! ⚡🔋 The exercise showed me how to use Brim queries to analyze network traffic and identify suspicious patterns.
+
+Key techniques I practiced:
+- Analyzing frequently communicated hosts to spot anomalies 🎯
+- Examining unusual port usage and service patterns 🔍
+- Identifying high data transfer volumes that indicate mining activity 📊
+- Using Suricata alerts to quickly detect crypto mining signatures 🚨
+- Correlating findings with MITRE ATT&CK techniques for comprehensive threat analysis 🛡️
+
+This hands-on experience with Brim queries like `cut id.orig_h, id.resp_p, id.resp_h | sort | uniq -c | sort -r` helped me understand how to hunt for these stealthy but resource-draining threats in corporate environments! 🎓✨
