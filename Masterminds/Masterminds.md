@@ -98,3 +98,106 @@ This investigation demonstrates the importance of:
 - Correlation of multiple indicators of compromise (IoCs)
 
 
+-------------------------------------------------------------------------------------------------
+
+## 🦠 Infection 2 - Advanced Malware Analysis
+
+### 📋 Investigation Overview
+Please, navigate to the Infection2 packet capture in Brim to investigate the compromise event for the second machine.
+
+📝 **Note**: For questions that require multiple answers, please separate the answers with a comma.
+
+---
+
+## 🔍 Investigation Results - Second Machine
+
+### 1️⃣ Victim Machine Identification
+**Question**: Provide the IP address of the victim machine.
+
+**Answer**: `192.168.75.146`
+![image](8.png)
+✅ **Correct Answer**
+
+### 2️⃣ POST Connection Analysis
+**Question**: Provide the IP address the victim made the POST connections to.
+
+**Answer**: `5.181.156.252`
+![image](9.png)
+✅ **Correct Answer**
+
+### 3️⃣ POST Connection Frequency
+**Question**: How many POST connections were made to the IP address in the previous question?
+
+**Answer**: `3`
+![image](10.png)
+✅ **Correct Answer**
+
+### 4️⃣ Malicious Domain Discovery
+**Question**: Provide the domain where the binary was downloaded from.
+
+**Answer**: `hypercustom.top`
+![image](11.png)
+✅ **Correct Answer**
+
+### 5️⃣ Malicious Binary Identification
+**Question**: Provide the name of the binary including the full URI.
+
+**Answer**: `/jollion/apines.exe`
+![image](12.png)
+✅ **Correct Answer**
+
+### 6️⃣ Malicious Server IP
+**Question**: Provide the IP address of the domain that hosts the binary.
+
+**Answer**: `45.95.203.28`
+![image](13.png)
+✅ **Correct Answer**
+
+### 7️⃣ Suricata Alert Analysis
+**Question**: There were 2 Suricata "A Network Trojan was detected" alerts. What were the source and destination IP addresses?
+
+**Answer**: `192.168.75.146,45.95.203.28`
+![image](14.png)
+✅ **Correct Answer**
+
+### 8️⃣ Stealer Malware Classification
+**Question**: Taking a look at .top domain in HTTP requests, provide the name of the stealer (Trojan that gathers information from a system) involved in this packet capture using URLhaus Database.
+
+**Answer**: `Redline Stealer`
+![image](15.png)
+✅ **Correct Answer**
+
+---
+
+## 🎓 Key Learning Points - Infection 2
+
+### 🔧 Advanced Tools Used
+- **Brim**: Advanced packet capture analysis
+- **Suricata**: Network intrusion detection system (NIDS)
+- **URLhaus Database**: Malware domain and URL intelligence
+
+### 🚨 Advanced Attack Indicators
+- **POST connections** to suspicious IP addresses
+- **Multiple connection attempts** (3 POST requests)
+- **Malicious domain patterns** (.top domains)
+- **Binary downloads** from suspicious servers
+- **Suricata alerts** for network trojans
+- **Information stealer** malware activity
+
+### 🦠 Redline Stealer Analysis
+- **Redline Stealer**: A sophisticated information stealer malware
+- **Capabilities**: 
+  - Browser credential harvesting
+  - Cryptocurrency wallet theft
+  - System information gathering
+  - File exfiltration
+  - Keylogging functionality
+- **Distribution**: Often distributed through malicious downloads and phishing campaigns
+
+### 🛡️ Security Implications
+This investigation demonstrates:
+- **Network monitoring** effectiveness with Suricata
+- **POST request analysis** for data exfiltration detection
+- **Domain reputation** checking (.top domains often used for malicious purposes)
+- **Binary analysis** and malware classification
+- **Multi-layered defense** with both network analysis and threat intelligence
