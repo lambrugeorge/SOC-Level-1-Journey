@@ -201,3 +201,135 @@ This investigation demonstrates:
 - **Domain reputation** checking (.top domains often used for malicious purposes)
 - **Binary analysis** and malware classification
 - **Multi-layered defense** with both network analysis and threat intelligence
+
+
+-------------------------------------------------------------------------------------------------
+
+## 🐛 Infection 3 - Command & Control Infrastructure Analysis
+
+### 📋 Investigation Overview
+Please, load the Infection3 packet capture in Brim to investigate the compromise event for the third machine.
+
+📝 **Note**: For questions that require multiple answers, please separate the answers with a comma.
+
+---
+
+## 🔍 Investigation Results - Third Machine
+
+### 1️⃣ Victim Machine Identification
+**Question**: Provide the IP address of the victim machine.
+
+**Answer**: `192.168.75.232`
+![image](16.png)
+✅ **Correct Answer**
+
+### 2️⃣ C2 Domain Discovery
+**Question**: Provide three C2 domains from which the binaries were downloaded (starting from the earliest to the latest in the timestamp)
+
+**Answer**: `efhoahegue.ru,afhoahegue.ru,xfhoahegue.ru`
+![image](17.png)
+✅ **Correct Answer**
+
+### 3️⃣ C2 Infrastructure Mapping
+**Question**: Provide the IP addresses for all three domains in the previous question.
+
+**Answer**: `162.217.98.146,199.21.76.77,63.251.106.25`
+![image](18.png)
+✅ **Correct Answer**
+
+### 4️⃣ DNS Query Analysis
+**Question**: How many unique DNS queries were made to the domain associated from the first IP address from the previous answer?
+
+**Answer**: `2`
+✅ **Correct Answer**
+
+### 5️⃣ Binary Download Volume
+**Question**: How many binaries were downloaded from the above domain in total?
+
+**Answer**: `5`
+![image](19.png)
+✅ **Correct Answer**
+
+### 6️⃣ User-Agent Spoofing Detection
+**Question**: Provided the user-agent listed to download the binaries.
+
+**Answer**: `Mozilla/5.0 (Macintosh; Intel Mac OS X 10.9; rv:25.0) Gecko/20100101 Firefox/25.0`
+![image](20.png)
+✅ **Correct Answer**
+
+### 7️⃣ Total DNS Activity
+**Question**: Provide the amount of DNS connections made in total for this packet capture.
+
+**Answer**: `986`
+![image](21.png)
+✅ **Correct Answer**
+
+### 8️⃣ OSINT Malware Identification
+**Question**: With some OSINT skills, provide the name of the worm using the first domain you have managed to collect from Question 2. (Please use quotation marks for Google searches, don't use .ru in your search, and DO NOT interact with the domain directly).
+
+**Answer**: `Phorphiex`
+![image](22.png)
+✅ **Correct Answer**
+
+---
+
+## 🎓 Key Learning Points - Infection 3
+
+### 🔧 Advanced Analysis Tools
+- **Brim**: Command & Control infrastructure analysis
+- **OSINT Techniques**: Open source intelligence gathering
+- **DNS Analysis**: Domain resolution and query patterns
+- **User-Agent Analysis**: Browser fingerprinting and spoofing detection
+
+### 🚨 C2 Infrastructure Indicators
+- **Multiple C2 domains** with similar naming patterns (.ru domains)
+- **Distributed infrastructure** across different IP addresses
+- **High-volume binary downloads** (5 binaries from single domain)
+- **DNS query patterns** indicating C2 communication
+- **User-Agent spoofing** to evade detection
+- **Massive DNS activity** (986 total connections)
+
+### 🐛 Phorphiex Worm Analysis
+- **Phorphiex**: A sophisticated worm malware family
+- **Capabilities**:
+  - Self-replication across networks
+  - Command & Control communication
+  - Data exfiltration capabilities
+  - Network propagation mechanisms
+- **Infrastructure**: Uses multiple C2 servers for redundancy
+- **Evasion**: Employs user-agent spoofing and domain rotation
+
+### 🛡️ Security Implications
+This investigation demonstrates:
+- **C2 infrastructure mapping** for threat hunting
+- **DNS analysis** for detecting malicious communication
+- **OSINT techniques** for malware identification
+- **User-Agent analysis** for detecting spoofing attempts
+- **Volume analysis** for identifying high-risk activities
+- **Multi-domain C2** detection and correlation
+
+---
+
+## 🏆 Masterminds Challenge - Complete Analysis Summary
+
+### 📊 Overall Investigation Results
+- **3 Compromised Machines** analyzed across Finance department
+- **Multiple Malware Families** identified: Emotet, Redline Stealer, Phorphiex
+- **Various Attack Vectors**: Phishing, USB drives, malicious downloads
+- **Sophisticated C2 Infrastructure** with domain rotation and evasion techniques
+
+### 🎯 Key Skills Demonstrated
+- **Network Forensics** with Brim
+- **Malware Analysis** and classification
+- **Threat Intelligence** integration
+- **OSINT Research** techniques
+- **Multi-layered Investigation** approach
+- **Incident Response** procedures
+
+### 🚀 Professional Development
+This challenge provided hands-on experience with:
+- Real-world network forensics scenarios
+- Advanced malware analysis techniques
+- Threat intelligence correlation
+- Incident response workflows
+- Security tool proficiency
