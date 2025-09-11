@@ -179,3 +179,72 @@ Use the "Exercise.pcapng" file to answer the questions.
 **Look at the expert info section. What is the number of warnings?**
 - **Answer:** `1636` ✅
 ![image](14.png)
+
+-------------------------------------------------------------------------------------------------
+
+
+## Task 5: Packet Filtering 🔍
+
+Wireshark has a powerful filter engine that helps analysts narrow traffic and focus on the event of interest. There are two approaches:
+- **Capture filters**: capture only packets that match the filter
+- **Display filters**: view only packets that match the filter
+
+Below are the basic, practical ways I used display filters. Remember the golden rule: **"If you can click it, you can filter/copy it."**
+
+### Apply as Filter ✅
+This is the most basic way to filter traffic. Click the field you want and use the right‑click menu or Analyse → Apply as Filter. Wireshark generates and applies the query, shows matching packets, and hides the rest. Total vs displayed packet counts are shown on the status bar.
+
+Wireshark - apply as filter
+
+### Conversation Filter 🔗
+"Apply as Filter" targets a single entity. To investigate a packet and all related packets (IP addresses and ports), use Conversation Filter via right‑click or Analyse → Conversation Filter. This shows only related packets and hides the rest.
+
+Wireshark - conversation filter
+
+### Colourise Conversation 🎨
+Highlights linked packets without applying a display filter or reducing the number of visible packets. Works with Coloring Rules. Use right‑click or View → Colourise Conversation. Undo via View → Colourise Conversation → Reset Colourisation.
+
+Wireshark - colourise conversation
+
+### Prepare as Filter 📝
+Creates a display filter via right‑click but does not run it immediately. It adds the query to the filter bar and waits for Enter or logical chaining via ".. and/or ..".
+
+Wireshark - prepare as filter
+
+### Apply as Column 📊
+Adds a selected field as a column (right‑click or Analyse → Apply as Column) so you can scan its values across packets. Enable/disable columns from the packet list header.
+
+Wireshark - apply as column
+
+### Follow Stream 📡
+Reconstructs protocol streams to view application‑level data. Unencrypted data (e.g., usernames, passwords) may be visible. Use right‑click or Analyse → Follow TCP/UDP/HTTP Stream. In the dialog, server packets are blue, client packets are red. After following, Wireshark applies a filter for that stream; clear it with the "X" on the filter bar to see all packets again.
+
+Wireshark - follow stream
+
+## Questions & Answers 📝
+Use the "Exercise.pcapng" file to answer the questions.
+
+Go to packet number 4. Right‑click on the "Hypertext Transfer Protocol" and apply it as a filter.
+Now, look at the filter pane. What is the filter query?
+
+- **Answer:** `http` ✅
+![image](15.png)
+
+
+What is the number of displayed packets?
+
+- **Answer:** `1089` ✅
+![image](16.png)
+
+
+Go to packet number 33790, follow the HTTP stream, and look carefully at the responses.
+Looking at the web server's response, what is the total number of artists?
+
+- **Answer:** `3` ✅
+![image](17.png)
+
+
+What is the name of the second artist?
+
+- **Answer:** `Blad3` ✅
+![image](17.png)
