@@ -265,7 +265,6 @@ Common examples:
 
 ------------------------------------------------------------------------------------------------
 
-
 # Task 6  
 **Advanced Filtering**  
 
@@ -274,32 +273,83 @@ You can also save filters as **bookmarks** or **buttons**, and create **profiles
 
 ---
 
+## Advanced Filtering Overview
+
+So far, you have learned the basics of packet filtering operations. Now it is time to focus on specific packet details for the event of interest. Besides the operators and expressions covered in the previous room, Wireshark has advanced operators and functions. These advanced filtering options help the analyst conduct an in-depth analysis of an event of interest.
+
+### Filter: "contains"
+- **Type:** Comparison Operator  
+- **Description:** Search a value inside packets. Case-sensitive. Similar to the "Find" option.  
+- **Example:** Find all "Apache" servers.  
+- **Workflow:** List all HTTP packets where the "server" field contains "Apache".  
+- **Usage:** `http.server contains "Apache"`
+
+### Filter: "matches"
+- **Type:** Comparison Operator  
+- **Description:** Search using a regular expression. Case-insensitive.  
+- **Example:** Find all .php and .html pages.  
+- **Workflow:** List all HTTP packets where "host" fields match `.php` or `.html`.  
+- **Usage:** `http.host matches "\.(php|html)"`
+
+### Filter: "in"
+- **Type:** Set Membership  
+- **Description:** Search a value inside a specific scope or range.  
+- **Example:** Find all packets that use ports 80, 443, or 8080.  
+- **Workflow:** List all TCP packets where "port" fields have values 80, 443, or 8080.  
+- **Usage:** `tcp.port in {80 443 8080}`
+
+### Filter: "upper"
+- **Type:** Function  
+- **Description:** Convert a string value to uppercase.  
+- **Example:** Find all "APACHE" servers.  
+- **Workflow:** Convert all "server" fields to uppercase and list packets that contain "APACHE".  
+- **Usage:** `upper(http.server) contains "APACHE"`
+
+### Filter: "lower"
+- **Type:** Function  
+- **Description:** Convert a string value to lowercase.  
+- **Example:** Find all "apache" servers.  
+- **Workflow:** Convert all "server" fields to lowercase and list packets that contain "apache".  
+- **Usage:** `lower(http.server) contains "apache"`
+
+### Filter: "string"
+- **Type:** Function  
+- **Description:** Convert a non-string value to a string.  
+- **Example:** Find all frames with odd numbers.  
+- **Workflow:** Convert "frame number" fields to string values and list frames ending with odd numbers.  
+- **Usage:** `string(frame.number) matches "[13579]$"`
+
+### Bookmarks and Filtering Buttons
+- Save frequently used or complex filters as bookmarks for quick access.  
+- Create buttons that apply a filter instantly with a single click.  
+- Both bookmarks and buttons help reuse filters efficiently without rewriting them each time.
+
+### Profiles
+- Wireshark profiles store customized configurations for different investigation cases.  
+- Each profile can have its own coloring rules, filters, and button setups.  
+- Profiles allow analysts to switch quickly between different analysis scenarios.  
+- Access via `Edit --> Configuration Profiles` or the profile menu in the status bar.
+
+---
+
 ## Answer the questions below  
 
 **Q1: Find all Microsoft IIS servers. What is the number of packets that did not originate from "port 80"?**  
-*Explanation:* Here, we filter for IIS server traffic but exclude the standard HTTP port (80) to identify unusual traffic.  
 ✅ **Answer:** 21  
 ![image](13.png)
 
 **Q2: Find all Microsoft IIS servers. What is the number of packets that have "version 7.5"?**  
-*Explanation:* Using a `contains` or `matches` filter, we can search for server version details in HTTP headers.  
 ✅ **Answer:** 71  
-
+![image](14.png)
 **Q3: What is the total number of packets that use ports 3333, 4444 or 9999?**  
-*Explanation:* The `in` operator allows filtering multiple port numbers at once to count traffic on non-standard ports.  
 ✅ **Answer:** 2235  
-
+![image](15.png)
 **Q4: What is the number of packets with "even TTL numbers"?**  
-*Explanation:* By converting TTL to string with the `string` operator and using regex `[02468]$`, we can identify packets with even TTL values.  
 ✅ **Answer:** 77289  
-
+![image](16.png)
 **Q5: Change the profile to "Checksum Control". What is the number of "Bad TCP Checksum" packets?**  
-*Explanation:* Custom profiles highlight anomalies like checksum errors, which helps quickly spot network issues.  
 ✅ **Answer:** 34185  
-
+![image](17.png)
 **Q6: Use the existing filtering button to filter the traffic. What is the number of displayed packets?**  
-*Explanation:* Filtering buttons save commonly used queries, allowing instant filtering and counting of relevant packets.  
 ✅ **Answer:** 261
-
-
-
+![image](18.png)
