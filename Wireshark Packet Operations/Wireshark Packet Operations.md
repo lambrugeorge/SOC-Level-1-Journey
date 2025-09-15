@@ -263,4 +263,43 @@ Common examples:
 - Leverage **Display Filter Expressions** for building advanced queries.  
 - Filtering is the foundation of **efficient Wireshark analysis**.  
 
+------------------------------------------------------------------------------------------------
+
+
+# Task 6  
+**Advanced Filtering**  
+
+Wireshark provides advanced operators and functions (`contains`, `matches`, `in`, `upper`, `lower`, `string`) that allow more detailed packet analysis.  
+You can also save filters as **bookmarks** or **buttons**, and create **profiles** for different investigation cases.  
+
 ---
+
+## Answer the questions below  
+
+**Q1: Find all Microsoft IIS servers. What is the number of packets that did not originate from "port 80"?**  
+*Explanation:* Here, we filter for IIS server traffic but exclude the standard HTTP port (80) to identify unusual traffic.  
+✅ **Answer:** 21  
+![image](13.png)
+
+**Q2: Find all Microsoft IIS servers. What is the number of packets that have "version 7.5"?**  
+*Explanation:* Using a `contains` or `matches` filter, we can search for server version details in HTTP headers.  
+✅ **Answer:** 71  
+
+**Q3: What is the total number of packets that use ports 3333, 4444 or 9999?**  
+*Explanation:* The `in` operator allows filtering multiple port numbers at once to count traffic on non-standard ports.  
+✅ **Answer:** 2235  
+
+**Q4: What is the number of packets with "even TTL numbers"?**  
+*Explanation:* By converting TTL to string with the `string` operator and using regex `[02468]$`, we can identify packets with even TTL values.  
+✅ **Answer:** 77289  
+
+**Q5: Change the profile to "Checksum Control". What is the number of "Bad TCP Checksum" packets?**  
+*Explanation:* Custom profiles highlight anomalies like checksum errors, which helps quickly spot network issues.  
+✅ **Answer:** 34185  
+
+**Q6: Use the existing filtering button to filter the traffic. What is the number of displayed packets?**  
+*Explanation:* Filtering buttons save commonly used queries, allowing instant filtering and counting of relevant packets.  
+✅ **Answer:** 261
+
+
+
