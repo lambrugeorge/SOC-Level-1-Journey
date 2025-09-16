@@ -1,0 +1,79 @@
+# Wireshark: Traffic Analysis  
+**Premium Room**  
+
+Learn the basics of traffic analysis with Wireshark and how to find anomalies on your network!  
+
+---
+
+## Task 2: Nmap Scans  
+
+Nmap is an industry-standard tool for mapping networks, identifying live hosts, and discovering services. As one of the most used network scanner tools, a security analyst should identify the network patterns created with it.  
+
+This section covered the most common **Nmap scan types**:  
+
+### 🔹 TCP Flags in a Nutshell
+- **SYN flag:** `tcp.flags == 2` or `tcp.flags.syn == 1`  
+- **ACK flag:** `tcp.flags == 16` or `tcp.flags.ack == 1`  
+- **SYN+ACK:** `tcp.flags == 18`  
+- **RST flag:** `tcp.flags == 4` or `tcp.flags.reset == 1`  
+- **RST+ACK:** `tcp.flags == 20`  
+- **FIN flag:** `tcp.flags == 1`  
+
+---
+
+### 🔹 TCP Connect Scans
+- Relies on the **three-way handshake** (handshake completed).  
+- Command: `nmap -sT`  
+- Used by **non-root users**.  
+- Typically have **window size > 1024**.  
+- **Filter:**  
+
+tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size > 1024
+
+
+---
+
+### 🔹 SYN Scans
+- Does **not** complete the handshake.  
+- Command: `nmap -sS`  
+- Used by **privileged/root users**.  
+- Typically have **window size <= 1024**.  
+- **Filter:**  
+tcp.flags.syn==1 and tcp.flags.ack==0 and tcp.window_size <= 1024
+
+
+---
+
+### 🔹 UDP Scans
+- No handshake required.  
+- Open ports → no response.  
+- Closed ports → ICMP error (Type 3, Code 3).  
+- Command: `nmap -sU`  
+- **Filter:**  
+
+icmp.type==3 and icmp.code==3
+
+
+---
+
+## 📝 Answer the Questions  
+
+**Q1: What is the total number of the "TCP Connect" scans?**  
+✅ **Answer:** 1000  
+![image](1.png)
+
+
+**Q2: Which scan type is used to scan the TCP port 80?**  
+✅ **Answer:** TCP Connect  
+![image](2.png)
+
+
+**Q3: How many "UDP close port" messages are there?**  
+✅ **Answer:** 1083  
+![image](2.png)
+
+
+
+**Q4: Which UDP port in the 55-70 port range is open?**  
+✅ **Answer:** 68
+![image](4.png)
