@@ -77,3 +77,10 @@ icmp.type==3 and icmp.code==3
 **Q4: Which UDP port in the 55-70 port range is open?**  
 ✅ **Answer:** 68
 ![image](4.png)
+
+
+
+
+------------------------------------------------------------------------------------
+Task #3
+ARP Poisoning & Man In The Middle!
