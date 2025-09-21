@@ -124,3 +124,119 @@ icmp.type==3 and icmp.code==3
 - **Answer:** Nice work!
 - **Analysis:** ![image](9.png) - Shows additional data theft beyond credentials
 
+----------------------------------------------------------------------------------------
+
+## 🎯 Task 4: Identifying Hosts
+
+### 🔍 What You'll Master:
+
+**🖥️ Host Identification Fundamentals:**
+- ✅ Understanding how to identify hosts beyond IP-to-MAC mapping
+- ✅ Learning enterprise network naming patterns and their security implications
+- ✅ Mastering multiple protocols for host and user identification
+
+**🔧 Protocol Analysis Skills:**
+- ✅ **DHCP Analysis** - Dynamic Host Configuration Protocol investigation
+- ✅ **NetBIOS (NBNS) Analysis** - Network Basic Input/Output System traffic
+- ✅ **Kerberos Analysis** - Windows domain authentication service
+
+### 📊 DHCP Analysis
+
+**DHCP Protocol Overview:**
+DHCP (Dynamic Host Configuration Protocol) manages automatic IP address assignment and communication parameters.
+
+**🔍 DHCP Investigation Techniques:**
+
+| Notes | Wireshark Filter |
+|-------|------------------|
+| Global search | `dhcp or bootp` |
+| Request packets | `dhcp.option.dhcp == 3` |
+| ACK packets | `dhcp.option.dhcp == 5` |
+| NAK packets | `dhcp.option.dhcp == 6` |
+
+**📋 Key DHCP Options:**
+- **Option 12:** Hostname
+- **Option 50:** Requested IP address  
+- **Option 51:** Requested IP lease time
+- **Option 61:** Client's MAC address
+- **Option 15:** Domain name (ACK packets)
+- **Option 56:** Rejection message (NAK packets)
+
+**🔧 Advanced Filters:**
+```
+dhcp.option.hostname contains "keyword"
+dhcp.option.domain_name contains "keyword"
+```
+
+### 📊 NetBIOS (NBNS) Analysis
+
+**NetBIOS Overview:**
+Network Basic Input/Output System enables communication between applications on different hosts.
+
+**🔍 NBNS Investigation:**
+
+| Notes | Wireshark Filter |
+|-------|------------------|
+| Global search | `nbns` |
+| Name queries | `nbns.name contains "keyword"` |
+
+**📋 Key Information:**
+- Query details contain name, TTL, and IP address information
+- Registration requests show host activity patterns
+
+### 📊 Kerberos Analysis
+
+**Kerberos Overview:**
+Default authentication service for Microsoft Windows domains, responsible for secure identity verification.
+
+**🔍 Kerberos Investigation:**
+
+| Notes | Wireshark Filter |
+|-------|------------------|
+| Global search | `kerberos` |
+| User accounts | `kerberos.CNameString contains "keyword"` |
+| Exclude hostnames | `kerberos.CNameString and !(kerberos.CNameString contains "$")` |
+
+**📋 Key Kerberos Fields:**
+- **CNameString:** Username (values ending with "$" are hostnames)
+- **pvno:** Protocol version
+- **realm:** Domain name for generated ticket
+- **sname:** Service and domain name
+- **addresses:** Client IP and NetBIOS name (request packets only)
+
+**🔧 Advanced Filters:**
+```
+kerberos.pvno == 5
+kerberos.realm contains ".org"
+kerberos.SNameString == "krbtg"
+```
+
+---
+
+## 📝 Answer the Questions
+
+### 🔹 DHCP & NetBIOS Analysis
+*Use the "Desktop/exercise-pcaps/dhcp-netbios-kerberos/dhcp-netbios.pcap" file.*
+
+**Q1: What is the MAC address of the host "Galaxy A30"?**
+✅ **Answer:** `9a:81:41:cb:96:6c`
+![image](10.png)
+
+**Q2: How many NetBIOS registration requests does the "LIVALJM" workstation have?**
+✅ **Answer:** `16`
+![image](11.png)
+
+**Q3: Which host requested the IP address "172.16.13.85"?**
+✅ **Answer:** `Galaxy-A12`
+![image](12.png)
+
+### 🔹 Kerberos Analysis
+*Use the "Desktop/exercise-pcaps/dhcp-netbios-kerberos/kerberos.pcap" file.*
+
+**Q4: What is the IP address of the user "u5"? (Enter the address in defanged format.)**
+✅ **Answer:** `10[.]1[.]12[.]2`
+![image](13.png)
+
+**Q5: What is the hostname of the available host in the Kerberos packets?**
+✅ **Answer:** `xp1$`
+![image](14.png)
