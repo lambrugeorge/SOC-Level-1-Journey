@@ -240,3 +240,75 @@ kerberos.SNameString == "krbtg"
 **Q5: What is the hostname of the available host in the Kerberos packets?**
 ✅ **Answer:** `xp1$`
 ![image](14.png)
+
+
+---------------------------------------------------------------------------------------
+
+# 🎯 Task 5: Tunneling Traffic — ICMP and DNS
+
+## 🔍 What you will master:
+
+### 🔒 Tunneling basics:
+- ✅ What tunneling is and how it hides data through encapsulation
+- ✅ Why ICMP and DNS are used both legitimately and abused by attackers
+
+### 🚨 Detection skills:
+- ✅ Identifying anomalies in ICMP (unusual sizes/patterns)
+- ✅ Identifying anomalies in DNS (long queries, encoded subdomains)
+
+---
+
+## 📊 ICMP Analysis
+
+ICMP is used for diagnostics and reporting network issues, but it can also carry payloads and be abused for data exfiltration or C2.
+
+### 🔍 Key ideas for investigation:
+- Unusual ICMP traffic in terms of volume or packet sizes
+- Unusual ICMP destinations
+- Indicators of encapsulated protocols in the payload (e.g., SSH signatures)
+
+### 🧰 Useful filters (Wireshark):
+
+| Notes          | Wireshark Filter           |
+|----------------|---------------------------|
+| Global search  | `icmp`                    |
+| Large payload  | `data.len > 64 and icmp`  |
+| Inspect payload| Follow → “Show data as Text/Hex” |
+
+---
+
+## 📊 DNS Analysis
+
+DNS maps names to IP addresses, is ubiquitous and trusted — which is why it is attractive for tunneling and C2 through long and encoded subdomains.
+
+### 🔍 Key ideas for investigation:
+- Abnormally long queries (encoded subdomains)
+- Unusual/unreadable names; abnormal volumes to the same destination
+- Known patterns (dnscat, dns2tcp)
+
+### 🧰 Useful filters (Wireshark):
+
+| Notes         | Wireshark Filter                |
+|---------------|--------------------------------|
+| Global search | `dns`                           |
+| Exclude mDNS  | `!mdns`                         |
+| Search for dnscat | `dns contains "dnscat"`     |
+| Long names    | `dns.qry.name.len > 15 and !mdns` |
+
+---
+
+## 📝 Answer the Questions
+
+### 🔹 ICMP Tunneling
+Use the "Desktop/exercise-pcaps/dns-icmp/icmp-tunnel.pcap" file.
+
+**Q1: Investigate the anomalous packets. Which protocol is used in ICMP tunnelling?**  
+✅ **Answer:** SSH  
+![image](15.png)
+
+### 🔹 DNS Anomalies
+Use the "Desktop/exercise-pcaps/dns-icmp/dns.pcap" file.
+
+**Q2: What is the suspicious main domain address that receives anomalous DNS queries? (Enter the address in defanged format.)**  
+✅ **Answer:** `dataexfil[.]com`  
+![image](16.png)
