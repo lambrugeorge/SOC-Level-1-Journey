@@ -312,3 +312,61 @@ Use the "Desktop/exercise-pcaps/dns-icmp/dns.pcap" file.
 **Q2: What is the suspicious main domain address that receives anomalous DNS queries? (Enter the address in defanged format.)**  
 ✅ **Answer:** `dataexfil[.]com`  
 ![image](16.png)
+
+
+
+-------------------------------------------------------------------------------------
+
+
+## 🎯 Task 6: Cleartext Protocol Analysis — FTP
+
+### 🔍 What you'll master:
+
+- **Why FTP is risky**: cleartext credentials and commands → easy to intercept 🕵️‍♂️
+- **How to triage fast**: use response codes and commands to find the signal ⚡
+- **How to detect abuse**: brute force, password spraying, suspicious uploads/executions 🚩
+
+### 🧰 Useful Wireshark filters
+
+| **Notes** | **Wireshark Filter** |
+|-----------|----------------------|
+| Global search | `ftp` |
+| Auth success | `ftp.response.code == 230` |
+| Auth failures | `ftp.response.code == 530` |
+| Passive mode | `ftp.response.code == 227` |
+| Username attempts | `ftp.request.command == "USER"` |
+| Password attempts | `ftp.request.command == "PASS"` |
+| Password spray (static pass) | `(ftp.request.command == "PASS") and (ftp.request.arg == "password")` |
+
+### 🍒 Low-hanging fruits (FTP codes)
+
+- **x1x Information**: `211` (system), `212` (dir), `213` (file) → `ftp.response.code == 211`
+- **x2x Connection**: `220` (service ready), `227/228/229` (passive modes) → `ftp.response.code == 227`
+- **x3x Authentication**: `230` (login), `231` (logout), `331` (valid username), `430/530` (invalid/no login)
+
+### 🧪 Investigation tips
+
+- Count failures to detect brute force: `ftp.response.code == 530`
+- Find target username in failures: `(ftp.response.code == 530) and (ftp.response.arg contains "username")`
+- Track suspicious post-auth activity: `STOR`, `APPE`, `SITE`, `CHMOD`, directory changes `CWD`
+
+---
+
+## 📝 Answer the Questions
+Use the "Desktop/exercise-pcaps/ftp/ftp.pcap" file.
+
+**Q1: How many incorrect login attempts are there?**  
+✅ **Answer:** 737  
+![image](17.png)
+
+**Q2: What is the size of the file accessed by the "ftp" account?**  
+✅ **Answer:** 39424  
+![image](18.png)
+
+**Q3: The adversary uploaded a document to the FTP server. What is the filename?**  
+✅ **Answer:** resume.doc  
+![image](19.png)
+
+**Q4: The adversary tried to assign special flags to change executing permissions. What command was used?**  
+✅ **Answer:** CHMOD 777  
+![image](20.png)
