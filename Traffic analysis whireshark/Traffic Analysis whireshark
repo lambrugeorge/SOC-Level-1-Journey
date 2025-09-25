@@ -370,3 +370,55 @@ Use the "Desktop/exercise-pcaps/ftp/ftp.pcap" file.
 **Q4: The adversary tried to assign special flags to change executing permissions. What command was used?**  
 ✅ **Answer:** CHMOD 777  
 ![image](20.png)
+
+--------------------------------------------------------------------------------------
+
+
+
+## 🎯 Task 7: Cleartext Protocol Analysis — HTTP
+
+### 🔍 What you'll master:
+
+- **Why HTTP is critical**: backbone of web traffic, unencrypted by default 🌐
+- **How to detect attacks**: phishing, web attacks, data exfiltration, C2 traffic 🚨
+- **How to analyze fast**: status codes, methods, headers, and parameters ⚡
+
+### 🧰 Useful Wireshark filters
+
+| **Notes** | **Wireshark Filter** |
+|-----------|----------------------|
+| Global search | `http` or `http2` |
+| GET requests | `http.request.method == "GET"` |
+| POST requests | `http.request.method == "POST"` |
+| All requests | `http.request` |
+| Success (200) | `http.response.code == 200` |
+| Auth required (401) | `http.response.code == 401` |
+| Forbidden (403) | `http.response.code == 403` |
+| Not found (404) | `http.response.code == 404` |
+| Server error (500) | `http.response.code == 500` |
+
+### 🍒 HTTP Status Codes (Low-hanging fruits)
+
+- **2xx Success**: `200` (OK), `301/302` (redirects)
+- **4xx Client errors**: `400` (bad request), `401` (unauthorized), `403` (forbidden), `404` (not found), `405` (method not allowed)
+- **5xx Server errors**: `500` (internal error), `503` (service unavailable)
+
+### 🔧 HTTP Parameters & Headers
+
+| **Field** | **Filter** | **Purpose** |
+|-----------|------------|-------------|
+| User-Agent | `http.user_agent contains "nmap"` | Tool identification |
+| Request URI | `http.request.uri contains "admin"` | Resource path |
+| Full URI | `http.request.full_uri contains "admin"` | Complete URL |
+| Server | `http.server contains "apache"` | Server identification |
+| Host | `http.host contains "keyword"` | Target hostname |
+| Connection | `http.connection == "Keep-Alive"` | Connection type |
+| Form data | `data-text-lines contains "keyword"` | Cleartext form data |
+
+### 🧪 Investigation tips
+
+- **Phishing detection**: Look for suspicious domains, fake login pages
+- **Web attacks**: Monitor for SQL injection patterns, XSS attempts
+- **C2 traffic**: Unusual user agents, encoded data in requests
+- **Data exfiltration**: Large POST requests, unusual file uploads
+
