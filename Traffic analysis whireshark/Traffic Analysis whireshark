@@ -415,7 +415,7 @@ Use the "Desktop/exercise-pcaps/ftp/ftp.pcap" file.
 | Connection | `http.connection == "Keep-Alive"` | Connection type |
 | Form data | `data-text-lines contains "keyword"` | Cleartext form data |
 
-### 🧪 Investigation tips
+###🧪 Investigation tips
 
 - **Phishing detection**: Look for suspicious domains, fake login pages
 - **Web attacks**: Monitor for SQL injection patterns, XSS attempts
