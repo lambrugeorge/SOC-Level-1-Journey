@@ -422,3 +422,71 @@ Use the "Desktop/exercise-pcaps/ftp/ftp.pcap" file.
 - **C2 traffic**: Unusual user agents, encoded data in requests
 - **Data exfiltration**: Large POST requests, unusual file uploads
 
+
+## 🎯 User Agent Analysis 🕵️‍♂️
+
+As the adversaries use sophisticated technics to accomplish attacks, they try to leave traces similar to natural traffic through the known and trusted protocols. For a security analyst, it is important to spot the anomaly signs on the bits and pieces of the packets. The "user-agent" field is one of the great resources for spotting anomalies in HTTP traffic. In some cases, adversaries successfully modify the user-agent data, which could look super natural. A security analyst cannot rely only on the user-agent field to spot an anomaly. Never whitelist a user agent, even if it looks natural. User agent-based anomaly/threat detection/hunting is an additional data source to check and is useful when there is an obvious anomaly. If you are unsure about a value, you can conduct a web search to validate your findings with the default and normal user-agent info (example site). 🔍
+
+### User Agent analysis in a nutshell 💡
+
+Notes	Wireshark Filter
+Global search.	
+http.user_agent
+
+Research outcomes for grabbing the low-hanging fruits 🍒:
+
+- Different user agent information from the same host in a short time notice ⏱️
+- Non-standard and custom user agent info 🛠️
+- Subtle spelling differences. ("Mozilla" is not the same as  "Mozlilla" or "Mozlila") ✏️
+- Audit tools info like Nmap, Nikto, Wfuzz and sqlmap in the user agent field 🕵️
+- Payload data in the user agent field 📦
+
+`(http.user_agent contains "sqlmap") or (http.user_agent contains "Nmap") or (http.user_agent contains "Wfuzz") or (http.user_agent contains "Nikto")`  
+Wireshark - http user agent analysis
+
+## 🪓 Log4j Analysis 💥
+
+A proper investigation starts with prior research on threats and anomalies going to be hunted. Let's review the knowns on the "Log4j" attack before launching Wireshark.
+
+### Log4j vulnerability analysis in a nutshell 🧰
+
+Notes	Wireshark Filters
+
+Research outcomes for grabbing the low-hanging fruits 🍒:
+
+- The attack starts with a "POST" request 🚨
+- There are known cleartext patterns: "jndi:ldap" and "Exploit.class" ⚠️
+- `http.request.method == "POST"`
+- `(ip contains "jndi") or ( ip contains "Exploit")`
+- `(frame contains "jndi") or ( frame contains "Exploit")`
+- `(http.user_agent contains "$") or (http.user_agent contains "==")`
+
+Wireshark - http log4j analysis
+
+Detecting suspicious activities in chunked files is easy and a great way to learn how to focus on the details. Now use the exercise files to put your skills into practice against a single capture file and answer the questions below! 📝
+
+# 📝 Answer the Questions
+
+### 🔹 User Agent Analysis
+Use the "Desktop/exercise-pcaps/http/user-agent.cap" file.
+
+**Q1: Investigate the user agents. What is the number of anomalous \"user-agent\" types?**  
+✅ **Answer:** ______  
+![image](20.png)
+
+**Q2: What is the packet number with a subtle spelling difference in the user agent field?**  
+✅ **Answer:** ______  
+![image](21.png)
+
+### 🔹 Log4j Analysis
+Use the "Desktop/exercise-pcaps/http/http.pcapng" file.
+
+**Q3: Locate the \"Log4j\" attack starting phase. What is the packet number?**  
+✅ **Answer:** ______  
+![image](22.png)
+
+**Q4: Locate the \"Log4j\" attack starting phase and decode the base64 command. What is the IP address contacted by the adversary? (Enter the address in defanged format and exclude \"{}\").**  
+✅ **Answer:** ______  
+![image](22.png)
+![image](23.png)
+![image](24.png)
