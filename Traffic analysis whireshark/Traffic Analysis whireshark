@@ -490,3 +490,132 @@ Use the "Desktop/exercise-pcaps/http/http.pcapng" file.
 ![image](22.png)
 ![image](23.png)
 ![image](24.png)
+![image](25.png)
+
+
+
+-------------------------------------------------------------------------------
+## Task 8 🔐 Encrypted Protocol Analysis: Decrypting HTTPS
+
+### Decrypting HTTPS Traffic
+
+When investigating web traffic, analysts often run across encrypted traffic. This is caused by using the Hypertext Transfer Protocol Secure (HTTPS) protocol for enhanced security against spoofing, sniffing and intercepting attacks. HTTPS uses TLS protocol to encrypt communications, so it is impossible to decrypt the traffic and view the transferred data without having the encryption/decryption key pairs. As this protocol provides a good level of security for transmitting sensitive data, attackers and malicious websites also use HTTPS. Therefore, a security analyst should know how to use key files to decrypt encrypted traffic and investigate the traffic activity. 🛡️
+
+The packets will appear in different colours as the HTTP traffic is encrypted. Also, protocol and info details (actual URL address and data returned from the server) will not be fully visible. The first image below shows the HTTP packets encrypted with the TLS protocol. The second and third images demonstrate filtering HTTP packets without using a key log file.
+
+### Additional information for HTTPS
+
+| Notes | Wireshark Filter |
+|-------|-----------------|
+| "HTTPS Parameters" for grabbing the low-hanging fruits 🍒 | |
+| Request: Listing all requests | |
+| TLS: Global TLS search | |
+| TLS Client Request | |
+| TLS Server response | |
+| Local Simple Service Discovery Protocol (SSDP) | |
+
+http.request
+tls
+tls.handshake.type == 1
+tls.handshake.type == 2
+ssdp
+
+> Note: SSDP is a network protocol that provides advertisement and discovery of network services.
+
+Wireshark - https encrypted communication
+
+Similar to the TCP three-way handshake process, the TLS protocol has its handshake process. The first two steps contain "Client Hello" and "Server Hello" messages. The given filters show the initial hello packets in a capture file. These filters are helpful to spot which IP addresses are involved in the TLS handshake.
+
+- **Client Hello:** `(http.request or tls.handshake.type == 1) and !(ssdp)`  
+- **Server Hello:** `(http.request or tls.handshake.type == 2) and !(ssdp)`  
+
+Wireshark - tls client and server hello messages
+
+An encryption key log file is a text file that contains unique key pairs to decrypt the encrypted traffic session. These key pairs are automatically created per session when a connection is established with an SSL/TLS-enabled webpage. As these processes are all accomplished in the browser, you need to configure your system and use a suitable browser (Chrome and Firefox support this) to save these values as a key log file. To do this, you will need to set up an environment variable and create the SSLKEYLOGFILE, and the browser will dump the keys to this file as you browse the web. SSL/TLS key pairs are created per session at the connection time, so it is important to dump the keys during the traffic capture. Otherwise, it is not possible to create/generate a suitable key log file to decrypt captured traffic. You can use the "right-click" menu or "Edit --> Preferences --> Protocols --> TLS" menu to add/remove key log files.
+
+### Adding key log files
+
+- **Right-click menu:**  
+Wireshark - https adding keylogfile to decrypt https traffic step-1  
+![image](26.png)
+
+- **Edit → Preferences → Protocols → TLS:**  
+Wireshark - https adding keylogfile to decrypt https traffic step-2  
+![image](27.png)
+
+### Viewing traffic with/without key log files
+
+Wireshark - viewing the traffic with and without a key log file
+
+After using the key log file, the traffic details are visible. Packet details and bytes pane provide the data in different formats for investigation. Decompressed header info and HTTP2 packet details are available after decrypting the traffic:
+
+- Frame  
+- Decrypted TLS  
+- Decompressed Header  
+- Reassembled TCP  
+- Reassembled SSL  
+
+Detecting suspicious activities in chunked files is easy and a great way to learn how to focus on the details. 🔎
+
+### Questions (Exercise: `Desktop/exercise-pcaps/https/Exercise.pcap`)
+
+**Q1:** Frame number of the "Client Hello" message sent to `accounts.google.com`?  
+✅ **Answer:** `16`  
+![image](26.png)  
+
+**Q2:** Number of HTTP2 packets?  
+✅ **Answer:** `115`  
+![image](27.png)  
+
+**Q3:** Go to Frame 322. Authority header of the HTTP2 packet (defanged)?  
+✅ **Answer:** `safebrowsing[.]googleapis[.]com`  
+![image](28.png)  
+
+**Q4:** Investigate decrypted packets and find the flag!  
+✅ **Answer:** `FLAG{THM-PACKETMASTER}`  
+![image](29.png)  
+
+---
+
+## Task 9 🕵️‍♂️ Bonus: Hunt Cleartext Credentials!
+
+Up to here, we discussed how to inspect packets for anomalies. Wireshark is not an IDS, but provides expert info hints. Some anomalies replicate legitimate traffic, making detection harder. For cleartext credentials, spotting multiple username/password entries is easier when displayed as a list.
+
+Some Wireshark dissectors (FTP, HTTP, IMAP, POP, SMTP) extract cleartext passwords from captures. Use **Tools → Credentials** (Wireshark v3.1+):
+
+- Shows packet number, protocol, username, additional info  
+- Click packet number → selects packet with password  
+- Click username → selects packet with username
+
+Wireshark - credentials  
+
+### Questions (Exercise: `Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap`)
+
+**Q1:** Packet number of credentials using "HTTP Basic Auth"?  
+✅ **Answer:** `237`  
+![image](30.png)  
+
+**Q2:** Packet number where "empty password" was submitted?  
+✅ **Answer:** `170`  
+![image](31.png)  
+
+---
+
+## Task 10 ⚙️ Bonus: Actionable Results!
+
+After investigating traffic, detecting anomalies, and creating notes, next steps include taking action. Wireshark can create firewall rules for implementation:
+
+- Tools → Firewall ACL Rules  
+- Generate rules for: Netfilter (iptables), Cisco IOS, IP Filter, IPFirewall (ipfw), Packet Filter (pf), Windows Firewall
+
+Wireshark - firewall acl rules  
+
+### Questions (Exercise: `Desktop/exercise-pcaps/bonus/Bonus-exercise.pcap`)
+
+**Q1:** Packet 99: IPFirewall (ipfw) rule for denying source IPv4?  
+✅ **Answer:** `add deny ip from 10.121.70.151 to any in`  
+![image](32.png)  
+
+**Q2:** Packet 231: IPFirewall rule for allowing destination MAC address?  
+✅ **Answer:** `add allow MAC 00:d0:59:aa:af:80 any in`  
+![image](33.png)  
