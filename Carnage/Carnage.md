@@ -60,3 +60,46 @@ Eric Fischer from the Purchasing Department at Bartell Ltd received an email fro
 **Q10: What is the domain name for the first IP address of the Cobalt Strike server? You may use VirusTotal to confirm if it's the Cobalt Strike server (Community tab).**  
 ✅ **Answer:** `survmeter.live`  
 ![image](14.png)
+
+**Q11: What is the domain name of the second Cobalt Strike server IP?**  
+✅ **Answer:** `securitybusinpuff.com`  
+![image](15.png)  
+
+**Q12: What is the domain name of the post-infection traffic?**  
+✅ **Answer:** `maldivehost.net`  
+![image](16.png)  
+
+**Q13: What are the first eleven characters that the victim host sends out to the malicious domain involved in the post-infection traffic?**  
+✅ **Answer:** `zLIisQRWZI9`  
+![image](17.png)  
+
+**Q14: What was the length for the first packet sent out to the C2 server?**  
+✅ **Answer:** `281`  
+![image](18.png)  
+
+**Q15: What was the Server header for the malicious domain from the previous question?**  
+✅ **Answer:** `Apache/2.4.49 (cPanel) OpenSSL/1.1.1l mod_bwlimited/1.4`  
+![image](19.png)  
+
+**Q16: The malware used an API to check for the IP address of the victim’s machine. What was the date and time when the DNS query for the IP check domain occurred? (format: yyyy-mm-dd hh:mm:ss UTC)**  
+✅ **Answer:** `2021-09-24 17:00:04`  
+![image](20.png)  
+
+**Q17: What was the domain in the DNS query from the previous question?**  
+✅ **Answer:** `api.ipify.org`  
+![image](21.png)  
+
+**Q18: Looks like there was some malicious spam (malspam) activity going on. What was the first MAIL FROM address observed in the traffic?**  
+✅ **Answer:** `farshin@mailfa.com`  
+![image](22.png)  
+
+**Q19: How many packets were observed for the SMTP traffic?**  
+✅ **Answer:** `1439`  
+
+💡 **Lessons Learned from Post-Infection Analysis:**
+
+- Monitoring **C2 domains** helps track malware post-infection behavior.  
+- Observing **packet headers** (like Server headers) can reveal the technology stack of the malicious servers.  
+- DNS queries for external IPs (via API) indicate malware attempting to detect network environment.  
+- SMTP traffic analysis can uncover malspam campaigns and infrastructure.  
+- Characterizing the **first bytes** sent to C2 servers can help create network signatures for detection.  
