@@ -102,3 +102,70 @@ TShark can be configured to stop after specific conditions or run continuously.
 
 - Can autostop and ring buffer be combined? **Yes (y)**  
   ![image](7.png)
+
+
+## 🧠 Task 6  
+### Packet Filtering Parameters | Capture and Display Filters
+
+There are two dimensions of **packet filtering** in TShark:  
+**live filtering (capture)** and **post-capture filtering (display)**.  
+
+These two dimensions can be applied using **two different approaches**:  
+either a **predefined syntax** or **Berkeley Packet Filters (BPF)**.  
+TShark supports both — meaning you can use **Wireshark filters** and **BPF syntax** to filter network traffic.
+
+As mentioned earlier, TShark is the **command-line version of Wireshark**, so we need to use **different filters** for **capturing** and **displaying** packets.
+
+---
+
+### 🎯 Quick Recap from Wireshark: Packet Operations
+
+| 🧩 Filter Type | 🧠 Purpose |
+|----------------|------------|
+| **Capture Filters** | Used for live filtering. The goal is to capture and save only specific traffic. Set **before** capture starts and **cannot** be changed during live capture. |
+| **Display Filters** | Used for post-capture filtering. The goal is to investigate packets by **reducing visible packets**. Can be changed anytime during analysis. |
+
+---
+
+### 🕸️ Capture Filters
+
+Capture filters are used to **save only specific types of traffic** in the capture file, instead of collecting all network data.  
+They have **limited filtering capabilities** and are mainly designed to define the **scope** of the capture through **range**, **protocol**, and **directional** filtering.  
+
+This may sound like bulk filtering, but it helps maintain **organized capture files** with **reasonable file sizes**.
+
+---
+
+### 🔍 Display Filters
+
+Display filters are applied **after** the capture to investigate packet contents **in depth** — without modifying the actual packets.  
+These filters are extremely powerful and flexible, making them ideal for detailed analysis.
+
+---
+
+### ⚙️ Parameters and Their Purpose
+
+| 🧠 Parameter | 🔧 Purpose |
+|--------------|------------|
+| **-f** | Capture filters. Uses **BPF syntax** and works like Wireshark’s capture filters. |
+| **-Y** | Display filters. Works like Wireshark’s display filters. |
+
+> 📚 Reference: Review “Wireshark Packet Operations” (Tasks 4 & 5) to revisit packet filtering principles.
+
+---
+
+✅ **Answers:**
+
+- Parameter used to set **Capture Filters** → `-f`  
+- Parameter used to set **Display Filters** → `-Y`
+ ![image](8.png)
+
+---
+
+## 🎓 Summary So Far
+
+You’ve now learned:
+- How TShark performs **packet capture and display filtering**
+- The difference between **live filters (capture)** and **post-capture filters (display)**
+- How to use **BPF syntax** and **Wireshark-style filters**
+- The roles of `-f` and `-Y` parameters in filtering traffic  
